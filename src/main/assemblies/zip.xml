@@ -21,26 +21,28 @@
 
 -->
 <assembly>
-  <id>packaged</id>
+  <id>zip</id>
   <includeBaseDirectory>false</includeBaseDirectory>
   <formats>
     <format>jar</format>
   </formats>
   <fileSets>
-
-    <!-- non-maven jars -->
     <fileSet>
-      <directory>target/</directory>
+      <directory>src/</directory>
       <outputDirectory>/</outputDirectory>
-      <includes>
-        <include>text/**</include>
-      </includes>
+      <directoryMode>0755</directoryMode>
+      <fileMode>0644</fileMode>
+      <excludes>
+        <exclude>**/*.py</exclude>
+      </excludes>
     </fileSet>
     <fileSet>
-      <directory>target/chunked-offline</directory>
-      <outputDirectory>/html</outputDirectory>
+      <directory>src/</directory>
+      <outputDirectory>/</outputDirectory>
+      <directoryMode>0755</directoryMode>
+      <fileMode>0755</fileMode>
       <includes>
-        <include>**</include>
+        <include>**/*.py</include>
       </includes>
     </fileSet>
   </fileSets>
