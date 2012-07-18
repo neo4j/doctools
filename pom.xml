@@ -7,7 +7,7 @@
     <version>35</version>
     <relativePath />
   </parent>
-  <groupId>org.neo4j.build</groupId>
+  <groupId>org.neo4j.build.plugins</groupId>
   <artifactId>neo4j-doctools</artifactId>
   <version>1-SNAPSHOT</version>
   <name>Neo4j - Documentation Tools</name>
@@ -77,6 +77,7 @@
         <configuration>
           <excludes>
             <exclude>src/bin/asciidoc/**</exclude>
+            <exclude>src/bin/extensions/backends/**</exclude>
           </excludes>
         </configuration>
       </plugin>
