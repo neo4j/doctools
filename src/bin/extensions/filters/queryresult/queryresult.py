@@ -55,7 +55,7 @@ def table_header(title, headings, info_lines, html_mode):
     sys.exit("The first table heading is empty.")
   buff = []
   if html_mode:
-    buff.append('<div class="tableblock"><table class="queryresult" border="1" cellspacing="0" cellpadding="0">')
+    buff.append('<table class="queryresult" border="1" cellspacing="0" cellpadding="0">')
     if title:
       buff.append('<caption>' + title + '</caption>')
   else:
@@ -143,7 +143,7 @@ sys.stdout.write(''.join(table_header(query_title, first_line, info_lines, html_
 sys.stdout.write(''.join(body))
 
 if html_mode:
-  sys.stdout.write('</table></div>')
+  sys.stdout.write('</table>')
 else:
   sys.stdout.write('</tgroup>')
   if query_title:
