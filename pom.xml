@@ -78,6 +78,7 @@
           <excludes>
             <exclude>src/bin/asciidoc/**</exclude>
             <exclude>src/bin/extensions/backends/**</exclude>
+            <exclude>src/main/resources/js/**</exclude>
           </excludes>
         </configuration>
       </plugin>
