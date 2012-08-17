@@ -108,7 +108,7 @@ description = data.pop(0)
 if len(sys.argv) > 1:
   title = sys.argv[1]
 html_mode = False
-if len(sys.argv) > 2 and sys.argv[3]=="--html":
+if len(sys.argv) > 2 and sys.argv[2]=="--html":
   html_mode = True
 setting_type = "default"
 if len(sys.argv) > 3:
