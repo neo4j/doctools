@@ -1,0 +1,14 @@
+body.article div#header h1
+{
+  color: #ffffff;
+}
+
+body h1, body h2, body h3
+{
+  border-bottom: none;
+}
+
+body h2:first-child {
+    padding-bottom: 0;
+}
+
