@@ -548,6 +548,8 @@ button.cypherconsole img
 {
   vertical-align: bottom;
   padding-right: .5em;
+  width: 16px;
+  height: 16px;
 }
 
 iframe.console
@@ -556,5 +558,11 @@ iframe.console
   max-width: 95%;
   height: 23em;
   display: block;
+}
+
+#console-external-button
+{
+  position:relative;
+  right:-0.3em;
 }
 

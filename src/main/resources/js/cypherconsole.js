@@ -43,9 +43,9 @@ function createCypherConsoles( $ )
     if ( !database ) return;
     var command = context.find( 'span.command > strong' ).eq(0).text();
     if ( !command ) return;
-    var button = $( '<button class="cypherconsole" type="button"><img src="css/utilities-terminal.png" /> ' + title + '</button>' );
+    var button = $( '<button class="cypherconsole" type="button" title="Show a console" id="console-iframe-button"><img src="css/utilities-terminal.svg" /><span> ' + title + '</span></button>' );
     var url = getUrl( database, command );
-    var link = $( '<button class="cypherconsole" type="button" title="Open the console in a new window."><img style="position:relative;right:-0.3em;" src="css/external.png" />&#8201;</button>' );
+    var link = $( '<button class="cypherconsole" type="button" title="Open the console in a new window." id="console-external-button"><img src="css/external.svg" /><span>&#8201;</span></button>' );
     link.click( function()
     {
       window.open( url, '_blank' );
