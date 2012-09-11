@@ -373,7 +373,7 @@ sub parse {
             $self->pushline($titlelevel1.$titlespaces.$t.$titlelevel2."\n");
             $wrapped_mode = 1;
         } elsif ($asciidoc and
-                 ($line =~ m/^(\/{4,}|\+{4,}|-{4,}|\.{4,}|\*{4,}|_{4,}|={4,}|~{4,}|\|(=){4,})$/)) {
+                 ($line =~ m/^(\/{4,}|\+{4,}|-{4,}|\.{4,}|\*{4,}|_{4,}|={4,}|~{4,}|\|={4,})$/)) {
             # Found one delimited block
             my $t = $line;
             $t =~ s/^(.).*$/$1/;
@@ -391,15 +391,11 @@ sub parse {
                 if ($t eq "\/") {
                     # CommentBlock, should not be treated
                     $self->{verbatim} = 2;
-                } elsif ($t eq "|") {
-                    # A table
-                    $wrapped_mode = 0;
-                    $self->{verbatim} = 1;
                 } elsif ($t eq "+") {
                     # PassthroughBlock
                     $wrapped_mode = 0;
                     $self->{verbatim} = 1;
-                } elsif ($t eq "-") {
+                } elsif ($t eq "-" or $t eq "|") {
                     # ListingBlock
                     $wrapped_mode = 0;
                     $self->{verbatim} = 1;
