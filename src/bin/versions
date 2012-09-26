@@ -2,3 +2,18 @@ asciidoc: 8.6.7
 po4a: svn trunk @2595
 asciidoc-blogger-backend: 1.0.0
 
+Fix for styles in AsciiDoc:
+
+diff --git a/src/bin/po4a/lib/Locale/Po4a/Text.pm b/src/bin/po4a/lib/Locale/Po4a/Text.pm
+index 7392814..25d2118 100644
+--- a/src/bin/po4a/lib/Locale/Po4a/Text.pm
++++ b/src/bin/po4a/lib/Locale/Po4a/Text.pm
+@@ -492,7 +492,7 @@ sub parse_asciidoc {
+         undef $self->{bullet};
+         undef $self->{indent};
+     } elsif (not defined $self->{verbatim} and
+-             ($line =~ m/^\[(NOTE|TIP|IMPORTANT|WARNING|CAUTION|verse|quote)\]$/)) {
++             ($line =~ m/^\[(NOTE|TIP|IMPORTANT|WARNING|CAUTION|verse|quote|appendix|horizontal|qanda|glossary|bibliography|listing|abstract|partintro|literal|float|normal|comment|example|sidebar|source|music|latex|graphviz|arabic|loweralpha|upperalpha|lowerroman|upperroman)\]$/)) {
+         my $type = $1;
+         do_paragraph($self,$paragraph,$wrapped_mode);
+         $paragraph="";

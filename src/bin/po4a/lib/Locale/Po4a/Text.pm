@@ -492,7 +492,7 @@ sub parse_asciidoc {
         undef $self->{bullet};
         undef $self->{indent};
     } elsif (not defined $self->{verbatim} and
-             ($line =~ m/^\[(NOTE|TIP|IMPORTANT|WARNING|CAUTION|verse|quote)\]$/)) {
+             ($line =~ m/^\[(NOTE|TIP|IMPORTANT|WARNING|CAUTION|verse|quote|appendix|horizontal|qanda|glossary|bibliography|listing|abstract|partintro|literal|float|normal|comment|example|sidebar|source|music|latex|graphviz|arabic|loweralpha|upperalpha|lowerroman|upperroman)\]$/)) {
         my $type = $1;
         do_paragraph($self,$paragraph,$wrapped_mode);
         $paragraph="";
