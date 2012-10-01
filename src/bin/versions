@@ -1,5 +1,7 @@
 asciidoc: 8.6.7
-po4a: svn trunk @2597
+po4a: svn trunk @2604
 asciidoc-blogger-backend: 1.0.0
 
+System requirements:
+Perl module: Unicode::GCString
 

@@ -368,11 +368,31 @@ sub parse_control {
     return ($paragraph,$wrapped_mode,$expect_header,$end_of_paragraph);
 }
 
+my $asciidoc_RE_SECTION_TEMPLATES = "sect1|sect2|sect3|sect4|preface|colophon|dedication|synopsis|index";
 my $asciidoc_RE_STYLE_ADMONITION = "TIP|NOTE|IMPORTANT|WARNING|CAUTION";
 my $asciidoc_RE_STYLE_PARAGRAPH = "normal|literal|verse|quote|listing|abstract|partintro|comment|example|sidebar|source|music|latex|graphviz";
 my $asciidoc_RE_STYLE_NUMBERING = "arabic|loweralpha|upperalpha|lowerroman|upperroman";
 my $asciidoc_RE_STYLE_LIST = "appendix|horizontal|qanda|glossary|bibliography";
-my $asciidoc_RE_STYLES = "$asciidoc_RE_STYLE_ADMONITION|$asciidoc_RE_STYLE_PARAGRAPH|$asciidoc_RE_STYLE_NUMBERING|$asciidoc_RE_STYLE_LIST|float";
+my $asciidoc_RE_STYLES = "$asciidoc_RE_SECTION_TEMPLATES|$asciidoc_RE_STYLE_ADMONITION|$asciidoc_RE_STYLE_PARAGRAPH|$asciidoc_RE_STYLE_NUMBERING|$asciidoc_RE_STYLE_LIST|float";
+
+BEGIN {
+    my $UnicodeGCString_available = 0;
+    $UnicodeGCString_available = 1 if (eval { require Unicode::GCString });
+    eval {
+        sub columns($$$) {
+            my $text = shift;
+            my $encoder = shift;
+            $text = $encoder->decode($text) if (defined($encoder) && $encoder->name ne "ascii");
+            if ($UnicodeGCString_available) {
+                return Unicode::GCString->new($text)->columns();
+            } else {
+                return length($text) if !(defined($encoder) && $encoder->name ne "ascii");
+                die wrap_mod("po4a::text",
+                    dgettext("po4a", "Detection of two line titles failed at %s\nInstall the Unicode::GCString module!"), shift)
+            }
+        }
+    };
+}
 
 sub parse_asciidoc {
     my ($self,$line,$ref,$paragraph,$wrapped_mode,$expect_header,$end_of_paragraph) = @_;
@@ -393,7 +413,7 @@ sub parse_asciidoc {
              ($line =~ m/^(={4,}|-{4,}|~{4,}|\^{4,}|\+{4,})$/) and
              (defined($paragraph) )and
              ($paragraph =~ m/^[^\n]*\n$/s) and
-             (length($paragraph) == (length($line)+1))) {
+             (columns($paragraph, $self->{TT}{po_in}{encoder}, $ref) == (length($line)))) {
         # Found title
         $wrapped_mode = 0;
         my $level = $line;
@@ -406,7 +426,7 @@ sub parse_asciidoc {
         $self->pushline($t."\n");
         $paragraph="";
         $wrapped_mode = 1;
-        $self->pushline(($level x (length($t)))."\n");
+        $self->pushline(($level x (columns($t, $self->{TT}{po_in}{encoder}, $ref)))."\n");
     } elsif ($line =~ m/^(={1,5})( +)(.*?)( +\1)?$/) {
         my $titlelevel1 = $1;
         my $titlespaces = $2;
@@ -510,16 +530,17 @@ sub parse_asciidoc {
         undef $self->{bullet};
         undef $self->{indent};
     } elsif (not defined $self->{verbatim} and
-             ($line =~ m/^\[(verse|quote), +(.*)\]$/)) {
-        my $type = $1;
-        my $arg = $2;
+             ($line =~ m/^\[(['"]?)(verse|quote)\1, +(.*)\]$/)) {
+        my $quote = $1 || '';
+        my $type = $2;
+        my $arg = $3;
         do_paragraph($self,$paragraph,$wrapped_mode);
         $paragraph="";
         my $t = $self->translate($arg,
                                  $self->{ref},
                                  "$type",
                                  "wrap" => 0);
-        $self->pushline("[$type, $t]\n");
+        $self->pushline("[$quote$type$quote, $t]\n");
         $wrapped_mode = 1;
         if ($type  eq "verse") {
             $wrapped_mode = 0;
