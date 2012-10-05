@@ -56,7 +56,7 @@ warnings.simplefilter('ignore',DeprecationWarning)
 
 import os, sys, tempfile, md5
 
-VERSION = '0.1.1'
+VERSION = '0.1.2'
 
 # Globals.
 verbose = False
@@ -135,15 +135,15 @@ def music2png(format, infile, outfile, modified):
     os.chdir(outdir)
     try:
         if format == 'abc':
-            run('abc2ly --beams=None -o "%s" "%s"' % (ly,abc))
+            run('abc2ly -o "%s" "%s"' % (ly,abc))
         run('lilypond --png -o "%s" "%s"' % (basefile,ly))
         os.rename(png, outfile)
     finally:
         os.chdir(saved_pwd)
-    # Chop the bottom 75 pixels off to get rid of the page footer.
-    run('convert "%s" -gravity South -crop 1000x10000+0+75 "%s"' % (outfile, outfile))
-    # Trim all blank areas from sides, top and bottom.
-    run('convert "%s" -trim "%s"' % (outfile, outfile))
+    # Chop the bottom 75 pixels off to get rid of the page footer then crop the
+    # music image. The -strip option necessary because FOP does not like the
+    # custom PNG color profile used by Lilypond.
+    run('convert "%s" -strip -gravity South -chop 0x75 -trim "%s"' % (outfile, outfile))
     for f in temps:
         if os.path.isfile(f):
             print_verbose('deleting: %s' % f)

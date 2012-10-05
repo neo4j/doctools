@@ -1,9 +1,65 @@
                                AsciiDoc ChangeLog
 
-   version 8.6.7, 17 March 2012
+   version 8.6.8, 17 July 2012
      __________________________________________________________________
 
-1. Version 8.6.7 (2012-03-17)
+1. Version 8.6.8 (2012-07-17)
+
+   Release highlights
+   Added full complement of styles to Open Blocks and Normal Paragraphs —
+   those with a minimalist bent could construct virtually any document
+   using just Title, Normal Paragraph and Open Block syntaxes.
+
+   Other additions and changes
+     * Increased default maximum include depth from 5 to 10.
+     * Emit warning if maximum include depth is exceeded.
+     * Suppress repeated console messages.
+     * Music filter: removed --beams=None option from abc2ly invocation
+       because it is broken on LilyPond 2.14 (Ubuntu 12.04).
+     * Replaced obsolete <tt> tag with <code> in HTML backends.
+     * Allow configuration attribute entries to create a new section
+       (previously you could only modify existing sections). See:
+       [1]discussion list.
+     * Documented {wj} (word-joiner) attribute and updated FAQ. See:
+       [2]discussion list.
+     * FAQ: Added How can I place a footnote immediately following quoted
+       text? See [3]discussion list.
+     * Added Greek language configuration file. Contributed by Michael
+       Dourmousoglou. See [4]discussion list.
+     * FAQ: Added Using roles to select fonts for PDF. Submitted by Lex
+       Trotman and based on solution by Antonio Borneo. See: [5]discussion
+       list.
+     * Apply same monospaced font size to all monospaced text.
+     * Changed 0 number padding to spaces in numbered GNU source-highlight
+       outputs.
+     * Allow highlight source highlighter to use python for Python
+       {language} name. r1142: Update the AsciiDoc source filter to allow
+       the use of the highlight source code highlighter. See [6]discussion
+       list.
+
+       Note
+           The pygments attribute has been deprecated in favor of the new
+           source-highlighter attribute.
+     * Vim syntax highlighter: Don’t confuse trailing open block delimiter
+       with section underline.
+     * Added skip option to paragraphs (c.f. Delimited Block skip option).
+
+   Bug fixes
+     * FIXED: latex, music and graphviz filters: When the filter output
+       image is data-uri encoded write it to the indir (instead of the
+       outdir) so that encoder can find it. See [7]discussion list.
+     * FIXED: Escape the ] character inside inline macros. See
+       [8]discussion list.
+     * FIXED: source highlighter filter: Pass role attribute to HTML
+       backends.
+     * FIXED: source highlight filter: docbook backend: role attribute was
+       not passed to listings without a title. Patch submitted by Lex
+       Trotman. See [9]discussion list.
+     * FIXED: music2png.py: FOPException: Raster ByteInterleavedRaster
+       error (FOP 1.0, ImageMagick 6.6.9-7).
+     __________________________________________________________________
+
+2. Version 8.6.7 (2012-03-17)
 
    Release highlights
    No major enhancements but quite a few bug fixes which, among other
@@ -12,8 +68,8 @@
    All additions and changes
      * Vim syntax highlighter: highlight entity refs in macro arguments.
      * Added files with .asciidoc extension to Vim file type detection.
-       [1]Patch submitted by Dag Wiers.
-     * Added replacement3 substitution to enable [2]ODT whitespace
+       [10]Patch submitted by Dag Wiers.
+     * Added replacement3 substitution to enable [11]ODT whitespace
        processing.
      * Added unbreakable option to XHTML and HTML 5 backends.
      * Implemented toc::[] block macro and toc-placement attribute for
@@ -23,55 +79,55 @@
        outputs? and Is it possible to reposition the Table of Contents in
        HTML outputs?.
      * Added --backend and --backend-opts options to the a2x command to
-       allow a2x to use backend plugin code extensions. [3]Patch submitted
-       by Lex Trotman.
-     * Added [4]args block attribute to source highlight blocks to allow
+       allow a2x to use backend plugin code extensions. [12]Patch
+       submitted by Lex Trotman.
+     * Added [13]args block attribute to source highlight blocks to allow
        arbitrary parameters to be passed to the source highlighters.
      * If the ascii-ids attribute is defined then non-ascii characters in
-       auto-generated IDs [5]are replaced by their nearest ascii
+       auto-generated IDs [14]are replaced by their nearest ascii
        equivalents (to work around DocBook processor limitations).
      * Added global blockname attribute which is dynamically updated to
-       identify the current block. See [6]discussion list.
+       identify the current block. See [15]discussion list.
      * xhtml11, html5 backends: Include book part TOC entries for
        multi-part books. Patch submitted by Loïc Paillotin.
      * Removed code filter example from the AsciiDoc User Guide so that
        backends implemented as external plugins can compile the manual.
-       See [7]discussion list.
+       See [16]discussion list.
      * If the delimited block skip option is set then do not consume block
        title and attributes. This makes it possible for the comment
        delimited blocks to use an attribute list (previously the comment
        delimited block was hardwired to skip preceding attributes and
-       titles). See [8]discussion list.
+       titles). See [17]discussion list.
      * Added backend-confdir intrinsic attribute.
 
    Bug fixes
-     * FIXED: slidy backend: broken stylesheet attribute. [9]Patch
+     * FIXED: slidy backend: broken stylesheet attribute. [18]Patch
        submitted by Micheal Hackett.
-     * FIXED: Restored [10]missing themes to zip file distribution
+     * FIXED: Restored [19]missing themes to zip file distribution
        archive.
-     * FIXED: Grammatical error in error messages. [11]Patch submitted by
+     * FIXED: Grammatical error in error messages. [20]Patch submitted by
        Dag Wieers.
      * FIXED: Use configured normal substitution in preference to the
        default one.
      * FIXED: The eval block macro would execute multiple times if it
        evaluated to None.
-     * FIXED: Duplicated entries in TOC of large document. [12]Patch
+     * FIXED: Duplicated entries in TOC of large document. [21]Patch
        submitted by Sebastien Helleu.
-     * FIXED: Python 2.4 backward [13]incompatibility.
+     * FIXED: Python 2.4 backward [22]incompatibility.
      * FIXED: 8.6.6 regression broke Jython compatibility. See
-       [14]discussion list.
+       [23]discussion list.
      * FIXED: Leaky file handles in a2x and music and latex filters which
        created incompatibility problems for Jython.
      * FIXED: All Python filters are executed with the same Python
        interpreter that executes the asciidoc parent (previously filters
        were hardwired to execute the python interpreter). This prevents
-       [15]Python mix-ups.
+       [24]Python mix-ups.
      * FIXED: Microsoft Windows shelled command-line truncation that
        caused shelled commands to fail e.g. the data-uri attribute
        failure.
      __________________________________________________________________
 
-2. Version 8.6.6 (2011-09-04)
+3. Version 8.6.6 (2011-09-04)
 
    Release highlights
      * The AsciiDoc plugin architecture has been enhanced, unified and
@@ -100,11 +156,11 @@
        command-line option to override this behavior).
      * tests: Add Italian language tests. Patch submitted by Simon
        Ruderich. See:
-       [16]http://groups.google.com/group/asciidoc/browse_thread/thread/5e
+       [25]http://groups.google.com/group/asciidoc/browse_thread/thread/5e
        2e6f4dd740d51a
      * tests: Add tests for localized man pages. Patch submitted by Simon
        Ruderich. See:
-       [17]http://groups.google.com/group/asciidoc/browse_thread/thread/5e
+       [26]http://groups.google.com/group/asciidoc/browse_thread/thread/5e
        2e6f4dd740d51a
      * If the section name is prefixed with a + character then the section
        contents is appended to the contents of an already existing
@@ -115,10 +171,10 @@
        section name will be prefixed with a + character so that it is
        appended to (rather than replace) other docinfo sections.
      * Added {sp} intrinsic attribute for single space character. See
-       [18]http://groups.google.com/group/asciidoc/browse_thread/thread/a8
+       [27]http://groups.google.com/group/asciidoc/browse_thread/thread/a8
        39aa01db0765d2
      * Fixed TOC and footnotes generator. Patch submitted by Will. See
-       [19]http://groups.google.com/group/asciidoc/browse_thread/thread/73
+       [28]http://groups.google.com/group/asciidoc/browse_thread/thread/73
        4ac5afed736987
      * The asciidoc-confdir attribute is set to the asciidoc executable
        directory if it contains global configuration files i.e. a local
@@ -129,11 +185,11 @@
        Always delete temp files irrespective of outcome.
      * Added truecolor option to LaTeX filter. Patch submitted by Michel
        Krämer. See:
-       [20]http://groups.google.com/group/asciidoc/browse_thread/thread/64
+       [29]http://groups.google.com/group/asciidoc/browse_thread/thread/64
        36788a10561851
      * Unit test for table column specifiers with merged cells. Patch
        submitted by Simon Ruderich. See:
-       [21]http://groups.google.com/group/asciidoc/browse_thread/thread/c9
+       [30]http://groups.google.com/group/asciidoc/browse_thread/thread/c9
        238380a1f2507a
      * Added verbose message for ifeval::[] macro evaluation.
      * Added test case for ifeval::[] evaluation.
@@ -141,16 +197,16 @@
        disallow code malicious execution). Patch submitted by Kenny
        MacDermid.
      * Changed web site layout from table to CSS based. See
-       [22]http://groups.google.com/group/asciidoc/browse_thread/thread/ec
+       [31]http://groups.google.com/group/asciidoc/browse_thread/thread/ec
        8e8481eb0e27b0/d1c035092b5bb7a4?lnk=gst&q=caption+option#d1c035092b
        5bb7a4
      * a2x: Pass --format option value to asciidoc as a2x-format
        attribute. Patch submitted by Lex Trotman
-       ([23]http://groups.google.com/group/asciidoc/browse_thread/thread/3
+       ([32]http://groups.google.com/group/asciidoc/browse_thread/thread/3
        e177b84bc133ca9/659796dfadad30ea?lnk=gst&q=a2x+format#659796dfadad3
        0ea).
      * Added two FAQs submitted by Lex Trotman. See:
-       [24]http://groups.google.com/group/asciidoc/browse_thread/thread/16
+       [33]http://groups.google.com/group/asciidoc/browse_thread/thread/16
        d3fb9672a408e7
      * html5,xhtml11: Implemented themes directory structure.
      * html5,xhtml11: Implemented asciidoc --theme management option
@@ -166,12 +222,12 @@
      * Added css-signature attribute to tests.
      * Add css-signature attribute to set a CSS signature for the
        document. Patch submitted by Peg Russell, see:
-       [25]http://groups.google.com/group/asciidoc/browse_thread/thread/ba
+       [34]http://groups.google.com/group/asciidoc/browse_thread/thread/ba
        cbf8aeb8ad6a3a
      * White background for toc2 TOC viewport so that horizontally
        scrolled content does not obscure the the TOC. Patch submitted by
        Lionel Orry, see:
-       [26]http://code.google.com/p/asciidoc/issues/detail?id=8
+       [35]http://code.google.com/p/asciidoc/issues/detail?id=8
 
    Bug fixes
      * FIXED: Plugin install command: Delete backend directory is install
@@ -186,40 +242,40 @@
        using the default permissions.
      * FIXED: Fixed missing quote in preceding LaTeX filter patch. Fix
        submitted by Simon Ruderich. See:
-       [27]http://groups.google.com/group/asciidoc/browse_thread/thread/64
+       [36]http://groups.google.com/group/asciidoc/browse_thread/thread/64
        36788a10561851
      * FIXED: Some path attributes were processed as escaped Python
        strings which could result in corrupted path names with backslash
        separated Windows path names. Reported by Will. See:
-       [28]http://groups.google.com/group/asciidoc/browse_thread/thread/e8
+       [37]http://groups.google.com/group/asciidoc/browse_thread/thread/e8
        f3938bcb4c8bb4/44d13113a35738ef
      * FIXED: Vertically spanned table cells resulted in incorrect column
        styles being applied to some cells. Reported by Will:
-       [29]http://groups.google.com/group/asciidoc/browse_thread/thread/c9
+       [38]http://groups.google.com/group/asciidoc/browse_thread/thread/c9
        238380a1f2507a/9afc4559d51e1dbd
      * FIXED: LaTeX backend: fixed bad escapes. Patch submitted by Mark
        McCurry:
-       [30]http://groups.google.com/group/asciidoc/browse_thread/thread/8c
+       [39]http://groups.google.com/group/asciidoc/browse_thread/thread/8c
        111f1046b33691/158a944cf4d5ff0d?lnk=gst&q=latex+escapes#158a944cf4d
        5ff0d
      * FIXED: When using slidy backend, display of characters with accents
        is wrong because of meta http-equiv line missing. Reported by
        Fabrice Flore-Thebault. See:
-       [31]http://groups.google.com/group/asciidoc/browse_thread/thread/ea
+       [40]http://groups.google.com/group/asciidoc/browse_thread/thread/ea
        f25f21d1da180a
      __________________________________________________________________
 
-3. Version 8.6.5 (2011-05-20)
+4. Version 8.6.5 (2011-05-20)
 
    Release highlights
      * The addition of an html5 backend to generate HTML 5 output. Apart
        from the inclusion of audio and video block macros the html5
        backend is functionally identical to the xhtml11 backend.
      * A new flask theme for xhtml11 and html5 backends inspired by the
-       [32]Flask website styling (see toc2 example in the next item
+       [41]Flask website styling (see toc2 example in the next item
        below).
      * The new toc2 attribute generates a table of contents in the left
-       hand margin (xhtml11 and html5 backends). [33]This example was
+       hand margin (xhtml11 and html5 backends). [42]This example was
        generated using the following command:
   asciidoc -b html5 -a icons -a toc2 -a theme=flask article.txt
      * a2x(1) now has a flexible mechanism for copying arbitrary resource
@@ -232,61 +288,61 @@
             manifest automatically.
           + You can explicitly specify file extension MIME types.
           + The enhanced resource processing works around a couple of
-            DocBook XSL bugs (see [34]EPUB Notes).
+            DocBook XSL bugs (see [43]EPUB Notes).
 
    All additions and changes
      * A new flask theme for xhtml11 and html5 backends. A shameless
-       knock-off of the [35]Flask website styling.
+       knock-off of the [44]Flask website styling.
      * Added HTML 5 article with toc2 table of contents to the example on
        the AsciiDoc website home page.
      * Added filters and topics help topics. Fixed documentation errors in
        help text. Patch submitted by Lionel Orry, see:
-       [36]http://groups.google.com/group/asciidoc/browse_thread/thread/9d
+       [45]http://groups.google.com/group/asciidoc/browse_thread/thread/9d
        a9d48a6461ff14
      * Pass parent configuration files, command-line attributes and header
        attributes to table asciidoc filters. Based on patch submitted by
        Simon Ruderich, see:
-       [37]http://groups.google.com/group/asciidoc/browse_thread/thread/5c
+       [46]http://groups.google.com/group/asciidoc/browse_thread/thread/5c
        792cbb395b753b
      * Allow a title attribute entry in the document header so that HTML
        backends can set the title element separately from the displayed
        document title (the doctitle attribute).
      * Pass lang attribute to asciidoc table style filter. Patch submitted
        by Simon Ruderich, see:
-       [38]http://groups.google.com/group/asciidoc/browse_thread/thread/e2
+       [47]http://groups.google.com/group/asciidoc/browse_thread/thread/e2
        100b7cb29283ce
      * xhtml11,html5: Added toc2 attribute which generates a scrollable
        table of contents in the left hand margin. Based on customized CSS
        written by Suraj Kurapati, see
-       [39]http://groups.google.com/group/asciidoc/browse_thread/thread/c5
+       [48]http://groups.google.com/group/asciidoc/browse_thread/thread/c5
        e30ee5555877f5
      * Added asciidoc-confdir intrinsic attribute which expands to the
        global conf directory.
      * Documented that you can specify multiple CSS files with the a2x(1)
        --stylesheet command option. See:
-       [40]http://groups.google.com/group/asciidoc/browse_thread/thread/ba
+       [49]http://groups.google.com/group/asciidoc/browse_thread/thread/ba
        f3218551d05a05
      * Improved xhtml11 backend’s table of contents generation latency.
        Patch submitted by Hongli Lai. See:
-       [41]http://groups.google.com/group/asciidoc/browse_thread/thread/5a
+       [50]http://groups.google.com/group/asciidoc/browse_thread/thread/5a
        7fe64fbfd65ad
      * Added html5 backend.
      * For consistency converted all DOS formatted configuration and text
        files to UNIX format.
      * html4: Added ability to use role attribute with most block
        elements. Patch contributed by Simon Ruderich. See
-       [42]http://groups.google.com/group/asciidoc/browse_thread/thread/56
+       [51]http://groups.google.com/group/asciidoc/browse_thread/thread/56
        20ba634fdb030a
      * Added Dutch language configuration file and accompanying test file
        (contributed by Dag Wieers, see
-       [43]http://groups.google.com/group/asciidoc/browse_thread/thread/f9
+       [52]http://groups.google.com/group/asciidoc/browse_thread/thread/f9
        69b9ce987d7f5d).
      * Configuration files are loaded in two passes when the -e
        command-line option is used (the same behavior as when the -e
        option is not used). Patch submitted by haad. See
-       [44]http://groups.google.com/group/asciidoc/browse_thread/thread/cd
+       [53]http://groups.google.com/group/asciidoc/browse_thread/thread/cd
        0f47495fd04181 and
-       [45]http://code.google.com/p/asciidoc/issues/detail?id=6&q=label%3A
+       [54]http://code.google.com/p/asciidoc/issues/detail?id=6&q=label%3A
        Priority-Medium
      * Documented how to include embedded fonts in an EPUB document.
      * a2x: Added .<ext>=<mimetype> resource specifier syntax.
@@ -301,7 +357,7 @@
      * a2x: Copy resources referenced in the OPF and resources referenced
        by the generated HTML (in theory DocBook XSL should ensure they are
        identical but this is not always the case e.g.
-       [46]http://sourceforge.net/tracker/?func=detail&atid=373747&aid=285
+       [55]http://sourceforge.net/tracker/?func=detail&atid=373747&aid=285
        4075&group_id=21935).
      * Drop border from callout list image links.
      * html4: Moved manpage NAME section out of header so that the name
@@ -312,7 +368,7 @@
        literal paragraphs and blocks.
      * Constrained quotes can now be bounded on the left by a } character.
        See:
-       [47]http://groups.google.com/group/asciidoc/browse_thread/thread/b2
+       [56]http://groups.google.com/group/asciidoc/browse_thread/thread/b2
        4cc3362f35b801
      * Added text-decoration roles (underline, overline, line-through,
        blink) for xhtml11 and html5 outputs.
@@ -324,12 +380,12 @@
        example (the underline.png resource was not in the manifest).
      __________________________________________________________________
 
-4. Version 8.6.4 (2011-02-20)
+5. Version 8.6.4 (2011-02-20)
 
    Additions and changes
      * Added text foreground and background color along with text size CSS
        styles for XHTML outputs, see
-       [48]http://www.methods.co.nz/asciidoc/userguide.html#X96.
+       [57]http://www.methods.co.nz/asciidoc/userguide.html#X96.
      * Vim syntax highlighter: highlight macros that start with an
        attribute reference (a common idiom).
      * Vim syntax highlighter: highlight attribute references in macro
@@ -338,38 +394,38 @@
        templates.
      * Double-width East Asian characters in titles now correctly match
        the title underline widths. Submitted by Changjian Gao (see
-       [49]http://groups.google.com/group/asciidoc/browse_thread/thread/77
+       [58]http://groups.google.com/group/asciidoc/browse_thread/thread/77
        f28b0dfe60d262).
-     * Implemented [50]asciidoc(1) filter commands, see:
-       [51]http://groups.google.com/group/asciidoc/browse_thread/thread/40
+     * Implemented [59]asciidoc(1) filter commands, see:
+       [60]http://groups.google.com/group/asciidoc/browse_thread/thread/40
        c64cd33ee1905c
      * User’s home directory now calculated in a platform independent
        manner.
      * Added double-quote characters to French language file. Patch
        contributed Yves-Alexis Perez, see:
-       [52]http://groups.google.com/group/asciidoc/browse_thread/thread/e1
+       [61]http://groups.google.com/group/asciidoc/browse_thread/thread/e1
        5282f072413940
      * Vim Syntax highlighter: Highlight closing OpenBlocks which
        immediately follow a literal paragraph.
      * Changed UNIX /dev/null to OS independent os.devnull in filters
        code. Suggested by Henrik Maier:
-       [53]http://groups.google.com/group/asciidoc/browse_thread/thread/5a
+       [62]http://groups.google.com/group/asciidoc/browse_thread/thread/5a
        c8e8ea895147e9
      * Vim syntax highlighter: Single and double quoted text now
        highlights correctly when preceded by an attributes list.
      * Added Ukrainian language file (lang-uk.conf). Added double-quote
        characters to Russian language file.conf). Patches contributed by
        Lavruschenko Oleksandr, see
-       [54]http://groups.google.com/group/asciidoc/browse_thread/thread/e1
+       [63]http://groups.google.com/group/asciidoc/browse_thread/thread/e1
        5282f072413940
      * Single and double quote characters are now set using the {lsquo},
        {rsquo}, {ldquo} and {rdquo} attributes. This makes is easy to
        customise language specific quotes. See:
-       [55]http://groups.google.com/group/asciidoc/browse_thread/thread/e1
+       [64]http://groups.google.com/group/asciidoc/browse_thread/thread/e1
        5282f072413940
      * Implemented conf-files attribute to allow configuration files to be
        specified in the source document. Suggested by Lex Trotman, see:
-       [56]http://groups.google.com/group/asciidoc/browse_thread/thread/b1
+       [65]http://groups.google.com/group/asciidoc/browse_thread/thread/b1
        1066a828ab45b9
 
    Bug fixes
@@ -377,7 +433,7 @@
      * FIXED: Setting quotes configuration entries using document
        attribute entries failed if the attribute entry was not in the
        document header. See:
-       [57]http://groups.google.com/group/asciidoc/browse_thread/thread/a1
+       [66]http://groups.google.com/group/asciidoc/browse_thread/thread/a1
        dd0562dee8b939
      * FIXED: If the input and output file names were different then the
        output file name was incorrectly used to synthesize docinfo file
@@ -386,11 +442,11 @@
        defined as a blank string. Reported by Peggy Russell.
      * FIXED: Encoding error in automatically generated author initials.
        Patch submitted by Xin Wang. See:
-       [58]http://groups.google.com/group/asciidoc/browse_thread/thread/f4
+       [67]http://groups.google.com/group/asciidoc/browse_thread/thread/f4
        4615dca0b834e9
      __________________________________________________________________
 
-5. Version 8.6.3 (2010-11-14)
+6. Version 8.6.3 (2010-11-14)
 
    Additions and changes
      * Added and unbreakable option to bulleted and numbered lists (thanks
@@ -409,7 +465,7 @@
      * attributes, titles and specialcharacters sections are now read from
        the local asciidoc.conf file before the header is parsed. This
        fixes a regression problem. See
-       [59]http://groups.google.com/group/asciidoc/browse_thread/thread/1b
+       [68]http://groups.google.com/group/asciidoc/browse_thread/thread/1b
        3f88f1f8118ab3
      * Document header attributes take precedence over configuration file
        attributes.
@@ -433,28 +489,28 @@
        specified.
      * Make builds the man pages. Patch submitted by Sebastian Pipping.
        See
-       [60]http://groups.google.com/group/asciidoc/browse_thread/thread/c2
+       [69]http://groups.google.com/group/asciidoc/browse_thread/thread/c2
        1c2902c29bae64
 
    Bug fixes
      * FIXED: Sometimes double backquotes were misinterpreted as inline
        literal macros. See:
-       [61]http://groups.google.com/group/asciidoc/browse_thread/thread/f5
+       [70]http://groups.google.com/group/asciidoc/browse_thread/thread/f5
        10ea82a88aaee8
      * FIXED: Regression in 8.6.2: command-line attributes were not
        available to the global asciidoc.conf.
      * FIXED: Postponed document title substitutions until backend conf
        files have been loaded (8.6.2 regression). See
-       [62]http://groups.google.com/group/asciidoc/browse_thread/thread/42
+       [71]http://groups.google.com/group/asciidoc/browse_thread/thread/42
        b63ce90c2563b8
      * FIXED: The XSL Stylesheets customizations were preventing chapter
        and section level TOCs from being generated when using XSL
        Stylesheets via a2x. See
-       [63]http://groups.google.com/group/asciidoc/browse_thread/thread/42
+       [72]http://groups.google.com/group/asciidoc/browse_thread/thread/42
        b63ce90c2563b8
      * FIXED: “UnicodeDecodeError: 'ascii' codec can’t decode byte” error.
        This error is due to a limitation in the Python HTMLParser module,
-       see: [64]http://bugs.python.org/issue3932
+       see: [73]http://bugs.python.org/issue3932
      * FIXED: Broken --no-conf option (8.6.2 regression).
      * FIXED: Regression in 8.6.2: configuration attribute entries set in
        the document header may cause a FAILED: incomplete configuration
@@ -463,7 +519,7 @@
      * FIXED: a2x regression in 8.6.2: HTML Help .hhp file name had
        reverted to default name instead of the AsciiDoc source file name.
        See:
-       [65]http://groups.google.com/group/asciidoc/browse_thread/thread/de
+       [74]http://groups.google.com/group/asciidoc/browse_thread/thread/de
        dc961b23e9ac56
      * FIXED: Attributes in man page title caused it to be dropped
        resulting in invalid DocBook output.
@@ -471,7 +527,7 @@
        pages.
      __________________________________________________________________
 
-6. Version 8.6.2 (2010-10-03)
+7. Version 8.6.2 (2010-10-03)
 
    Additions and changes
      * docbook45: Enclosed bibliographic lists in a bibliodiv — you can
@@ -481,7 +537,7 @@
      * AttributeEntry values can span multiple lines with a ' +' line
        continuation.
      * Added slidy backend (based on Phillip Lord’s slidy backend
-       [66]https://phillordbio-asciidoc-fixes.googlecode.com/hg/).
+       [75]https://phillordbio-asciidoc-fixes.googlecode.com/hg/).
      * Implemented OpenBlock partintro style for book part introductions.
      * Comment lines substitute special characters only.
      * Backend specific global configuration files (all except
@@ -504,16 +560,16 @@
        outputs.
      * Added a start attribute to numbered lists to set the start number.
        See:
-       [67]http://groups.google.com/group/asciidoc/browse_thread/thread/c1
+       [76]http://groups.google.com/group/asciidoc/browse_thread/thread/c1
        4a4c3b1e4f6dc5
      * Added two more docinfo attributes docinfo1 and docinfo2 to allow
        and control inclusion of a shared docinfo file. See
-       [68]http://groups.google.com/group/asciidoc/browse_thread/thread/c9
+       [77]http://groups.google.com/group/asciidoc/browse_thread/thread/c9
        48697943432e24
      * Vim syntax highlighter highlights multi-name conditional
        attributes.
      * LaTeX backend patch submitted by Andreas Hermann Braml (see
-       [69]http://groups.google.com/group/asciidoc/browse_thread/thread/1c
+       [78]http://groups.google.com/group/asciidoc/browse_thread/thread/1c
        415fc4540ce5e5).
      * Implemented backend aliases; renamed docbook.conf to docbook45.conf
        and aliased docbook45 backend to docbook; aliased xhtml11 to html.
@@ -527,7 +583,7 @@
        icons and data-uri attributes were specified.
      * FIXED: Long standing bug: nested include macros did not restore the
        parent document infile and indir attributes. See:
-       [70]http://groups.google.com/group/asciidoc/browse_thread/thread/87
+       [79]http://groups.google.com/group/asciidoc/browse_thread/thread/87
        12a95e95a292a7
      * FIXED: html4: set preamble ID anchor.
      * FIXED: xhtml11: dropped unusable id and role attributes from
@@ -536,16 +592,16 @@
        if x or y is undefined.
      * FIXED: latex filter not being installed by Makefile. Thanks to
        Grant Edwards for this patch. See
-       [71]http://groups.google.com/group/asciidoc/browse_thread/thread/c4
+       [80]http://groups.google.com/group/asciidoc/browse_thread/thread/c4
        427a3902d130a8
      * FIXED: a2x: Long-standing bug in a2x which always passes
        --string-param navig.graphics 0 to xsltproc, regardless of whether
        icons are enabled or not. Reported by Michael Wild:
-       [72]http://groups.google.com/group/asciidoc/browse_thread/thread/59
+       [81]http://groups.google.com/group/asciidoc/browse_thread/thread/59
        a610068e4acb58
      __________________________________________________________________
 
-7. Version 8.6.1 (2010-08-22)
+8. Version 8.6.1 (2010-08-22)
 
    Additions and changes
      * a2x: --resource-dir option renamed to --resource.
@@ -568,18 +624,18 @@
        backends (previously the docinfo file was included in the body
        instead of the header).
 
-  7.1. Regression issues
+  8.1. Regression issues
 
    This release breaks compatibility with quoted element positional color
    and size attributes (HTML backends). To revert to the deprecated quote
    behavior define the deprecated-quotes attribute in the global
    asciidoc.conf file or on the command-line. For a more detailed
    explanation of the rationale behind this change see
-   [73]http://groups.google.com/group/asciidoc/browse_thread/thread/b22603
+   [82]http://groups.google.com/group/asciidoc/browse_thread/thread/b22603
    bfb879418c.
      __________________________________________________________________
 
-8. Version 8.6.0 (2010-08-16)
+9. Version 8.6.0 (2010-08-16)
 
    Additions and changes
      * The AsciiDoc distribution can now be built “out of the box” from
@@ -591,10 +647,10 @@
        both a system wide copy and multiple local copies of AsciiDoc to
        coexist on the same host PC.
      * CSS quirks mode is no longer the default xhtml11 output
-       ([74]http://groups.google.com/group/asciidoc/browse_thread/thread/1
+       ([83]http://groups.google.com/group/asciidoc/browse_thread/thread/1
        c02d27d49221aa2).
      * Relaxed anchor ID name syntax
-       ([75]http://groups.google.com/group/asciidoc/browse_thread/thread/5
+       ([84]http://groups.google.com/group/asciidoc/browse_thread/thread/5
        f3e825c74ed30c).
      * Added document files: doc/epub-notes.txt,
        doc/publishing-ebooks-with-asciidoc.txt.
@@ -626,10 +682,10 @@
      * Added the role element to xhtml11 backend block templates.
      * Suppressed md5 module deprecation warning from music and Graphviz
        filters.
-     * Pygments ([76]http://pygments.org/) option added to source code
+     * Pygments ([85]http://pygments.org/) option added to source code
        highlight filter. Based on Pygments source code filter written by
        David Hajage
-       ([77]http://groups.google.com/group/asciidoc/browse_thread/thread/d
+       ([86]http://groups.google.com/group/asciidoc/browse_thread/thread/d
        8d042f5a3021369/8934ebbb8cb7144b).
      * xhtml11: Added a new theme (volnitsky). Written and contributed by
        Leonid V. Volnitsky.
@@ -638,7 +694,7 @@
        page DocBook output. Man pages are now dated using the revdate
        attribute value if it has been defined. Based on patch supplied by
        Rainer Muller
-       [78]http://groups.google.com/group/asciidoc/browse_frm/thread/319e5
+       [87]http://groups.google.com/group/asciidoc/browse_frm/thread/319e5
        cd94493e330/3fcb83fab067af42.
      * Added {template:...} system attribute.
      * Table of contents attribute toc can now be specified in the
@@ -661,7 +717,7 @@
      * Added paragraph styles to music and graphviz filters.
      * Documented dynamic template names. 753: Graphviz filter can now
        generate SVG format images. Patch submitted by Elmo Todurov, see:
-       [79]http://groups.google.com/group/asciidoc/browse_frm/thread/fe9b3
+       [88]http://groups.google.com/group/asciidoc/browse_frm/thread/fe9b3
        3d8f5f1e0af The xhtml11 SVG Graphviz template marked EXPERIMENTAL.
        No SVG support for other backends.
      * AsciiDoc template names can now contain embedded attribute
@@ -669,83 +725,83 @@
      * Added legalnotice tag to doc/article-docinfo.xml example.
      * xhtml11 backend: Callouts and callout lists display callout icons
        when the icons attribute is defined. See
-       [80]http://groups.google.com/group/asciidoc/browse_frm/thread/8eda3
+       [89]http://groups.google.com/group/asciidoc/browse_frm/thread/8eda3
        ea812968854
      * Document attribute names are case insensitive everywhere, this
        makes using attribute entries more consistent e.g. previously
        :VERS: had to be refered to
      * Hungarian translation of footer-text (submitted by Miklos Vajna).
        See
-       [81]http://groups.google.com/group/asciidoc/browse_frm/thread/7174c
+       [90]http://groups.google.com/group/asciidoc/browse_frm/thread/7174c
        b7598993c72#
      * asciidocapi.py 0.1.2: Can now load AsciiDoc script named asciidoc.
        See
-       [82]http://groups.google.com/group/asciidoc/browse_frm/thread/66e7b
+       [91]http://groups.google.com/group/asciidoc/browse_frm/thread/66e7b
        59d12cd2f91 Based on patch submitted by Phillip Lord.
      * German translation of footer-text (submitted by Simon Ruderich).
        See
-       [83]http://groups.google.com/group/asciidoc/browse_frm/thread/7174c
+       [92]http://groups.google.com/group/asciidoc/browse_frm/thread/7174c
        b7598993c72
      * Pushed HTML footer text into language conf files with the
        introduction of a [footer-text] configuration file template
        section. See
-       [84]http://groups.google.com/group/asciidoc/browse_frm/thread/7174c
+       [93]http://groups.google.com/group/asciidoc/browse_frm/thread/7174c
        b7598993c72
 
    Bug fixes
      * FIXED: Sometimes multiple double quoted text elements in the same
        paragraph were mistakenly seen as starting with an inline literal.
        See
-       [85]http://groups.google.com/group/asciidoc/browse_frm/thread/219c8
+       [94]http://groups.google.com/group/asciidoc/browse_frm/thread/219c8
        6ae25b79a21
      * FIXED: localtime and doctime attributes calculated incorrect
        daylight saving / non daylight saving timezones and consequently so
        did HTML footers. Patch submitted by Slawomir Testowy. See
-       [86]http://groups.google.com/group/asciidoc/browse_frm/thread/af652
+       [95]http://groups.google.com/group/asciidoc/browse_frm/thread/af652
        507caf6cec9
      * FIXED: Missing selector for List of examples title in DocBook CSS
        file. Patch submitted by Laurent Laville. See
-       [87]http://groups.google.com/group/asciidoc/browse_frm/thread/3f969
+       [96]http://groups.google.com/group/asciidoc/browse_frm/thread/3f969
        00f7fbf5620
      * FIXED: Broken accents in lang-hu.conf. See:
-       [88]http://groups.google.com/group/asciidoc/browse_frm/thread/7174c
+       [97]http://groups.google.com/group/asciidoc/browse_frm/thread/7174c
        b7598993c72
      * FIXED: DocBook XSL generated HTML callout lists are properly
        aligned. Submitted by Lionel Orry. See
-       [89]http://groups.google.com/group/asciidoc/browse_frm/thread/2ff80
+       [98]http://groups.google.com/group/asciidoc/browse_frm/thread/2ff80
        2547b6a75ea
      * FIXED: Filter execution now occurs prior to filter markup template
        substitution to ensure image data URI encoding happens after image
        generation (see
-       [90]http://groups.google.com/group/asciidoc/browse_thread/thread/14
+       [99]http://groups.google.com/group/asciidoc/browse_thread/thread/14
        e8fcb289a135b).
      * FIXED: The section numbers no longer increment when the numbered
        attribute is undefined (see
-       [91]http://groups.google.com/group/asciidoc/browse_thread/thread/fa
-       a36e9e5c7da019/d24cab3fe363e58d).
+       [100]http://groups.google.com/group/asciidoc/browse_thread/thread/f
+       aa36e9e5c7da019/d24cab3fe363e58d).
      __________________________________________________________________
 
-9. Version 8.5.3 (2010-01-18)
+10. Version 8.5.3 (2010-01-18)
 
    Additions and changes
      * a2x: Added a2x configuration file options ASCIIDOC_OPTS,
        DBLATEX_OPTS, FOP_OPTS, XSLTPROC_OPTS (appended to same-named
        command-line options). See
-       [92]http://groups.google.com/group/asciidoc/browse_frm/thread/ac4b9
-       bfa2116db28
+       [101]http://groups.google.com/group/asciidoc/browse_frm/thread/ac4b
+       9bfa2116db28
      * Dropped .hgignore from the repository. See
-       [93]http://groups.google.com/group/asciidoc/browse_frm/thread/c17ab
-       d175778f5ea
+       [102]http://groups.google.com/group/asciidoc/browse_frm/thread/c17a
+       bd175778f5ea
      * Don’t pass verbose options to asciidoc table filter so that
        asciidocapi messages are not discarded. See:
-       [94]http://groups.google.com/group/asciidoc/browse_frm/thread/c17ab
-       d175778f5ea
+       [103]http://groups.google.com/group/asciidoc/browse_frm/thread/c17a
+       bd175778f5ea
      * Added ./tests/data/lang-pt-BR-test.txt file to the repository.
      * xhtml11: Verse block and verse paragraph content enveloped in a pre
        tag (instead of a div) so it renders better in text-only browsers.
        See:
-       [95]http://groups.google.com/group/asciidoc/browse_frm/thread/1b6b6
-       6adb24e710
+       [104]http://groups.google.com/group/asciidoc/browse_frm/thread/1b6b
+       66adb24e710
      * User Guide: Clarified Passthrough Blocks (suggested by Simon
        Ruderich).
      * FAQ: How can I include lines of dashes inside a listing block?
@@ -763,7 +819,7 @@
      * FIXED: Website: broken image links in chunked User Guide.
      __________________________________________________________________
 
-10. Version 8.5.2 (2009-12-07)
+11. Version 8.5.2 (2009-12-07)
 
    Additions and changes
      * Updated example article and book documents with the recommended
@@ -772,8 +828,8 @@
      * Added Italian language configuration file (contributed by Fabio
        Inguaggiato).
      * Added header table style. See:
-       [96]http://groups.google.com/group/asciidoc/browse_frm/thread/a23fe
-       a28394c8ca9
+       [105]http://groups.google.com/group/asciidoc/browse_frm/thread/a23f
+       ea28394c8ca9
      * Pass icons, data-uri, imagesdir, iconsdir attributes to asciidoc
        table style filter so that images are rendered in table cells.
      * Pass trace and verbose attributes to asciidoc table style filter so
@@ -783,16 +839,16 @@
      * HTML outputs: Table and figure caption punctuation set to more
        usual syntax.
      * docbook backend: footnotes can now contain embedded images. See
-       [97]http://groups.google.com/group/asciidoc/browse_frm/thread/50b28
-       f6941de111a
+       [106]http://groups.google.com/group/asciidoc/browse_frm/thread/50b2
+       8f6941de111a
      * CSS tweaks so that tables processed by DocBook XSL Stylesheets have
        the default asciidoc xhtml11 backend styling. See
-       [98]http://groups.google.com/group/asciidoc/browse_frm/thread/dfe52
-       04d5b2c9685
+       [107]http://groups.google.com/group/asciidoc/browse_frm/thread/dfe5
+       204d5b2c9685
      * Block titles take precedence over section titles to avoid titled
        delimited blocks being mistaken for two line section titles (see
-       [99]http://groups.google.com/group/asciidoc/browse_frm/thread/f0b6f
-       9989f828c3).
+       [108]http://groups.google.com/group/asciidoc/browse_frm/thread/f0b6
+       f9989f828c3).
      * Section title trace displays level and title text.
      * FAQ additions.
      * Added {zwsp} (zero width space) attribute.
@@ -807,7 +863,7 @@
      * xhtml11: Nicer default quote block styling.
      * Exclude floating titles from xhtml11 table of contents. Patch
        submitted by Mark Burton (see
-       [100]http://groups.google.com/group/asciidoc/browse_frm/thread/14ae
+       [109]http://groups.google.com/group/asciidoc/browse_frm/thread/14ae
        fc1cb6bd85f5).
      * Enhanced doc/article-docinfo.xml example docinfo file.
      * Vim syntax highlighter improvements.
@@ -815,29 +871,29 @@
    Bug fixes
      * FIXED: Absolute imagesdir and iconsdir attribute path names do not
        work with the xhtml11 data-uri encoding. See
-       [101]http://groups.google.com/group/asciidoc/browse_frm/thread/cb8b
+       [110]http://groups.google.com/group/asciidoc/browse_frm/thread/cb8b
        7694bbc82a6
      * FIXED: Regression issue with inline data-uri images. See
-       [102]http://groups.google.com/group/asciidoc/browse_frm/thread/cb8b
+       [111]http://groups.google.com/group/asciidoc/browse_frm/thread/cb8b
        7694bbc82a6
      * FIXED: An unexpected error occurred when processing a table
        containing CSV data if the cols attribute was not explicitly
        specified. See
-       [103]http://groups.google.com/group/asciidoc/browse_frm/thread/4b0f
+       [112]http://groups.google.com/group/asciidoc/browse_frm/thread/4b0f
        364b477ec165
      __________________________________________________________________
 
-11. Version 8.5.1 (2009-10-31)
+12. Version 8.5.1 (2009-10-31)
 
    Additions and changes
      * If an AsciiDoc document file begins with a UTF-8 BOM (byte order
        mark) then it is passed transparently through to the output file.
        The BOM is stripped from included files. See
-       [104]http://groups.google.com/group/asciidoc/browse_frm/thread/e5e6
+       [113]http://groups.google.com/group/asciidoc/browse_frm/thread/e5e6
        1823ff4203cd
      * Added AsciiDoc role attribute to quoted text. Sets class attribute
        in HTML outputs; role attribute in DocBook outputs. See:
-       [105]http://groups.google.com/group/asciidoc/browse_frm/thread/2aa3
+       [114]http://groups.google.com/group/asciidoc/browse_frm/thread/2aa3
        e5711d243045
      * Conditional attribute syntax extended: they now accept multiple
        ORed or ANDed attribute names.
@@ -862,12 +918,12 @@
      * FIXED: a2x: --dblatex-opts is now processed last so
        asciidoc-dblatex.xsl params can be overridden. Patch submitted by
        Mark Fernandes (see
-       [106]http://groups.google.com/group/asciidoc/browse_frm/thread/5215
+       [115]http://groups.google.com/group/asciidoc/browse_frm/thread/5215
        c99dcc865e7d).
      * FIXED: An error occurred if a directory in current path with same
        name as executable.
 
-  11.1. Regression issues
+  12.1. Regression issues
 
    There’s been quite a bit of tiding up to the xhtml11 JavaScript. The
    most obvious change is that the toc.js script has been superceded by
@@ -885,10 +941,10 @@
 
    Take a look at the [header] and [footer] changes in the xhtml11.conf
    diff to see what’s going on:
-   [107]http://hg.sharesource.org/asciidoc/diff/55a5999bfd04/xhtml11.conf
+   [116]http://hg.sharesource.org/asciidoc/diff/55a5999bfd04/xhtml11.conf
      __________________________________________________________________
 
-12. Version 8.5.0 (2009-10-04)
+13. Version 8.5.0 (2009-10-04)
 
    Additions and changes
      * Implemented a float attribute for tables and block images (HTML
@@ -911,17 +967,17 @@
        configuration file templates.
      * Allow constrained quotes to be bounded on the left by a colons and
        semicolons, see
-       [108]http://groups.google.com/group/asciidoc/browse_frm/thread/b276
+       [117]http://groups.google.com/group/asciidoc/browse_frm/thread/b276
        a927fdc87995
      * Titled listing and literal blocks (DocBook outputs) no longer
        default to examples. See
-       [109]http://groups.google.com/group/asciidoc/browse_frm/thread/f4df
+       [118]http://groups.google.com/group/asciidoc/browse_frm/thread/f4df
        7c9eec01a9bd
      * Updated language file table, figure and example captions to
        accommodate new auto-numbering in html4 and xhtml11 backends.
      * Titled source highlight filter listings generated by docbook
        backend are now rendered as examples. See
-       [110]http://groups.google.com/group/asciidoc/browse_frm/thread/f4df
+       [119]http://groups.google.com/group/asciidoc/browse_frm/thread/f4df
        7c9eec01a9bd
      * Implemented counter system attribute.
      * Use counter system attributes to number titled tables and block
@@ -932,35 +988,35 @@
      * Allow passthrough inline macro syntax to be used in
        AttributeEntrys.
      * Reinstated 8.4.4 default lang attribute behavior. See
-       [111]http://groups.google.com/group/asciidoc/browse_frm/thread/d299
+       [120]http://groups.google.com/group/asciidoc/browse_frm/thread/d299
        24043e21cb6a.
      * Added max-width attribute to the xhtml11 backend to set maximum
        display width. See
-       [112]http://groups.google.com/group/asciidoc/browse_frm/thread/74d9
+       [121]http://groups.google.com/group/asciidoc/browse_frm/thread/74d9
        a542b79ccd50.
      * Added a2x.py, a rewritten and much enhanced version of the old a2x
        bash script.
      * The new a2x can output EPUB formatted documents.
      * Added --safe option and deprecated --unsafe option. Patch submitted
        by Todd Zullinger. See
-       [113]http://groups.google.com/group/asciidoc/browse_frm/thread/ea3a
+       [122]http://groups.google.com/group/asciidoc/browse_frm/thread/ea3a
        8ea399ae5d2a and
-       [114]http://groups.google.com/group/asciidoc/browse_frm/thread/69b3
+       [123]http://groups.google.com/group/asciidoc/browse_frm/thread/69b3
        183fdab7c6a5
      * Added CHECK and TEST todo highlight words to Vim syntax
        highlighter.
      * Line breaks, page breaks, and horizontal rulers are now processed
        by dblatex, thanks to a patch submitted by Mark Fernandes
-       ([115]http://groups.google.com/group/asciidoc/browse_frm/thread/a25
+       ([124]http://groups.google.com/group/asciidoc/browse_frm/thread/a25
        4cf949ea7c6c5).
      * Allow footnote macros hard up against the preceding word so the
        rendered footnote mark can be placed against the noted text without
        an intervening space (patch submitted by Stas Bushuev,
-       [116]http://groups.google.com/group/asciidoc/browse_frm/thread/e1dc
+       [125]http://groups.google.com/group/asciidoc/browse_frm/thread/e1dc
        b7ee0efc17b5).
      * Normalized path in safe_filename function (submitted by Todd
        Zullinger,
-       [117]http://groups.google.com/group/asciidoc/browse_frm/thread/69b3
+       [126]http://groups.google.com/group/asciidoc/browse_frm/thread/69b3
        183fdab7c6a5).
      * The Asciidoc numbered and toc attributes cause DocBook outputs to
        include asciidoc-numbered and asciidoc-toc processing instructions,
@@ -968,13 +1024,13 @@
        table of contents (like Asciidoc HTML backends). For backward
        compatibility both numbered and toc attributes are defined by
        default when the docbook backend is used. See
-       [118]http://groups.google.com/group/asciidoc/browse_frm/thread/1bad
+       [127]http://groups.google.com/group/asciidoc/browse_frm/thread/1bad
        ad21ff9447ac.
      * data-uri attribute is now evaluated dynamically and can be set in
        document body (previously could only be set from command-line).
      * Added sys3 and eval3 system attributes to passthrough generated
        output, this fixes the data-uri inline image problem:
-       [119]http://groups.google.com/group/asciidoc/browse_frm/thread/a42d
+       [128]http://groups.google.com/group/asciidoc/browse_frm/thread/a42d
        b6bc54c2c537.
      * Missing language file generates a warning instead of an error.
      * Updated Spanish language file (updates contributed by Gustavo
@@ -988,27 +1044,27 @@
      * FIXED: examples/website/layout1.conf and
        examples/website/layout2.conf TOC problem. Submitted by Mark
        (burtoogle). See
-       [120]http://groups.google.com/group/asciidoc/browse_frm/thread/b9c6
+       [129]http://groups.google.com/group/asciidoc/browse_frm/thread/b9c6
        3be67dd1d11c
      * FIXED: Only the first occurrence of passthrough macro was
        substituted. Patch submitted by Peter Johnson. See
-       [121]http://groups.google.com/group/asciidoc/browse_frm/thread/1269
+       [130]http://groups.google.com/group/asciidoc/browse_frm/thread/1269
        dc2feb1a482c
      * FIXED: asciidoc now runs on Jython 2.5.0.
      * FIXED: Wordpress margins and pads in a number of block elements
-       ([122]http://groups.google.com/group/asciidoc/browse_frm/thread/36f
+       ([131]http://groups.google.com/group/asciidoc/browse_frm/thread/36f
        f073c79cbc20a).
 
-  12.1. Regression issues
+  13.1. Regression issues
 
      * Tables generated by dblatex occupy 100% of the available space
        regardless of the width attribute setting. To restore width
        behavior change the pageunits miscellaneous parameter to pt. You
        can do this from the command-line with the -a pageunits=pt option.
-       See [123]DocBook table widths.
+       See [132]DocBook table widths.
      __________________________________________________________________
 
-13. Version 8.4.5 (2009-05-24)
+14. Version 8.4.5 (2009-05-24)
 
    Additions and changes
      * Added manpage Name and Synopsis section title customization to
@@ -1020,7 +1076,7 @@
        remark.
      * A role attribute can now be applied to block elements. This adds
        the role attribute to DocBook elements. Patch submitted by
-       [124]Noah Slater).
+       [133]Noah Slater).
      * Renamed revision and date attributes to more sensible and
        consistent revnumber and revdate (old names deprecated but still
        recognized).
@@ -1032,7 +1088,7 @@
      * Refactored docbook.conf headers.
      * Moved line break replacement from [replacements] to [replacements2]
        so the replacement occurs after the mailto macro. This fixes bug
-       [125]http://groups.google.com/group/asciidoc/browse_thread/thread/4
+       [134]http://groups.google.com/group/asciidoc/browse_thread/thread/4
        bdcdfb0af773e2
      * The typewriter to punctuation apostrophe replacement can be escaped
        with a backslash.
@@ -1073,7 +1129,7 @@
      * FIXED: Multiple manpage names are now handled correctly when
        generating DocBook output, each name now generates a separate
        DocBook <refname> element. See
-       [126]http://groups.google.com/group/asciidoc/browse_thread/thread/c
+       [135]http://groups.google.com/group/asciidoc/browse_thread/thread/c
        93bb4db025225d8
      * FIXED: A problem that caused AttributeEntries preceding the header
        to be overwritten when the language conf file loaded.
@@ -1087,20 +1143,20 @@
        bloggs@mail was processed inside
        mailto:joe-bloggs@mail-server.com[Mail].
      * FIXED: User name in FTP URI generated incorrect FTP link. See
-       [127]http://groups.google.com/group/asciidoc/browse_thread/thread/1
+       [136]http://groups.google.com/group/asciidoc/browse_thread/thread/1
        d796a9c9ddb2855
      * FIXED: Source highlighter now works with Wordpress backend (see
-       [128]http://groups.google.com/group/asciidoc/browse_thread/thread/6
+       [137]http://groups.google.com/group/asciidoc/browse_thread/thread/6
        d8c716748b109e3).
 
-  13.1. Regression issues
+  14.1. Regression issues
 
     1. A colon following the date in the AsciiDoc header is treated as a
        revision remark delimiter — this could be an issue if you have used
        a colon in the header date.
      __________________________________________________________________
 
-14. Version 8.4.4 (2009-04-26)
+15. Version 8.4.4 (2009-04-26)
 
    Additions and changes
      * Added table column and row spanning.
@@ -1131,7 +1187,7 @@
        quote.
      __________________________________________________________________
 
-15. Version 8.4.3 (2009-04-13)
+16. Version 8.4.3 (2009-04-13)
 
    Additions and changes
      * DocBook outputs default to DocBook version 4.5 doctype (previously
@@ -1146,27 +1202,27 @@
          3. an illegal test number is specified.
 
    Bug fixes
-     * Fixed [129]missing template section error.
+     * Fixed [138]missing template section error.
      * The testasciidoc.py --force option no longer deletes test data
        files that were not specified.
      * Dropped second quotes substitution in table cells — it had
        effectively disabled quote escaping in table cells.
      __________________________________________________________________
 
-16. Version 8.4.2 (2009-03-19)
+17. Version 8.4.2 (2009-03-19)
 
    Additions and changes
-     * Added [130]testasciidoc, a tool to verify AsciiDoc conformance.
+     * Added [139]testasciidoc, a tool to verify AsciiDoc conformance.
      * A warning is issued if nested inline passthroughs are encountered.
      * asciidocapi: setting an attribute value to None will undefine
        (delete) the attribute (this in addition to the name! attribute
        name format that the asciidoc(1) command uses).
      __________________________________________________________________
 
-17. Version 8.4.1 (2009-03-10)
+18. Version 8.4.1 (2009-03-10)
 
    Additions and changes
-     * AsciiDoc now has a [131]Python API. The following minimal example
+     * AsciiDoc now has a [140]Python API. The following minimal example
        compiles mydoc.txt to mydoc.html:
 
        from asciidocapi import AsciiDocAPI asciidoc = AsciiDocAPI()
@@ -1175,7 +1231,7 @@
      * Backtick quoting for monospaced text is now implemented as an
        inline literal passthrough. This makes more sense since monospace
        text is usually intended to be rendered literally. See
-       [132]Regression issues below for the impact this may have on
+       [141]Regression issues below for the impact this may have on
        existing documents. Here are some examples that would previously
        have had to be escaped:
   The `++i` and `++j` auto-increments.
@@ -1201,7 +1257,7 @@
      * Dropped asciidoc(1) broken undocumented --profile option.
      * Em dash replacement now recognized at start of block.
 
-  17.1. Regression issues
+  18.1. Regression issues
 
    Replacing backtick quoting with the inline literal passthrough raises
    two regression scenarios for existing documents:
@@ -1221,7 +1277,7 @@
   no-inline-literal=
      __________________________________________________________________
 
-18. Version 8.3.5 (2009-02-02)
+19. Version 8.3.5 (2009-02-02)
 
    Additions and changes
      * Cached compiled regular expression delimiters (speed up User Manual
@@ -1256,13 +1312,13 @@
    Bug fixes
      * Fixed broken numbered list nesting.
 
-  18.1. Compatibility issues
+  19.1. Compatibility issues
 
    The roman numbered list parenthesis syntax is incompatible with the
    potentially ambiguous roman period syntax introduced in 8.3.2.
      __________________________________________________________________
 
-19. Version 8.3.4 (2009-01-20)
+20. Version 8.3.4 (2009-01-20)
 
    Additions and changes
      * Implemented a title float style. A floating title (or bridgehead)
@@ -1300,7 +1356,7 @@
        list.
      __________________________________________________________________
 
-20. Version 8.3.3 (2009-01-02)
+21. Version 8.3.3 (2009-01-02)
 
    This release supersedes 8.3.2.
 
@@ -1309,7 +1365,7 @@
        attributes have been dropped, use the style attribute instead.
      __________________________________________________________________
 
-21. Version 8.3.2 (2009-01-01)
+22. Version 8.3.2 (2009-01-01)
 
    Additions and changes
      * Added Gouichi Iisaka’s Graphviz filter to distribution.
@@ -1349,11 +1405,11 @@
        where not escaped in DocBook outputs.
      __________________________________________________________________
 
-22. Version 8.3.1 (2008-12-14)
+23. Version 8.3.1 (2008-12-14)
 
    Additions and changes
      * Replaced the install.sh script with Ben Walton’s updated autoconf
-       scripts — see [133]INSTALL for details.
+       scripts — see [142]INSTALL for details.
      * Added a generalized AttributeEntry syntax to allow arbitrary
        configuration file entries to be set from within an AsciiDoc
        document (suggested by Henrik Maier).
@@ -1372,14 +1428,14 @@
        reference — tightened up entity reference matching.
      __________________________________________________________________
 
-23. Version 8.3.0 (2008-11-29)
+24. Version 8.3.0 (2008-11-29)
 
    Additions and changes
-     * [134]AsciiDoc new tables is a complete redesign of the tables
+     * [143]AsciiDoc new tables is a complete redesign of the tables
        syntax and generation. The new syntax and features are a huge
        improvement over the old tables. The old tables syntax has been
        deprecated but is currently still processed.
-     * [135]Lists can now be styled like other block elements. This allows
+     * [144]Lists can now be styled like other block elements. This allows
        a single list syntax for glossary, qanda (Question and Answer) and
        bibliography lists instead of having to remember a different syntax
        for each type.
@@ -1388,10 +1444,10 @@
        when the macro is called.
      * The passthrough block has a fully transparent passthrough delimited
        block block style called pass.
-     * The asciimath and latexmath [136]passthrough macros along with
-       asciimath and latexmath [137]passthrough blocks provide a (backend
+     * The asciimath and latexmath [145]passthrough macros along with
+       asciimath and latexmath [146]passthrough blocks provide a (backend
        dependent) mechanism for rendering mathematical formulas. There are
-       [138]LaTeX Math, [139]AsciiMathML and [140]LaTeXMathML examples on
+       [147]LaTeX Math, [148]AsciiMathML and [149]LaTeXMathML examples on
        the AsciiDoc website.
      * Reimplemented and cleaned up filter processing based on a patch
        submitted by Kelly Anderson. Uses the newer subprocess module
@@ -1493,7 +1549,7 @@
      * Generic tag inline macro (creeping featurism, use pass macros
        instead).
 
-  23.1. Compatibility issues
+  24.1. Compatibility issues
 
    Version 8.3.0 has a number of backward incompatibilities with respect
    to the previous 8.2.7 release:
@@ -1513,7 +1569,7 @@
        quoting is escaped with two backslashes.
      __________________________________________________________________
 
-24. Version 8.2.7 (2008-07-04)
+25. Version 8.2.7 (2008-07-04)
 
    Additions and changes
      * Added dvi, ps and tex output format options to a2x(1).
@@ -1531,7 +1587,7 @@
        directly). The Vim syntax highlighter has been updated to reflect
        these changes.
      * Highlighted source code paragraphs have been implemented — it’s a
-       much more convenient way to enter short code examples (see [141]the
+       much more convenient way to enter short code examples (see [150]the
        online docs).
      * The source highlighter and music filter syntax has changed — they
        now used the ListingBlock syntax customized with source and music
@@ -1569,16 +1625,16 @@
      * Configuration file *-style attributes are now dumped correctly.
      * Fixed FAILED: malformed section entry LaTeX backend error.
 
-   See the also the [142]AsciiDoc repository changelog.
+   See the also the [151]AsciiDoc repository changelog.
      __________________________________________________________________
 
-25. Version 8.2.6 (2008-04-29)
+26. Version 8.2.6 (2008-04-29)
 
    Additions and changes
      * Enhancements to the Vim AsciiDoc syntax highlighter, for example,
        quoted text is now highlighted in titles and macro captions.
      * If you define the data-uri intrinsic attribute images referenced by
-       image macros will be embedded in XHTML using the [143]data: URI
+       image macros will be embedded in XHTML using the [152]data: URI
        scheme. NOTE: Microsoft browser support for the data: URI scheme is
        currently limited to MSIE 8 beta 1.
      * Added toc-title attribute to allow custom table of contents titles.
@@ -1618,7 +1674,7 @@
        attribute list values.
      __________________________________________________________________
 
-26. Version 8.2.5 (2007-11-18)
+27. Version 8.2.5 (2007-11-18)
 
    Bug fixes
      * Fixed exception thrown by illegal command-line arguments.
@@ -1626,7 +1682,7 @@
        incompatible with Python <2.5.
      __________________________________________________________________
 
-27. Version 8.2.4 (2007-11-10)
+28. Version 8.2.4 (2007-11-10)
 
    Additions and changes
      * You can now use the lang attribute to set the DocBook language
@@ -1648,12 +1704,12 @@
        2.6 has been suppressed.
      __________________________________________________________________
 
-28. Version 8.2.3 (2007-09-12)
+29. Version 8.2.3 (2007-09-12)
 
    Additions and changes
      * Added VMiklos’s permalink patch for auto-generated section IDs
        (enabled by default by the sectids attribute).
-     * Added [144]FAQ to website.
+     * Added [153]FAQ to website.
      * Changed format of {localdate} attribute to ISO 8601 (%Y-%m-%d).
      * Added abc2ly --beams=None option to make music2png.py conform to
        ABC’s notion of beams.
@@ -1682,11 +1738,11 @@
        attribute substitution problems).
      __________________________________________________________________
 
-29. Version 8.2.2 (2007-07-22)
+30. Version 8.2.2 (2007-07-22)
 
    Additions and changes
-     * [145]LaTeXMathML capability has been added for users who are more
-       familiar with or prefer LaTeX math formulas to the [146]ASCIIMathML
+     * [154]LaTeXMathML capability has been added for users who are more
+       familiar with or prefer LaTeX math formulas to the [155]ASCIIMathML
        notation (thanks to Arthur Sakellariou for the patch).
      * The source highlight and code filters now process embedded
        callouts.
@@ -1719,7 +1775,7 @@
        LaTeXMathML formulas.
      __________________________________________________________________
 
-30. Version 8.2.1 (2007-04-06)
+31. Version 8.2.1 (2007-04-06)
 
    Additions and changes
      * A number of improvements have been made to the Vim syntax
@@ -1735,7 +1791,7 @@
                 should be very few compatibility issues.
      __________________________________________________________________
 
-31. Version 8.2.0 (2007-04-04)
+32. Version 8.2.0 (2007-04-04)
 
    Additions and changes
      * A Vim syntax file is now included in the AsciiDoc distribution
@@ -1769,10 +1825,10 @@
      * If a2x(1) --doctype option is not specified it defaults to manpage
        if --format=manpage else defaults to article (previously --doctype
        always defaulted to article).
-     * Added an External Resources section to the [147]AsciiDoc home page.
+     * Added an External Resources section to the [156]AsciiDoc home page.
      __________________________________________________________________
 
-32. Version 8.1.0 (2006-10-22)
+33. Version 8.1.0 (2006-10-22)
 
    Additions and changes
      * AsciiDoc generated XHTML documents now display a table of contents
@@ -1780,11 +1836,11 @@
        this to work). Thanks to Troy Hanson who contributed this feature
        based on a JavaScript by Mihai Bazon. I’ve simplified things
        somewhat to match Docbook XSL Stylesheets style, see Troy’s
-       [148]tpl User Guide for a fancier layout. Use the -a toc -a
+       [157]tpl User Guide for a fancier layout. Use the -a toc -a
        numbered command-line options to produce a number table of
        contents.
-     * A [149]music filter is included in the distribution ./filters/
-       directory. It translates music in [150]LilyPond or [151]ABC
+     * A [158]music filter is included in the distribution ./filters/
+       directory. It translates music in [159]LilyPond or [160]ABC
        notation to standard classical notation in the form of a trimmed
        PNG image which is inserted into the AsciiDoc output document.
      * Incorporated Paul Melis’s Win32 filter patch. This workaround
@@ -1815,7 +1871,7 @@
        is extracted from the input file name.
      __________________________________________________________________
 
-33. Version 8.0.0 (2006-08-27)
+34. Version 8.0.0 (2006-08-27)
 
    This is a major release because changes to quoting and index entry
    handling may break existing documents (see Additions and changes below
@@ -1823,7 +1879,7 @@
 
    Please report any problems you encounter.
 
-   [152]Stuart Rackham
+   [161]Stuart Rackham
 
    Additions and changes
      * Quoting can can occur within words (based on patch submitted by
@@ -1857,7 +1913,7 @@
      * Experimental rows attribute (number of source lines in table)
        available in table markup templates (used by experimental LaTeX
        backend).
-     * Included install shell script written by [153]Jacob Mandelson for
+     * Included install shell script written by [162]Jacob Mandelson for
        installing the tarball distribution.
      * Added INSTALL documentation file.
      * Added replacements2 substitution options — a second replacements
@@ -1881,7 +1937,7 @@
        command-line attributes have precedence over document and
        configuration file attributes).
      * localtime attribute is now encoded from the native system encoding
-       to the output encoding. Patch submitted by [154]FKtPp — here’s his
+       to the output encoding. Patch submitted by [163]FKtPp — here’s his
        description of the problem:
        “I am a Chinese user of AsciiDoc and I find that when I use UTF-8
        (the default encoding) to write asciidoc documents in Windows
@@ -1889,7 +1945,7 @@
        caused by a localized tzname that was always encoded in the windows
        native encoding, which in my case is cp936.”
      * a2x(1) can generate Open Document Text files using
-       [155]docbook2odf. Currently docbook2odf(1) only processes a subset
+       [164]docbook2odf. Currently docbook2odf(1) only processes a subset
        of DocBook, unimplemented elements are skipped.
      * The a2x(1) format option defaults to xhtml (previously a format had
        to be specified explicitly).
@@ -1916,12 +1972,12 @@
        output file was missing or older than the source file.
      __________________________________________________________________
 
-34. Version 7.1.2 (2006-03-07)
+35. Version 7.1.2 (2006-03-07)
 
    Additions and changes
-     * Support for [156]ASCIIMathML has been added. See Appendix I:
+     * Support for [165]ASCIIMathML has been added. See Appendix I:
        ASCIIMathML Support in the User Guide and the examples at
-       [157]http://www.methods.co.nz/asciidoc/asciimath.html.
+       [166]http://www.methods.co.nz/asciidoc/asciimath.html.
      * You can now prefix quoted text with inline attributes lists. You
        can use this to set font size and color (XHTML and HTML outputs).
      * Added ##...## quoting — it does nothing — it’s purpose is to allow
@@ -1931,18 +1987,18 @@
        this is to allows the inclusion of configuration lines that start
        with a hash character.
      * The scriptsdir attribute can be used to specify the name of the
-       directory containing linked JavaScripts (see the [158]User Guide
+       directory containing linked JavaScripts (see the [167]User Guide
        for details.
      * The BackendBlock has been renamed PassthroughBlock for consistency
        with the new inline passthrough naming.
      * a2x(1) now works with the older bash(1) version 2.05b. Patch
-       submitted by [159]Francis Daly.
+       submitted by [168]Francis Daly.
      * Content included by the include1::[] system macro is no longer
        subject to attribute substitution so that ambiguities no longer
        arise when used to include CSS or JavaScript files.
      __________________________________________________________________
 
-35. Version 7.1.1 (2006-02-24)
+36. Version 7.1.1 (2006-02-24)
 
    Additions and changes
      * The caption attribute can be used to customize admonition captions
@@ -1968,7 +2024,7 @@
        attribute).
      __________________________________________________________________
 
-36. Version 7.1.0 (2006-01-13)
+37. Version 7.1.0 (2006-01-13)
 
    Additions and changes
      * a2x(1) toolchain wrapper utility. This overcomes the biggest hurdle
@@ -2009,7 +2065,7 @@
        ./examples/website/build-website.sh script.
      __________________________________________________________________
 
-37. Version 7.0.4 (2005-12-08)
+38. Version 7.0.4 (2005-12-08)
 
    Additions and changes
      * Added ternary conditional attributes
@@ -2038,16 +2094,16 @@
        Guide.
      __________________________________________________________________
 
-38. Version 7.0.3 (2005-12-01)
+39. Version 7.0.3 (2005-12-01)
 
    Additions and changes
      * Added --safe and --unsafe command-line options — AsciiDoc can now
        be executed in a safe mode which disallows the execution of
        arbitrary code or the inclusion of arbitrary files (see
-       [160]Appendix C in the AsciiDoc User Guide).
-     * Included [161]source-highlight filter in the distribution
+       [169]Appendix C in the AsciiDoc User Guide).
+     * Included [170]source-highlight filter in the distribution
        ./examples/source-highlight-filter/ directory (based on filter
-       submitted by [162]Ryan Phillips).
+       submitted by [171]Ryan Phillips).
      * Included the DocBook XSL Stylesheets 1.69.1 customizations used to
        generate the distributed AsciiDoc documentation (read the
        asciidoc-docbook-xsl.txt file in the distribution ./docbook-xsl/
@@ -2062,7 +2118,7 @@
        because default border styles vary from browser to browser.
      __________________________________________________________________
 
-39. Version 7.0.2 (2005-08-28)
+40. Version 7.0.2 (2005-08-28)
 
    Additions and changes
      * There are now long versions of all AsciiDoc options.
@@ -2078,7 +2134,7 @@
      * Documentation errata.
      __________________________________________________________________
 
-40. Version 7.0.1 (2005-06-24)
+41. Version 7.0.1 (2005-06-24)
 
    Additions and changes
      * Reverted to use of strong, em, tt XHTML tags — they’re more obvious
@@ -2109,29 +2165,29 @@
        Guide has been dropped — it generated invalid DocBook markup.
      __________________________________________________________________
 
-41. Version 7.0.0 (2005-06-06)
+42. Version 7.0.0 (2005-06-06)
 
    This is a major release with many code and documentation changes.
    Please report any problems you encounter.
 
-   [163]Stuart Rackham
+   [172]Stuart Rackham
 
    Additions and changes
      * A new xhtml11 backend generates XHTML 1.1 with integrated CSS2
        replacing the previous xhtml, css, and css-embedded backends.
      * The CSS stylesheets have finally been rewritten.
-     * The asciidoc(1) command help now includes user [164]customizable
+     * The asciidoc(1) command help now includes user [173]customizable
        help topics. When asciidoc is invoked with the --help option the
        command argument is interpreted as a help topic.
      * The previous example website has been replaced by the actual
        AsciiDoc website (see ./examples/website/.
      * XHTML generation options now controlled by the following
        attributes: badges, linkcss, icons, numbered, quirks, theme,
-       stylesdir, imagesdir (see the [165]User Guide for details.
+       stylesdir, imagesdir (see the [174]User Guide for details.
      * By default HTML and XHTML are output as stand-alone documents (no
        embedded CSS and no linked admonition icon images).
      * Documents encoded with the UTF-8 Unicode character set are now
-       processed thanks to a patch supplied by [166]Viktor Vasilev.
+       processed thanks to a patch supplied by [175]Viktor Vasilev.
      * The -a ^name command-line syntax to undefine an attribute has been
        deprecated in favor of the -a name! syntax.
      * AttributeEntry syntax addition: :name!: to undefine name attribute.
@@ -2160,7 +2216,7 @@
      * The section-numbers section numbering attribute has be renamed
        numbered.
      * Dropped the #UNDER CONSTRUCTION# block macro.
-     * Rewrote Paragraph and DelimitedBlock handlers adding a [167]styles
+     * Rewrote Paragraph and DelimitedBlock handlers adding a [176]styles
        configuration entry.
 
    Bug fixes
@@ -2168,12 +2224,12 @@
        content.
      * Manpage command names containing dashes (in the manpage NAME
        section) were misinterpreted as the spaced dash command
-       name/purpose separator. Bug report and patch supplied by [168]David
+       name/purpose separator. Bug report and patch supplied by [177]David
        Greaves.
      * Unexpected error following malformed author line error.
      __________________________________________________________________
 
-42. Version 6.0.3 (2005-04-20)
+43. Version 6.0.3 (2005-04-20)
 
    Additions and changes
      * Special characters are now substituted in AttributeEntry element
@@ -2201,7 +2257,7 @@
        exceptions to occur.
      __________________________________________________________________
 
-43. Version 6.0.2 (2005-03-30)
+44. Version 6.0.2 (2005-03-30)
 
    Additions and changes
      * Three new system block macros have been added — eval, sys and sys2
@@ -2217,14 +2273,14 @@
      * Asciidoc now searches in /etc/asciidoc/filters for filters.
      __________________________________________________________________
 
-44. Version 6.0.1 (2005-03-06)
+45. Version 6.0.1 (2005-03-06)
 
    Additions and changes
      * A global configuration file location /etc/asciidoc has been added
        and is now processed before all other locations (patch supplied by
-       [169]Fredrik Steen).
+       [178]Fredrik Steen).
      * Recoded tempfile.mktemp() and other artifacts that are no longer
-       necessary or desirable (patches supplied by [170]Fredrik Steen).
+       necessary or desirable (patches supplied by [179]Fredrik Steen).
      * Added BUGS file to the distribution.
 
    Bug fixes
@@ -2232,12 +2288,12 @@
        illegal CSS in files generated by the css-embedded backend.
      __________________________________________________________________
 
-45. Version 6.0.0 (2005-01-28)
+46. Version 6.0.0 (2005-01-28)
 
    This release has had some fairly major code and documentation changes.
    Please report any problems you encounter.
 
-   [171]Stuart Rackham
+   [180]Stuart Rackham
 
    A lot of new stuff. A new major version number — some regression
    incompatibility (hopefully mitigated by deprecated warnings).
@@ -2296,7 +2352,7 @@
        class names have also been changed which could result in backward
        incompatibility in customized stylesheets.
      * Swapped plain DocBook admonition icons for Jimmac’s DocBook icons
-       ([172]http://jimmac.musichall.cz/ikony.php3). The original plain
+       ([181]http://jimmac.musichall.cz/ikony.php3). The original plain
        icons have been moved to ./images/plain.
      * Renamed html backend to xhtml to better reflect it’s function
        (former html-4 backend renamed to html).
@@ -2328,7 +2384,7 @@
        now indents text correctly.
      __________________________________________________________________
 
-46. Version 5.1.1 (2004-10-10)
+47. Version 5.1.1 (2004-10-10)
 
    15-December-2004: Interim update: Updated asciidoc.py to fix broken
    join_lines function — no other changes.
@@ -2351,7 +2407,7 @@
        when generating css output.
      __________________________________________________________________
 
-47. Version 5.1.0 (2004-09-18)
+48. Version 5.1.0 (2004-09-18)
 
      * Callouts have been implemented (see the Callouts section of the
        AsciiDoc User Guide for details).
@@ -2368,7 +2424,7 @@
        polishing.
      __________________________________________________________________
 
-48. Version 5.0.9 (2004-09-09)
+49. Version 5.0.9 (2004-09-09)
 
      * The convention of using a .asc file extension for AsciiDoc files
        has been dropped in favor of the familiar .txt extension. It makes
@@ -2412,7 +2468,7 @@
      * Documentation additions and corrections.
      __________________________________________________________________
 
-49. Version 5.0.8 (2004-05-15)
+50. Version 5.0.8 (2004-05-15)
 
      * Spurious out of sequence level 2 warnings no longer appear when
        processing book document multi-part book top level Preface and
@@ -2430,7 +2486,7 @@
        compliance). Lessened sidebar title top margin.
      __________________________________________________________________
 
-50. Version 5.0.7 (2004-04-22)
+51. Version 5.0.7 (2004-04-22)
 
      * The version 5.0.6 README incorrectly stated that AsciiDoc would run
        under Python 2.0, in fact it requires Python 2.1 or better. The
@@ -2451,7 +2507,7 @@
        with with white space.
      __________________________________________________________________
 
-51. Version 5.0.6 (2004-03-07)
+52. Version 5.0.6 (2004-03-07)
 
      * New image macro implements optional image scaling and linking and
        works in both inline and block contexts. The image macro obsolesces
@@ -2487,7 +2543,7 @@
      * Documentation tidy ups.
      __________________________________________________________________
 
-52. Version 5.0.5 (2004-02-25)
+53. Version 5.0.5 (2004-02-25)
 
      * Fixed the disappearing paragraph titles problem that was caused by
        Inline macros (incorrectly) processing BlockTitles.
@@ -2496,7 +2552,7 @@
        invalid output markup.
      __________________________________________________________________
 
-53. Version 5.0.4 (2004-02-09)
+54. Version 5.0.4 (2004-02-09)
 
      * Reinstated missing infile, outfile, filetype and
        filetype-<filetype> glossary entries.
@@ -2504,7 +2560,7 @@
        this has now been documented.
      __________________________________________________________________
 
-54. Version 5.0.3 (2004-01-23)
+55. Version 5.0.3 (2004-01-23)
 
      * Fixed problem that caused any filters directory file containing
        .conf (not just those with the .conf extension) from being loaded.
@@ -2521,7 +2577,7 @@
        from configuration file substitution sections.
      __________________________________________________________________
 
-55. Version 5.0.2 (2003-12-18)
+56. Version 5.0.2 (2003-12-18)
 
      * New (alternative) anchor and xref macro syntax (old syntax still
        valid).
@@ -2535,17 +2591,17 @@
      * Documentation updates and corrections.
      __________________________________________________________________
 
-56. Version 5.0.1 (2003-12-09)
+57. Version 5.0.1 (2003-12-09)
 
      * Fixed problem with anchor tag when generating CSS styled HTML.
      __________________________________________________________________
 
-57. Version 5.0 (2003-12-08)
+58. Version 5.0 (2003-12-08)
 
    This release has had some fairly major code and documentation changes.
    Please report any problems you encounter.
 
-   [173]Stuart Rackham
+   [182]Stuart Rackham
 
      * AsciiDoc can now produce a full-blown multi-part DocBook book
        including dedication, abstract, preface, colophon, glossary,
@@ -2595,7 +2651,7 @@
        .docbook to .xml (.sgml for the docbook-sgml backend).
      __________________________________________________________________
 
-58. Version 4.2 (2003-11-26)
+59. Version 4.2 (2003-11-26)
 
      * The default HTML output is now XHTML 1.0 markup. To output the
        former HTML 4 markup specify the html-4 backend.
@@ -2623,7 +2679,7 @@
        arguments.
      __________________________________________________________________
 
-59. Version 4.1 (2003-11-13)
+60. Version 4.1 (2003-11-13)
 
      * Added DSV (Delimiter Separated Values) tables format.
      * {eval:<expr>} glossary references drop the containing line if
@@ -2647,7 +2703,7 @@
        {x] was defined and {y} was not.
      __________________________________________________________________
 
-60. Version 4.0 (2003-11-08)
+61. Version 4.0 (2003-11-08)
 
    This release has had some fairly major code and documentation changes.
    Please report any problems you encounter.
@@ -2695,7 +2751,7 @@
      * Many documentation changes/additions/corrections.
      __________________________________________________________________
 
-61. Version 3.2.2 (2003-10-26)
+62. Version 3.2.2 (2003-10-26)
 
      * Added -n option (synonym for -g section-numbers).
      * Dropped the processing commentary (hey, this is Unix).
@@ -2728,7 +2784,7 @@
      * Documentation changes/additions/corrections.
      __________________________________________________________________
 
-62. Version 3.2 (2003-05-26)
+63. Version 3.2 (2003-05-26)
 
      * Added a -s command-line option to suppress the output of [header]
        and [footer] sections.
@@ -2758,7 +2814,7 @@
      * Internal code tidy up.
      __________________________________________________________________
 
-63. Version 3.1 (2003-05-18)
+64. Version 3.1 (2003-05-18)
 
      * In version 3.0 a [macros] section entry of the form name was
        equivalent to name=. An entry of the form name now undefines the
@@ -2788,7 +2844,7 @@
        option).
      __________________________________________________________________
 
-64. Version 3.0 (2003-05-13)
+65. Version 3.0 (2003-05-13)
 
    This version is the culmination of work begun in the 2.x releases
    whereby fixed policy has been replaced by extensible mechanisms.
@@ -2824,7 +2880,7 @@
        configuration files.
      __________________________________________________________________
 
-65. Version 2.2 (2003-04-07)
+66. Version 2.2 (2003-04-07)
 
      * The master.conf configuration file name has been deprecated in
        favor of asciidoc.conf.
@@ -2866,7 +2922,7 @@
        CustomBlocks or Substitutions instead.
      __________________________________________________________________
 
-66. Version 2.1 (2003-03-17)
+67. Version 2.1 (2003-03-17)
 
      * Added section auto numbering {sectnum} glossary entry
        (auto-numbering function contributed by Ludovico Magnocavallo).
@@ -2895,7 +2951,7 @@
        {asciidoc-version} (to it consistent with other entries).
      __________________________________________________________________
 
-67. Version 2.0 (2003-02-24)
+68. Version 2.0 (2003-02-24)
 
      * The emphasized, strong and monospaced words options have been
        generalized with the introduction of macro based special words
@@ -2949,14 +3005,14 @@
      * Added author and author-mail meta tags to HTML configuration files.
      __________________________________________________________________
 
-68. Version 1.5 (2003-01-08)
+69. Version 1.5 (2003-01-08)
 
      * Implemented sidebar document elements.
      * Explicit checks for user specified configuration files and input
        file (rather than throwing exception).
      __________________________________________________________________
 
-69. Version 1.4 (2003-01-04)
+70. Version 1.4 (2003-01-04)
 
      * New configuration file options emphasizedwords and strongwords.
        These allow the definition of words that will always be emphasized
@@ -2976,7 +3032,7 @@
      * More documentation additions and tidy ups.
      __________________________________________________________________
 
-70. Version 1.3 (2003-01-01)
+71. Version 1.3 (2003-01-01)
 
      * A new strong text formatting convention has been implemented: Word
        phrases enclosed in pairs of single quote characters (acute
@@ -3005,7 +3061,7 @@
      * Code, configuration file and documentation tidy ups.
      __________________________________________________________________
 
-71. Version 1.2 (2002-12-28)
+72. Version 1.2 (2002-12-28)
 
      * Implemented include URL to allow file inclusion.
      * fileextension configuration file [option] renamed to more sensible
@@ -3020,7 +3076,7 @@
      * Bug fixes.
      __________________________________________________________________
 
-72. Version 1.1 (2002-12-03)
+73. Version 1.1 (2002-12-03)
 
      * Added css (cascading style sheets) backend
      * Implemented IndentedBlock document element.
@@ -3037,190 +3093,199 @@
      * Fixed error that occurred when == title underline was used.
      __________________________________________________________________
 
-73. Version 1.0 (2002-11-25)
+74. Version 1.0 (2002-11-25)
 
    First AsciiDoc public release along with AsciiDoc web site
-   ([174]http://www.methods.co.nz/asciidoc/) and SourceForge.net project
-   registration ([175]https://sourceforge.net/projects/asciidoc/).
+   ([183]http://www.methods.co.nz/asciidoc/) and SourceForge.net project
+   registration ([184]https://sourceforge.net/projects/asciidoc/).
      __________________________________________________________________
 
-   Version 8.6.7
-   Last updated 2012-03-16 16:49:19 NZDT
+   Version 8.6.8
+   Last updated 2012-07-17 07:24:10 NZST
 
 References
 
-   1. http://groups.google.com/group/asciidoc/browse_thread/thread/a9762e21ec0cc244/5d3a4ebf20e6847e
-   2. http://groups.google.com/group/asciidoc/browse_thread/thread/843d7d3d671006fb/25628e14c829db3f
-   3. http://groups.google.com/group/asciidoc/browse_thread/thread/b8e93740b7cd0e1d/b5e0b83fe37ae31a
-   4. http://groups.google.com/group/asciidoc/browse_thread/thread/3d06b0105dfbb780/8c60eb7a62f522e4
-   5. http://groups.google.com/group/asciidoc/browse_thread/thread/33e99b78e2472122
-   6. http://groups.google.com/group/asciidoc/browse_thread/thread/8200e29815c40f72
-   7. http://groups.google.com/group/asciidoc/browse_thread/thread/849e5ea91f43adf2
-   8. http://groups.google.com/group/asciidoc/browse_thread/thread/e92a75abcc382701
-   9. http://groups.google.com/group/asciidoc/browse_thread/thread/58d0843ae4345afd
-  10. http://groups.google.com/group/asciidoc/browse_thread/thread/b0e69e393b6f9f20/47a2c7586f9e40c6?lnk=gst&q=themes+tarball#47a2c7586f9e40c6
-  11. http://groups.google.com/group/asciidoc/browse_thread/thread/b9d705c6b6b39f59/1e120483dafca109
-  12. http://groups.google.com/group/asciidoc/browse_thread/thread/103445ab9d95cb0c
-  13. http://code.google.com/p/asciidoc/issues/detail?id=9
-  14. http://groups.google.com/group/asciidoc/browse_thread/thread/4608b77ec289f6c4
-  15. http://groups.google.com/group/asciidoc/browse_thread/thread/14e8fcb289a135b/3af3b4e57b827c78?lnk=gst&q=archlinux#3af3b4e57b827c78
-  16. http://groups.google.com/group/asciidoc/browse_thread/thread/5e2e6f4dd740d51a
-  17. http://groups.google.com/group/asciidoc/browse_thread/thread/5e2e6f4dd740d51a
-  18. http://groups.google.com/group/asciidoc/browse_thread/thread/a839aa01db0765d2
-  19. http://groups.google.com/group/asciidoc/browse_thread/thread/734ac5afed736987
-  20. http://groups.google.com/group/asciidoc/browse_thread/thread/6436788a10561851
-  21. http://groups.google.com/group/asciidoc/browse_thread/thread/c9238380a1f2507a
-  22. http://groups.google.com/group/asciidoc/browse_thread/thread/ec8e8481eb0e27b0/d1c035092b5bb7a4?lnk=gst&q=caption+option#d1c035092b5bb7a4
-  23. http://groups.google.com/group/asciidoc/browse_thread/thread/3e177b84bc133ca9/659796dfadad30ea?lnk=gst&q=a2x+format#659796dfadad30ea
-  24. http://groups.google.com/group/asciidoc/browse_thread/thread/16d3fb9672a408e7
-  25. http://groups.google.com/group/asciidoc/browse_thread/thread/bacbf8aeb8ad6a3a
-  26. http://code.google.com/p/asciidoc/issues/detail?id=8
-  27. http://groups.google.com/group/asciidoc/browse_thread/thread/6436788a10561851
-  28. http://groups.google.com/group/asciidoc/browse_thread/thread/e8f3938bcb4c8bb4/44d13113a35738ef
-  29. http://groups.google.com/group/asciidoc/browse_thread/thread/c9238380a1f2507a/9afc4559d51e1dbd
-  30. http://groups.google.com/group/asciidoc/browse_thread/thread/8c111f1046b33691/158a944cf4d5ff0d?lnk=gst&q=latex+escapes#158a944cf4d5ff0d
-  31. http://groups.google.com/group/asciidoc/browse_thread/thread/eaf25f21d1da180a
-  32. http://flask.pocoo.org/docs/
-  33. file://localhost/tmp/lynxXXXX11f6Aw/article-html5-toc2.html
-  34. file://localhost/tmp/lynxXXXX11f6Aw/epub-notes.html
-  35. http://flask.pocoo.org/docs/
-  36. http://groups.google.com/group/asciidoc/browse_thread/thread/9da9d48a6461ff14
-  37. http://groups.google.com/group/asciidoc/browse_thread/thread/5c792cbb395b753b
-  38. http://groups.google.com/group/asciidoc/browse_thread/thread/e2100b7cb29283ce
-  39. http://groups.google.com/group/asciidoc/browse_thread/thread/c5e30ee5555877f5
-  40. http://groups.google.com/group/asciidoc/browse_thread/thread/baf3218551d05a05
-  41. http://groups.google.com/group/asciidoc/browse_thread/thread/5a7fe64fbfd65ad
-  42. http://groups.google.com/group/asciidoc/browse_thread/thread/5620ba634fdb030a
-  43. http://groups.google.com/group/asciidoc/browse_thread/thread/f969b9ce987d7f5d
-  44. http://groups.google.com/group/asciidoc/browse_thread/thread/cd0f47495fd04181
-  45. http://code.google.com/p/asciidoc/issues/detail?id=6&q=label%3APriority-Medium
-  46. http://sourceforge.net/tracker/?func=detail&atid=373747&aid=2854075&group_id=21935
-  47. http://groups.google.com/group/asciidoc/browse_thread/thread/b24cc3362f35b801
-  48. http://www.methods.co.nz/asciidoc/userguide.html#X96
-  49. http://groups.google.com/group/asciidoc/browse_thread/thread/77f28b0dfe60d262
-  50. http://www.methods.co.nz/asciidoc/manpage.html
-  51. http://groups.google.com/group/asciidoc/browse_thread/thread/40c64cd33ee1905c
-  52. http://groups.google.com/group/asciidoc/browse_thread/thread/e15282f072413940
-  53. http://groups.google.com/group/asciidoc/browse_thread/thread/5ac8e8ea895147e9
-  54. http://groups.google.com/group/asciidoc/browse_thread/thread/e15282f072413940
-  55. http://groups.google.com/group/asciidoc/browse_thread/thread/e15282f072413940
-  56. http://groups.google.com/group/asciidoc/browse_thread/thread/b11066a828ab45b9
-  57. http://groups.google.com/group/asciidoc/browse_thread/thread/a1dd0562dee8b939
-  58. http://groups.google.com/group/asciidoc/browse_thread/thread/f44615dca0b834e9
-  59. http://groups.google.com/group/asciidoc/browse_thread/thread/1b3f88f1f8118ab3
-  60. http://groups.google.com/group/asciidoc/browse_thread/thread/c21c2902c29bae64
-  61. http://groups.google.com/group/asciidoc/browse_thread/thread/f510ea82a88aaee8
-  62. http://groups.google.com/group/asciidoc/browse_thread/thread/42b63ce90c2563b8
-  63. http://groups.google.com/group/asciidoc/browse_thread/thread/42b63ce90c2563b8
-  64. http://bugs.python.org/issue3932
-  65. http://groups.google.com/group/asciidoc/browse_thread/thread/dedc961b23e9ac56
-  66. https://phillordbio-asciidoc-fixes.googlecode.com/hg/
-  67. http://groups.google.com/group/asciidoc/browse_thread/thread/c14a4c3b1e4f6dc5
-  68. http://groups.google.com/group/asciidoc/browse_thread/thread/c948697943432e24
-  69. http://groups.google.com/group/asciidoc/browse_thread/thread/1c415fc4540ce5e5
-  70. http://groups.google.com/group/asciidoc/browse_thread/thread/8712a95e95a292a7
-  71. http://groups.google.com/group/asciidoc/browse_thread/thread/c4427a3902d130a8
-  72. http://groups.google.com/group/asciidoc/browse_thread/thread/59a610068e4acb58
-  73. http://groups.google.com/group/asciidoc/browse_thread/thread/b22603bfb879418c
-  74. http://groups.google.com/group/asciidoc/browse_thread/thread/1c02d27d49221aa2
-  75. http://groups.google.com/group/asciidoc/browse_thread/thread/5f3e825c74ed30c
-  76. http://pygments.org/
-  77. http://groups.google.com/group/asciidoc/browse_thread/thread/d8d042f5a3021369/8934ebbb8cb7144b
-  78. http://groups.google.com/group/asciidoc/browse_frm/thread/319e5cd94493e330/3fcb83fab067af42
-  79. http://groups.google.com/group/asciidoc/browse_frm/thread/fe9b33d8f5f1e0af
-  80. http://groups.google.com/group/asciidoc/browse_frm/thread/8eda3ea812968854
-  81. http://groups.google.com/group/asciidoc/browse_frm/thread/7174cb7598993c72
-  82. http://groups.google.com/group/asciidoc/browse_frm/thread/66e7b59d12cd2f91
-  83. http://groups.google.com/group/asciidoc/browse_frm/thread/7174cb7598993c72
-  84. http://groups.google.com/group/asciidoc/browse_frm/thread/7174cb7598993c72
-  85. http://groups.google.com/group/asciidoc/browse_frm/thread/219c86ae25b79a21
-  86. http://groups.google.com/group/asciidoc/browse_frm/thread/af652507caf6cec9
-  87. http://groups.google.com/group/asciidoc/browse_frm/thread/3f96900f7fbf5620
-  88. http://groups.google.com/group/asciidoc/browse_frm/thread/7174cb7598993c72
-  89. http://groups.google.com/group/asciidoc/browse_frm/thread/2ff802547b6a75ea
-  90. http://groups.google.com/group/asciidoc/browse_thread/thread/14e8fcb289a135b
-  91. http://groups.google.com/group/asciidoc/browse_thread/thread/faa36e9e5c7da019/d24cab3fe363e58d
-  92. http://groups.google.com/group/asciidoc/browse_frm/thread/ac4b9bfa2116db28
-  93. http://groups.google.com/group/asciidoc/browse_frm/thread/c17abd175778f5ea
-  94. http://groups.google.com/group/asciidoc/browse_frm/thread/c17abd175778f5ea
-  95. http://groups.google.com/group/asciidoc/browse_frm/thread/1b6b66adb24e710
-  96. http://groups.google.com/group/asciidoc/browse_frm/thread/a23fea28394c8ca9
-  97. http://groups.google.com/group/asciidoc/browse_frm/thread/50b28f6941de111a
-  98. http://groups.google.com/group/asciidoc/browse_frm/thread/dfe5204d5b2c9685
-  99. http://groups.google.com/group/asciidoc/browse_frm/thread/f0b6f9989f828c3
- 100. http://groups.google.com/group/asciidoc/browse_frm/thread/14aefc1cb6bd85f5
- 101. http://groups.google.com/group/asciidoc/browse_frm/thread/cb8b7694bbc82a6
- 102. http://groups.google.com/group/asciidoc/browse_frm/thread/cb8b7694bbc82a6
- 103. http://groups.google.com/group/asciidoc/browse_frm/thread/4b0f364b477ec165
- 104. http://groups.google.com/group/asciidoc/browse_frm/thread/e5e61823ff4203cd
- 105. http://groups.google.com/group/asciidoc/browse_frm/thread/2aa3e5711d243045
- 106. http://groups.google.com/group/asciidoc/browse_frm/thread/5215c99dcc865e7d
- 107. http://hg.sharesource.org/asciidoc/diff/55a5999bfd04/xhtml11.conf
- 108. http://groups.google.com/group/asciidoc/browse_frm/thread/b276a927fdc87995
- 109. http://groups.google.com/group/asciidoc/browse_frm/thread/f4df7c9eec01a9bd
- 110. http://groups.google.com/group/asciidoc/browse_frm/thread/f4df7c9eec01a9bd
- 111. http://groups.google.com/group/asciidoc/browse_frm/thread/d29924043e21cb6a
- 112. http://groups.google.com/group/asciidoc/browse_frm/thread/74d9a542b79ccd50
- 113. http://groups.google.com/group/asciidoc/browse_frm/thread/ea3a8ea399ae5d2a
- 114. http://groups.google.com/group/asciidoc/browse_frm/thread/69b3183fdab7c6a5
- 115. http://groups.google.com/group/asciidoc/browse_frm/thread/a254cf949ea7c6c5
- 116. http://groups.google.com/group/asciidoc/browse_frm/thread/e1dcb7ee0efc17b5
- 117. http://groups.google.com/group/asciidoc/browse_frm/thread/69b3183fdab7c6a5
- 118. http://groups.google.com/group/asciidoc/browse_frm/thread/1badad21ff9447ac
- 119. http://groups.google.com/group/asciidoc/browse_frm/thread/a42db6bc54c2c537
- 120. http://groups.google.com/group/asciidoc/browse_frm/thread/b9c63be67dd1d11c
- 121. http://groups.google.com/group/asciidoc/browse_frm/thread/1269dc2feb1a482c
- 122. http://groups.google.com/group/asciidoc/browse_frm/thread/36ff073c79cbc20a
- 123. http://www.methods.co.nz/asciidoc/userguide.html#X89
- 124. http://groups.google.com/group/asciidoc/browse_thread/thread/62278a054188a038
- 125. http://groups.google.com/group/asciidoc/browse_thread/thread/4bdcdfb0af773e2
- 126. http://groups.google.com/group/asciidoc/browse_thread/thread/c93bb4db025225d8
- 127. http://groups.google.com/group/asciidoc/browse_thread/thread/1d796a9c9ddb2855
- 128. http://groups.google.com/group/asciidoc/browse_thread/thread/6d8c716748b109e3
- 129. http://groups.google.com/group/asciidoc/browse_thread/thread/fd27add515597c06
- 130. http://www.methods.co.nz/asciidoc/testasciidoc.html
- 131. http://www.methods.co.nz/asciidoc/asciidocapi.html
- 132. file://localhost/tmp/lynxXXXX11f6Aw/L9155-856TMP.html#X2
- 133. http://www.methods.co.nz/asciidoc/INSTALL.html
- 134. http://www.methods.co.nz/asciidoc/newtables.html
- 135. http://www.methods.co.nz/asciidoc/newlists.html
- 136. http://www.methods.co.nz/asciidoc/userguide.html#X77
- 137. http://www.methods.co.nz/asciidoc/userguide.html#X76
- 138. http://www.methods.co.nz/asciidoc/latexmath.pdf
- 139. http://www.methods.co.nz/asciidoc/asciimathml.html
- 140. http://www.methods.co.nz/asciidoc/latexmathml.html
- 141. http://www.methods.co.nz/asciidoc/source-highlight-filter.html
- 142. https://sharesource.org/hg/asciidoc/
- 143. http://en.wikipedia.org/wiki/Data:_URI_scheme
- 144. http://www.methods.co.nz/asciidoc/faq.html
- 145. http://www.maths.nottingham.ac.uk/personal/drw/lm.html
- 146. http://www.methods.co.nz/asciidoc/asciimathml.html
- 147. http://www.methods.co.nz/asciidoc/index.html
- 148. http://tpl.sourceforge.net/userguide.html
- 149. http://www.methods.co.nz/asciidoc/music-filter.html
- 150. http://lilypond.org/
- 151. http://abcnotation.org.uk/
- 152. mailto:srackham@gmail.com
- 153. mailto:jlm@ofb.net
- 154. mailto:m_pupil@yahoo.com.cn
- 155. http://open.comsultia.com/docbook2odf/
- 156. http://www1.chapman.edu/~jipsen/mathml/asciimath.html
- 157. http://www.methods.co.nz/asciidoc/asciimath.html
- 158. file://localhost/tmp/lynxXXXX11f6Aw/userguide.html#X33
- 159. mailto:francis@daoine.org
- 160. file://localhost/tmp/lynxXXXX11f6Aw/userguide.html#X39
- 161. file://localhost/tmp/lynxXXXX11f6Aw/source-highlight-filter.html
- 162. mailto:trolocsis@gmail.com
- 163. mailto:srackham@gmail.com
- 164. file://localhost/tmp/lynxXXXX11f6Aw/userguide.html#X36
- 165. file://localhost/tmp/lynxXXXX11f6Aw/userguide.html#X33
- 166. mailto:viktor@rbg.informatik.tu-darmstadt.de
- 167. file://localhost/tmp/lynxXXXX11f6Aw/userguide.html#X23
- 168. mailto:david@dgreaves.com
- 169. mailto:stone@debian.org
- 170. mailto:stone@debian.org
- 171. mailto:srackham@gmail.com
- 172. http://jimmac.musichall.cz/ikony.php3
- 173. mailto:srackham@gmail.com
- 174. http://www.methods.co.nz/asciidoc/
- 175. https://sourceforge.net/projects/asciidoc/
+   1. https://groups.google.com/group/asciidoc/browse_thread/thread/7be28e9714f249c7
+   2. https://groups.google.com/group/asciidoc/browse_thread/thread/961a957ab5872ebf
+   3. https://groups.google.com/group/asciidoc/browse_thread/thread/961a957ab5872ebf
+   4. https://groups.google.com/group/asciidoc/browse_thread/thread/9e79d8494ef8d870
+   5. https://groups.google.com/group/asciidoc/browse_frm/thread/64b071bb21de9cf0
+   6. https://groups.google.com/group/asciidoc/browse_frm/thread/e045c9986c71d72a
+   7. https://groups.google.com/group/asciidoc/browse_thread/thread/f5174f450a61f14b
+   8. https://groups.google.com/group/asciidoc/browse_thread/thread/db3b734a6931cb74
+   9. https://groups.google.com/group/asciidoc/browse_thread/thread/13c9ee97930342b3
+  10. http://groups.google.com/group/asciidoc/browse_thread/thread/a9762e21ec0cc244/5d3a4ebf20e6847e
+  11. http://groups.google.com/group/asciidoc/browse_thread/thread/843d7d3d671006fb/25628e14c829db3f
+  12. http://groups.google.com/group/asciidoc/browse_thread/thread/b8e93740b7cd0e1d/b5e0b83fe37ae31a
+  13. http://groups.google.com/group/asciidoc/browse_thread/thread/3d06b0105dfbb780/8c60eb7a62f522e4
+  14. http://groups.google.com/group/asciidoc/browse_thread/thread/33e99b78e2472122
+  15. http://groups.google.com/group/asciidoc/browse_thread/thread/8200e29815c40f72
+  16. http://groups.google.com/group/asciidoc/browse_thread/thread/849e5ea91f43adf2
+  17. http://groups.google.com/group/asciidoc/browse_thread/thread/e92a75abcc382701
+  18. http://groups.google.com/group/asciidoc/browse_thread/thread/58d0843ae4345afd
+  19. http://groups.google.com/group/asciidoc/browse_thread/thread/b0e69e393b6f9f20/47a2c7586f9e40c6?lnk=gst&q=themes+tarball#47a2c7586f9e40c6
+  20. http://groups.google.com/group/asciidoc/browse_thread/thread/b9d705c6b6b39f59/1e120483dafca109
+  21. http://groups.google.com/group/asciidoc/browse_thread/thread/103445ab9d95cb0c
+  22. http://code.google.com/p/asciidoc/issues/detail?id=9
+  23. http://groups.google.com/group/asciidoc/browse_thread/thread/4608b77ec289f6c4
+  24. http://groups.google.com/group/asciidoc/browse_thread/thread/14e8fcb289a135b/3af3b4e57b827c78?lnk=gst&q=archlinux#3af3b4e57b827c78
+  25. http://groups.google.com/group/asciidoc/browse_thread/thread/5e2e6f4dd740d51a
+  26. http://groups.google.com/group/asciidoc/browse_thread/thread/5e2e6f4dd740d51a
+  27. http://groups.google.com/group/asciidoc/browse_thread/thread/a839aa01db0765d2
+  28. http://groups.google.com/group/asciidoc/browse_thread/thread/734ac5afed736987
+  29. http://groups.google.com/group/asciidoc/browse_thread/thread/6436788a10561851
+  30. http://groups.google.com/group/asciidoc/browse_thread/thread/c9238380a1f2507a
+  31. http://groups.google.com/group/asciidoc/browse_thread/thread/ec8e8481eb0e27b0/d1c035092b5bb7a4?lnk=gst&q=caption+option#d1c035092b5bb7a4
+  32. http://groups.google.com/group/asciidoc/browse_thread/thread/3e177b84bc133ca9/659796dfadad30ea?lnk=gst&q=a2x+format#659796dfadad30ea
+  33. http://groups.google.com/group/asciidoc/browse_thread/thread/16d3fb9672a408e7
+  34. http://groups.google.com/group/asciidoc/browse_thread/thread/bacbf8aeb8ad6a3a
+  35. http://code.google.com/p/asciidoc/issues/detail?id=8
+  36. http://groups.google.com/group/asciidoc/browse_thread/thread/6436788a10561851
+  37. http://groups.google.com/group/asciidoc/browse_thread/thread/e8f3938bcb4c8bb4/44d13113a35738ef
+  38. http://groups.google.com/group/asciidoc/browse_thread/thread/c9238380a1f2507a/9afc4559d51e1dbd
+  39. http://groups.google.com/group/asciidoc/browse_thread/thread/8c111f1046b33691/158a944cf4d5ff0d?lnk=gst&q=latex+escapes#158a944cf4d5ff0d
+  40. http://groups.google.com/group/asciidoc/browse_thread/thread/eaf25f21d1da180a
+  41. http://flask.pocoo.org/docs/
+  42. file://localhost/tmp/lynxXXXXrCQLhm/article-html5-toc2.html
+  43. file://localhost/tmp/lynxXXXXrCQLhm/epub-notes.html
+  44. http://flask.pocoo.org/docs/
+  45. http://groups.google.com/group/asciidoc/browse_thread/thread/9da9d48a6461ff14
+  46. http://groups.google.com/group/asciidoc/browse_thread/thread/5c792cbb395b753b
+  47. http://groups.google.com/group/asciidoc/browse_thread/thread/e2100b7cb29283ce
+  48. http://groups.google.com/group/asciidoc/browse_thread/thread/c5e30ee5555877f5
+  49. http://groups.google.com/group/asciidoc/browse_thread/thread/baf3218551d05a05
+  50. http://groups.google.com/group/asciidoc/browse_thread/thread/5a7fe64fbfd65ad
+  51. http://groups.google.com/group/asciidoc/browse_thread/thread/5620ba634fdb030a
+  52. http://groups.google.com/group/asciidoc/browse_thread/thread/f969b9ce987d7f5d
+  53. http://groups.google.com/group/asciidoc/browse_thread/thread/cd0f47495fd04181
+  54. http://code.google.com/p/asciidoc/issues/detail?id=6&q=label%3APriority-Medium
+  55. http://sourceforge.net/tracker/?func=detail&atid=373747&aid=2854075&group_id=21935
+  56. http://groups.google.com/group/asciidoc/browse_thread/thread/b24cc3362f35b801
+  57. http://www.methods.co.nz/asciidoc/userguide.html#X96
+  58. http://groups.google.com/group/asciidoc/browse_thread/thread/77f28b0dfe60d262
+  59. http://www.methods.co.nz/asciidoc/manpage.html
+  60. http://groups.google.com/group/asciidoc/browse_thread/thread/40c64cd33ee1905c
+  61. http://groups.google.com/group/asciidoc/browse_thread/thread/e15282f072413940
+  62. http://groups.google.com/group/asciidoc/browse_thread/thread/5ac8e8ea895147e9
+  63. http://groups.google.com/group/asciidoc/browse_thread/thread/e15282f072413940
+  64. http://groups.google.com/group/asciidoc/browse_thread/thread/e15282f072413940
+  65. http://groups.google.com/group/asciidoc/browse_thread/thread/b11066a828ab45b9
+  66. http://groups.google.com/group/asciidoc/browse_thread/thread/a1dd0562dee8b939
+  67. http://groups.google.com/group/asciidoc/browse_thread/thread/f44615dca0b834e9
+  68. http://groups.google.com/group/asciidoc/browse_thread/thread/1b3f88f1f8118ab3
+  69. http://groups.google.com/group/asciidoc/browse_thread/thread/c21c2902c29bae64
+  70. http://groups.google.com/group/asciidoc/browse_thread/thread/f510ea82a88aaee8
+  71. http://groups.google.com/group/asciidoc/browse_thread/thread/42b63ce90c2563b8
+  72. http://groups.google.com/group/asciidoc/browse_thread/thread/42b63ce90c2563b8
+  73. http://bugs.python.org/issue3932
+  74. http://groups.google.com/group/asciidoc/browse_thread/thread/dedc961b23e9ac56
+  75. https://phillordbio-asciidoc-fixes.googlecode.com/hg/
+  76. http://groups.google.com/group/asciidoc/browse_thread/thread/c14a4c3b1e4f6dc5
+  77. http://groups.google.com/group/asciidoc/browse_thread/thread/c948697943432e24
+  78. http://groups.google.com/group/asciidoc/browse_thread/thread/1c415fc4540ce5e5
+  79. http://groups.google.com/group/asciidoc/browse_thread/thread/8712a95e95a292a7
+  80. http://groups.google.com/group/asciidoc/browse_thread/thread/c4427a3902d130a8
+  81. http://groups.google.com/group/asciidoc/browse_thread/thread/59a610068e4acb58
+  82. http://groups.google.com/group/asciidoc/browse_thread/thread/b22603bfb879418c
+  83. http://groups.google.com/group/asciidoc/browse_thread/thread/1c02d27d49221aa2
+  84. http://groups.google.com/group/asciidoc/browse_thread/thread/5f3e825c74ed30c
+  85. http://pygments.org/
+  86. http://groups.google.com/group/asciidoc/browse_thread/thread/d8d042f5a3021369/8934ebbb8cb7144b
+  87. http://groups.google.com/group/asciidoc/browse_frm/thread/319e5cd94493e330/3fcb83fab067af42
+  88. http://groups.google.com/group/asciidoc/browse_frm/thread/fe9b33d8f5f1e0af
+  89. http://groups.google.com/group/asciidoc/browse_frm/thread/8eda3ea812968854
+  90. http://groups.google.com/group/asciidoc/browse_frm/thread/7174cb7598993c72
+  91. http://groups.google.com/group/asciidoc/browse_frm/thread/66e7b59d12cd2f91
+  92. http://groups.google.com/group/asciidoc/browse_frm/thread/7174cb7598993c72
+  93. http://groups.google.com/group/asciidoc/browse_frm/thread/7174cb7598993c72
+  94. http://groups.google.com/group/asciidoc/browse_frm/thread/219c86ae25b79a21
+  95. http://groups.google.com/group/asciidoc/browse_frm/thread/af652507caf6cec9
+  96. http://groups.google.com/group/asciidoc/browse_frm/thread/3f96900f7fbf5620
+  97. http://groups.google.com/group/asciidoc/browse_frm/thread/7174cb7598993c72
+  98. http://groups.google.com/group/asciidoc/browse_frm/thread/2ff802547b6a75ea
+  99. http://groups.google.com/group/asciidoc/browse_thread/thread/14e8fcb289a135b
+ 100. http://groups.google.com/group/asciidoc/browse_thread/thread/faa36e9e5c7da019/d24cab3fe363e58d
+ 101. http://groups.google.com/group/asciidoc/browse_frm/thread/ac4b9bfa2116db28
+ 102. http://groups.google.com/group/asciidoc/browse_frm/thread/c17abd175778f5ea
+ 103. http://groups.google.com/group/asciidoc/browse_frm/thread/c17abd175778f5ea
+ 104. http://groups.google.com/group/asciidoc/browse_frm/thread/1b6b66adb24e710
+ 105. http://groups.google.com/group/asciidoc/browse_frm/thread/a23fea28394c8ca9
+ 106. http://groups.google.com/group/asciidoc/browse_frm/thread/50b28f6941de111a
+ 107. http://groups.google.com/group/asciidoc/browse_frm/thread/dfe5204d5b2c9685
+ 108. http://groups.google.com/group/asciidoc/browse_frm/thread/f0b6f9989f828c3
+ 109. http://groups.google.com/group/asciidoc/browse_frm/thread/14aefc1cb6bd85f5
+ 110. http://groups.google.com/group/asciidoc/browse_frm/thread/cb8b7694bbc82a6
+ 111. http://groups.google.com/group/asciidoc/browse_frm/thread/cb8b7694bbc82a6
+ 112. http://groups.google.com/group/asciidoc/browse_frm/thread/4b0f364b477ec165
+ 113. http://groups.google.com/group/asciidoc/browse_frm/thread/e5e61823ff4203cd
+ 114. http://groups.google.com/group/asciidoc/browse_frm/thread/2aa3e5711d243045
+ 115. http://groups.google.com/group/asciidoc/browse_frm/thread/5215c99dcc865e7d
+ 116. http://hg.sharesource.org/asciidoc/diff/55a5999bfd04/xhtml11.conf
+ 117. http://groups.google.com/group/asciidoc/browse_frm/thread/b276a927fdc87995
+ 118. http://groups.google.com/group/asciidoc/browse_frm/thread/f4df7c9eec01a9bd
+ 119. http://groups.google.com/group/asciidoc/browse_frm/thread/f4df7c9eec01a9bd
+ 120. http://groups.google.com/group/asciidoc/browse_frm/thread/d29924043e21cb6a
+ 121. http://groups.google.com/group/asciidoc/browse_frm/thread/74d9a542b79ccd50
+ 122. http://groups.google.com/group/asciidoc/browse_frm/thread/ea3a8ea399ae5d2a
+ 123. http://groups.google.com/group/asciidoc/browse_frm/thread/69b3183fdab7c6a5
+ 124. http://groups.google.com/group/asciidoc/browse_frm/thread/a254cf949ea7c6c5
+ 125. http://groups.google.com/group/asciidoc/browse_frm/thread/e1dcb7ee0efc17b5
+ 126. http://groups.google.com/group/asciidoc/browse_frm/thread/69b3183fdab7c6a5
+ 127. http://groups.google.com/group/asciidoc/browse_frm/thread/1badad21ff9447ac
+ 128. http://groups.google.com/group/asciidoc/browse_frm/thread/a42db6bc54c2c537
+ 129. http://groups.google.com/group/asciidoc/browse_frm/thread/b9c63be67dd1d11c
+ 130. http://groups.google.com/group/asciidoc/browse_frm/thread/1269dc2feb1a482c
+ 131. http://groups.google.com/group/asciidoc/browse_frm/thread/36ff073c79cbc20a
+ 132. http://www.methods.co.nz/asciidoc/userguide.html#X89
+ 133. http://groups.google.com/group/asciidoc/browse_thread/thread/62278a054188a038
+ 134. http://groups.google.com/group/asciidoc/browse_thread/thread/4bdcdfb0af773e2
+ 135. http://groups.google.com/group/asciidoc/browse_thread/thread/c93bb4db025225d8
+ 136. http://groups.google.com/group/asciidoc/browse_thread/thread/1d796a9c9ddb2855
+ 137. http://groups.google.com/group/asciidoc/browse_thread/thread/6d8c716748b109e3
+ 138. http://groups.google.com/group/asciidoc/browse_thread/thread/fd27add515597c06
+ 139. http://www.methods.co.nz/asciidoc/testasciidoc.html
+ 140. http://www.methods.co.nz/asciidoc/asciidocapi.html
+ 141. file://localhost/tmp/lynxXXXXrCQLhm/L12417-6257TMP.html#X2
+ 142. http://www.methods.co.nz/asciidoc/INSTALL.html
+ 143. http://www.methods.co.nz/asciidoc/newtables.html
+ 144. http://www.methods.co.nz/asciidoc/newlists.html
+ 145. http://www.methods.co.nz/asciidoc/userguide.html#X77
+ 146. http://www.methods.co.nz/asciidoc/userguide.html#X76
+ 147. http://www.methods.co.nz/asciidoc/latexmath.pdf
+ 148. http://www.methods.co.nz/asciidoc/asciimathml.html
+ 149. http://www.methods.co.nz/asciidoc/latexmathml.html
+ 150. http://www.methods.co.nz/asciidoc/source-highlight-filter.html
+ 151. https://sharesource.org/hg/asciidoc/
+ 152. http://en.wikipedia.org/wiki/Data:_URI_scheme
+ 153. http://www.methods.co.nz/asciidoc/faq.html
+ 154. http://www.maths.nottingham.ac.uk/personal/drw/lm.html
+ 155. http://www.methods.co.nz/asciidoc/asciimathml.html
+ 156. http://www.methods.co.nz/asciidoc/index.html
+ 157. http://tpl.sourceforge.net/userguide.html
+ 158. http://www.methods.co.nz/asciidoc/music-filter.html
+ 159. http://lilypond.org/
+ 160. http://abcnotation.org.uk/
+ 161. mailto:srackham@gmail.com
+ 162. mailto:jlm@ofb.net
+ 163. mailto:m_pupil@yahoo.com.cn
+ 164. http://open.comsultia.com/docbook2odf/
+ 165. http://www1.chapman.edu/~jipsen/mathml/asciimath.html
+ 166. http://www.methods.co.nz/asciidoc/asciimath.html
+ 167. file://localhost/tmp/lynxXXXXrCQLhm/userguide.html#X33
+ 168. mailto:francis@daoine.org
+ 169. file://localhost/tmp/lynxXXXXrCQLhm/userguide.html#X39
+ 170. file://localhost/tmp/lynxXXXXrCQLhm/source-highlight-filter.html
+ 171. mailto:trolocsis@gmail.com
+ 172. mailto:srackham@gmail.com
+ 173. file://localhost/tmp/lynxXXXXrCQLhm/userguide.html#X36
+ 174. file://localhost/tmp/lynxXXXXrCQLhm/userguide.html#X33
+ 175. mailto:viktor@rbg.informatik.tu-darmstadt.de
+ 176. file://localhost/tmp/lynxXXXXrCQLhm/userguide.html#X23
+ 177. mailto:david@dgreaves.com
+ 178. mailto:stone@debian.org
+ 179. mailto:stone@debian.org
+ 180. mailto:srackham@gmail.com
+ 181. http://jimmac.musichall.cz/ikony.php3
+ 182. mailto:srackham@gmail.com
+ 183. http://www.methods.co.nz/asciidoc/
+ 184. https://sourceforge.net/projects/asciidoc/
