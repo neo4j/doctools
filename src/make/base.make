@@ -56,8 +56,8 @@ manpages_dir               = $(build_dir)/manpages
 upgrade_dir                = $(build_dir)/upgrade
 #
 #
-make_parts                 = $(CURDIR)/parts.make
 tmp_po                     = $(build_dir)/tmp.po
+po_keep                    = 0
 
 SHELL = /bin/bash
 

@@ -30,7 +30,6 @@ add:
 		echo "[po4a_paths] $(target)/pot/$(PART).pot fr:$(po)/$(PART).po" >> "$(po_dir)/$(PART).conf";\
 		echo "[po4a_alias: asciidoc] text opt:\"-o asciidoc\"" >> "$(po_dir)/$(PART).conf";\
 		echo "[options] opt: \"-L UTF-8 -M UTF-8 -A UTF-8\"" >> "$(po_dir)/$(PART).conf";\
-		echo -e "\t"'PERLLIB=\u0024(po4a_lib_dir) \u0024(po4a) -f --keep 0 "'"$(po)/$(PART).conf\"" >> "$(make_parts)";\
 	fi
 	echo "[type: asciidoc] $(original) $(language):$(target_document)" >> "$(po_dir)/$(PART).conf"
 	# Document was added (if this line is reached)!

@@ -13,6 +13,6 @@ include $(make_dir)/simple-asciidoc.make
 include $(make_dir)/copyoriginal.make
 include $(make_dir)/copytranslated.make
 include $(make_dir)/add.make
+include $(make_dir)/refresh.make
 
-include $(make_parts)
 
