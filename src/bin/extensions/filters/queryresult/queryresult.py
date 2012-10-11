@@ -108,8 +108,10 @@ html_mode = False
 if len(sys.argv) > 1:
   if sys.argv[1] == "--html":
     html_mode = True
-  if len(sys.argv) > 2:
-    query_title = sys.argv[1]
+  else:
+    # only use the title for docbook outputs as it's already handled by AsciiDoc in the html case.
+    if len(sys.argv) > 2:
+      query_title = sys.argv[2]
 body = []
 info_lines = []
 
