@@ -1,5 +1,5 @@
 asciidoc: 8.6.8
-po4a: svn trunk @2634
+po4a: svn trunk @2634 + git://github.com/dbarbier/po4a.git#asciidoc @ 6ea52a7cfe6522ef056a35f3eccf8b865fd30af7
 asciidoc-blogger-backend: 1.0.0
 
 In AsciDoc, the lang-zh-CN.conf file was added by us.
