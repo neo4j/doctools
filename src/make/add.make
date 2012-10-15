@@ -28,8 +28,7 @@ add:
 	msgcat -o "$(po_dir)/$(PART).po" "$(po_dir)/$(PART).po" "$(tmp_po)"
 	if [ ! -f "$(po_dir)/$(PART).conf" ]; then \
 		echo "[po4a_paths] $(target)/pot/$(PART).pot fr:$(po)/$(PART).po" >> "$(po_dir)/$(PART).conf";\
-		echo "[po4a_alias: asciidoc] text opt:\"-o asciidoc\"" >> "$(po_dir)/$(PART).conf";\
-		echo "[options] opt: \"-L UTF-8 -M UTF-8 -A UTF-8\"" >> "$(po_dir)/$(PART).conf";\
+		echo "[options] opt: \"-L UTF-8 -M UTF-8 -A UTF-8 -o definitions=target/tools/main/resources/conf/translate-styles\"" >> "$(po_dir)/$(PART).conf";\
 	fi
 	echo "[type: asciidoc] $(original) $(language):$(target_document)" >> "$(po_dir)/$(PART).conf"
 	# Document was added (if this line is reached)!
