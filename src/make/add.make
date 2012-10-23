@@ -12,6 +12,8 @@ add:
 	$(eval target_document="$(target)/$(DOCUMENT)")
 	$(eval translated="$(DOCUMENT)")
 	$(eval original="$(target)/$(original)/$(DOCUMENT)")
+	if grep -q $(original) "$(po_dir)/$(PART).conf"; then \
+		echo "Document already added: $(DOCUMENT)"; exit 1; fi
 	$(eval options=-f text -o asciidoc -L UTF-8 -M UTF-8)
 	$(eval year=`date +%Y`)
 	if [ -f "$(translated)" ]; then \
