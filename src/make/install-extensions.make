@@ -1,4 +1,4 @@
-installextensions: initialize
+install-extensions: initialize
 	#
 	#
 	# Installing asciidoc extensions.

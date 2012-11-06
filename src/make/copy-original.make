@@ -1,4 +1,4 @@
-copyoriginal:
+copy-original:
 	#
 	# Copy original.
 	#

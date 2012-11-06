@@ -1,4 +1,4 @@
-copytranslated:
+copy-translated:
 	#
 	# Copy translated documents.
 	#

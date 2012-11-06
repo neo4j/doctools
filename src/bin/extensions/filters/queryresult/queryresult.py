@@ -64,13 +64,13 @@ def table_header(title, headings, info_lines, html_mode):
       buff.append('<title>' + title + '</title>')
     else:
       buff.append('<informaltable tabstyle="queryresult table" frame="all" rowsep="1" colsep="1">')
-      buff.append('<tgroup cols="')
-      buff.append(str(column_count))
-      buff.append('">')
-      for i in range(1, column_count + 1):
-        buff.append('<colspec colname="col')
-        buff.append(str(i))
-        buff.append('"/>')
+    buff.append('<tgroup cols="')
+    buff.append(str(column_count))
+    buff.append('">')
+    for i in range(1, column_count + 1):
+      buff.append('<colspec colname="col')
+      buff.append(str(i))
+      buff.append('"/>')
   if (headings):
     buff.append('<thead>')
     buff.extend(out_entries(headings, 0, html_mode))

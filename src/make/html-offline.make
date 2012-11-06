@@ -1,4 +1,4 @@
-offline-html:  manpages copyimages docbook-html
+html-offline:  manpages copy-images docbook-html
 	#
 	#
 	# Building html output for offline use.
