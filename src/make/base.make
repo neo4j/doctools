@@ -8,7 +8,9 @@ po                         = po
 source_dir                 = $(CURDIR)
 config_dir                 = $(source_dir)/conf
 build_source_dir           = $(build_dir)/$(main_source)
+build_config_dir           = $(build_dir)/conf
 build_image_dir            = $(build_source_dir)/images
+import_dir                 = $(build_dir)/$(imported_source)
 original_dir               = $(build_dir)/$(original)
 tools_config_dir           = $(tools_dir)/main/resources/conf
 tools_css_dir              = $(tools_dir)/main/resources/css
@@ -59,6 +61,9 @@ upgrade_dir                = $(build_dir)/upgrade
 tmp_po                     = $(build_dir)/tmp.po
 po_keep                    = 0
 
+import_dir_attribute       = --attribute importdir="$(import_dir)"
+
+
 SHELL = /bin/bash
 
 ifdef VERBOSE
@@ -75,17 +80,10 @@ else
 	version_number =-neo4j-version
 endif
 
-ifdef IMPORTDIR
-	import_dir_attribute = --attribute importdir="$(IMPORTDIR)"
-else
-	import_dir_attribute = --attribute importdir="$(build_dir)/$(imported_source)"
-	IMPORTDIR = "$(build_dir)/$(imported_source)"
-endif
-
 ifneq (,$(findstring SNAPSHOT,$(version_number)))
 	git_version_number =master
 else
-	git_version_number =$(verbose_flagERSION)
+	git_version_number =$(VERSION)
 endif
 
 ifndef VERSION

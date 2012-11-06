@@ -2,6 +2,7 @@ initialize:
 	#
 	#
 	# Setting correct file permissions and moving source code.
+	# Copy configuration, so we can combine different config sources easily.
 	#
 	#
 	find $(tools_dir) \( -path '*.py' -o -path '*.sh' \) -exec chmod 0755 {} \;
@@ -18,5 +19,9 @@ initialize:
 		rm -rf "$(original_dir)/$(main_source)";\
 		mv "$(original_dir)/$(legacy_main_source)" "$(original_dir)/$(main_source)";\
 	fi
-
+	mkdir -p "$(build_config_dir)"
+	rsync -ru "$(tools_config_dir)/"* "$(build_config_dir)"
+	if [ -d "$(config_dir)/" ]; then \
+		rsync -ru "$(config_dir)/"* "$(build_config_dir)";\
+	fi
 
