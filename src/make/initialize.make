@@ -24,4 +24,8 @@ initialize:
 	mkdir -p "$(build_source_dir)/css"
 	cp -rn "$(tools_js_dir)"/* "$(build_source_dir)/js"
 	cp -rn "$(tools_css_dir)"/* "$(build_source_dir)/css"
+	if [ -d "$(original_dir)/classes/" ]; then \
+		rm -rf "$(original_dir)/$(main_source)";\
+		mv "$(original_dir)/classes" "$(original_dir)/$(main_source)";\
+	fi
 
