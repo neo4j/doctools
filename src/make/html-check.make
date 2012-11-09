@@ -1,4 +1,4 @@
-html-check: offline-html
+html-check:
 	#
 	#
 	# Checking that identifiers exist where they should.

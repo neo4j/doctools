@@ -1,6 +1,6 @@
 About Neo4j Documentation Tools
 ===============================
 
-This is a packaged version of AsciiDoc for use in the Neo4j project.
+This is a packaged version of AsciiDoc, Po4a and build scripts for use in the Neo4j project.
 
 

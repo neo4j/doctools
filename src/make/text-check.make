@@ -1,4 +1,4 @@
-text-check: text
+text-check:
 	#
 	#
 	# Checking that snippets are in place.

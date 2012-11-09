@@ -1,12 +1,10 @@
 # Names
 main_source                = src
-legacy_main_source         = classes
 imported_source            = docs
 original                   = original
 po                         = po
 # Source Directories
 source_dir                 = $(CURDIR)
-config_dir                 = $(source_dir)/conf
 build_source_dir           = $(build_dir)/$(main_source)
 build_config_dir           = $(build_dir)/conf
 build_image_dir            = $(build_source_dir)/images
@@ -20,7 +18,7 @@ script_dir                 = $(tools_dir)/build
 asciidoc_dir               = $(tools_dir)/bin/asciidoc
 po4a_dir                   = $(tools_dir)/bin/po4a
 po4a_lib_dir               = $(po4a_dir)/lib
-po_dir                     = $(CURDIR)/$(po)
+po_dir                     = $(source_dir)/$(po)
 # Commands
 asciidoc                   = $(asciidoc_dir)/asciidoc.py
 a2x                        = $(asciidoc_dir)/a2x.py
@@ -60,11 +58,18 @@ upgrade_dir                = $(build_dir)/upgrade
 #
 tmp_po                     = $(build_dir)/tmp.po
 po_keep                    = 0
+#
+deck_dir                   = $(build_dir)/deck
+deckjs_dir                 = $(extensions_source_dir)/backends/deckjs/deck.js
+
 
 import_dir_attribute       = --attribute importdir="$(import_dir)"
 
-
 SHELL = /bin/bash
+
+ifndef config_dir
+	config_dir = $(source_dir)/conf
+endif
 
 ifdef VERBOSE
 	verbose_flag = -v

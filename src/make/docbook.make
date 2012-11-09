@@ -1,4 +1,4 @@
-docbook:  manpages copy-images
+docbook:
 	#
 	#
 	# Building docbook output with short info.

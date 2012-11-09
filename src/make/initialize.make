@@ -15,13 +15,13 @@ initialize:
 		rm -rf "$(build_dir)/test-sources";\
 		mv "$(original_dir)/test-sources" "$(build_dir)/test-sources";\
 	fi
-	if [ -d "$(original_dir)/$(legacy_main_source)/" ]; then \
-		rm -rf "$(original_dir)/$(main_source)";\
-		mv "$(original_dir)/$(legacy_main_source)" "$(original_dir)/$(main_source)";\
-	fi
 	mkdir -p "$(build_config_dir)"
 	rsync -ru "$(tools_config_dir)/"* "$(build_config_dir)"
 	if [ -d "$(config_dir)/" ]; then \
 		rsync -ru "$(config_dir)/"* "$(build_config_dir)";\
 	fi
+	mkdir -p "$(build_source_dir)/js"
+	mkdir -p "$(build_source_dir)/css"
+	cp -rn "$(tools_js_dir)"/* "$(build_source_dir)/js"
+	cp -rn "$(tools_css_dir)"/* "$(build_source_dir)/css"
 

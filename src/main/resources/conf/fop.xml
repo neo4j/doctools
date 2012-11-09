@@ -24,7 +24,7 @@
   <renderers>
     <renderer mime="application/pdf">
       <fonts>
-         <directory>./src/bin/fonts</directory>
+         <directory>./target/tools/bin/fonts</directory>
       </fonts>
     </renderer>
   </renderers>

@@ -1,4 +1,5 @@
-body.article div#header h1
+body.article div#header h1,
+body.book div#header h1
 {
   color: #ffffff;
 }

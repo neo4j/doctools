@@ -1,4 +1,4 @@
-text: docbook
+text:
 	#
 	#
 	# Building text output.
@@ -6,7 +6,7 @@ text: docbook
 	#
 	mkdir -p "$(text_dir)"
 	cd "$(text_dir)"
-	xsltproc --xinclude --stringparam callout.graphics 0 --stringparam navig.graphics 0 --stringparam admon.textlabel 1 --stringparam admon.graphics 0  --output "$(text_html_file)" "$(CONFDIR)/text.xsl" "$(DOCBOOKFILE)"
+	xsltproc --xinclude --stringparam callout.graphics 0 --stringparam navig.graphics 0 --stringparam admon.textlabel 1 --stringparam admon.graphics 0  --output "$(text_html_file)" "$(build_config_dir)/text.xsl" "$(docbook_file)"
 	sed 's/ //g' <"$(text_html_file)" >"$(text_html_file).filtered"
 	rm -f "$(text_html_file)"
 	mv "$(text_html_file).filtered" "$(text_html_file)"

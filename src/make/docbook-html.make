@@ -1,4 +1,4 @@
-docbook-html:  manpages copy-images
+docbook-html:
 	#
 	#
 	# Building docbook output with short info for html outputs.
