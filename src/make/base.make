@@ -44,6 +44,12 @@ text_html_file             = $(text_file).html
 single_html_dir            = $(build_dir)/html
 single_html_file           = $(single_html_dir)/index.html
 #
+html5_dir            = $(build_dir)/html5
+html5_file           = $(html5_dir)/index.html
+#
+html5_2_dir            = $(build_dir)/html5_2
+html5_2_file           = $(html5_2_dir)/index.html
+#
 annotated_dir              = $(build_dir)/annotated
 annotated_file             = $(annotated_dir)/index.html
 #
