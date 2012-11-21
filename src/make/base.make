@@ -35,6 +35,7 @@ docbook_file_html          = $(build_dir)/$(project_name)-html.xml
 fop_dir                    = $(build_dir)/pdf
 fop_file                   = $(fop_dir)/$(project_name).fo
 fop_pdf                    = $(fop_dir)/$(project_name).pdf
+fop_pom                    = $(tools_dir)/main/fop-pom.xml
 #
 text_max_width             = 80
 text_dir                   = $(build_dir)/text
@@ -44,11 +45,10 @@ text_html_file             = $(text_file).html
 single_html_dir            = $(build_dir)/html
 single_html_file           = $(single_html_dir)/index.html
 #
-html5_dir            = $(build_dir)/html5
-html5_file           = $(html5_dir)/index.html
-#
-html5_2_dir            = $(build_dir)/html5_2
-html5_2_file           = $(html5_2_dir)/index.html
+html5_dir_name             = html5
+html5_dir                  = $(build_dir)/$(html5_dir_name)
+html5_file                 = $(html5_dir)/index.html
+html5_docinfo              = docinfo1
 #
 annotated_dir              = $(build_dir)/annotated
 annotated_file             = $(annotated_dir)/index.html
