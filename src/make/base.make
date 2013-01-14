@@ -31,6 +31,9 @@ source_document            = $(build_source_dir)/$(project_name).asciidoc
 #
 docbook_file               = $(build_dir)/$(project_name)-shortinfo.xml
 docbook_file_html          = $(build_dir)/$(project_name)-html.xml
+docbook_toc                = toc
+docbook_numbered           = numbered
+doctype                    = book
 #
 fop_dir                    = $(build_dir)/pdf
 fop_file                   = $(fop_dir)/$(project_name).fo

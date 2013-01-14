@@ -1,6 +1,6 @@
 include $(make_dir)/base.make
 
-.PHONY: preview preview2 init dist check cleanup initialize install-extensions copy-images simple-asciidoc-html5
+.PHONY: preview preview2 init dist check cleanup initialize install-extensions copy-images simple-asciidoc-html5 docbook
 
 preview: copy-images simple-asciidoc-html5
 
