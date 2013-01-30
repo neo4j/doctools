@@ -47,11 +47,13 @@ text_html_file             = $(text_file).html
 #
 single_html_dir            = $(build_dir)/html
 single_html_file           = $(single_html_dir)/index.html
+single_html_unchecked      = false
 #
 html5_dir_name             = html5
 html5_dir                  = $(build_dir)/$(html5_dir_name)
 html5_file                 = $(html5_dir)/index.html
 html5_docinfo              = docinfo1
+html5_unchecked            = false
 #
 annotated_dir              = $(build_dir)/annotated
 annotated_file             = $(annotated_dir)/index.html
@@ -89,9 +91,13 @@ ifdef KEEP
 endif
 
 ifdef VERSION
-	version_number =$(VERSION)
+	version_number=$(VERSION)
 else
-	version_number =-neo4j-version
+	version_number=-neo4j-version
+endif
+
+ifneq ($(wildcard $(build_source_dir)/version),) 
+	version_number := $(shell cat $(build_source_dir)/version)
 endif
 
 ifneq (,$(findstring SNAPSHOT,$(version_number)))

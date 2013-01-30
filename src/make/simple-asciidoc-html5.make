@@ -21,13 +21,17 @@ simple-asciidoc-html5:
 	fi
 	rsync -ru "$(tools_css_dir)/"* "$(html5_dir)/css"
 	rsync -ru "$(tools_js_dir)/"* "$(html5_dir)/js"
-	"$(asciidoc)" $(asciidoc_flags) --conf-file="$(build_config_dir)/asciidoc.conf"  --conf-file="$(build_config_dir)/asciidoc.local.conf" --backend html5 --doctype book --attribute $(html5_docinfo) --attribute toc --out-file "$(html5_file)" "$(source_document)" || true
+	"$(asciidoc)" $(asciidoc_flags) --conf-file="$(build_config_dir)/asciidoc.conf"  --conf-file="$(build_config_dir)/asciidoc.local.conf" --backend html5 --doctype book --attribute $(html5_docinfo) --attribute toc --out-file "$(html5_file)" "$(source_document)" 2>&1 | "$(script_dir)/outputcheck-includefiles.sh" || $(html5_unchecked)
 	if [ -d "$(build_image_dir)/" ]; then \
 		rsync -ru "$(build_image_dir)/"* "$(html5_dir)/images";\
 	fi
 	rsync -ru "$(tools_css_dir)/"* "$(html5_dir)/css"
 	rsync -ru "$(tools_js_dir)/"* "$(html5_dir)/js"
-	rsync -ru "$(source_dir)/css/"* "$(html5_dir)/css"
-	rsync -ru "$(source_dir)/js/"* "$(html5_dir)/js"
+	if [ -d "$(source_dir)/css/" ]; then \
+		rsync -ru "$(source_dir)/css/"* "$(html5_dir)/css";\
+	fi
+	if [ -d "$(source_dir)/js/" ]; then \
+		rsync -ru "$(source_dir)/js/"* "$(html5_dir)/js";\
+	fi
 
 

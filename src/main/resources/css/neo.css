@@ -566,3 +566,8 @@ iframe.console
   right:-0.3em;
 }
 
+div.openblock + p.cypherconsole + button.cypherconsole
+{
+  margin-top: 1em;
+}
+

@@ -1,6 +1,10 @@
-About Neo4j Documentation Tools
-===============================
+= About Neo4j Documentation Tools =
 
 This is a packaged version of AsciiDoc, Po4a and build scripts for use in the Neo4j project.
 
+AsciiDoc is copyright Stuart Rackham under the General Public License version 2 or later.
+
+Po4a is copyright by SPI, inc. under the General Public License version 2.
+
+The Neo4j Documentation Tools are released under General Public License, version 3.
 

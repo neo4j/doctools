@@ -28,4 +28,5 @@ initialize:
 		rm -rf "$(original_dir)/$(main_source)";\
 		mv "$(original_dir)/classes" "$(original_dir)/$(main_source)";\
 	fi
+	@echo "Building version: $(version_number)"
 
