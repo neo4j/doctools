@@ -47,19 +47,25 @@ function loadOfflineSidebar( $ )
     var pathinfo = window.location.pathname.match( PAGE );
     if ( pathinfo && pathinfo[1] )
     {
-      var url = HTML_URL_BASE + neo4jVersion + "/" + pathinfo[1] + ".html";
-      var html = "<div id='online-link'><p>View <a href='" + url +
-        "'>this page online</a> for dicussion threads and other additional features.</p></div>"
+      if ( window.neo4jVersion != undefined )
+      {
+        var url = HTML_URL_BASE + neo4jVersion + "/" + pathinfo[1] + ".html";
+        var html = "<div id='online-link'><p>View <a href='" + url +
+          "'>this page online</a> for dicussion threads and other additional features.</p></div>"
         sidebar.append( $( html ) );
+      }
     }
   }
 
   function addPdfLink()
   {
-    var url = PDF_URL_BASE + neo4jVersion;
-    var html = "<div id='pdf-link'><p>Get a PDF version of the Neo4j Manual <a href='" + url +
-      "'>here</a>.</p></div>"
-      sidebar.append( $( html ) );
+    if ( window.neo4jVersion != undefined )
+    {
+      var url = PDF_URL_BASE + neo4jVersion;
+      var html = "<div id='pdf-link'><p>Get a PDF version of the Neo4j Manual <a href='" + url +
+        "'>here</a>.</p></div>"
+    sidebar.append( $( html ) );
+    }
   }
 
   function getMainContent()

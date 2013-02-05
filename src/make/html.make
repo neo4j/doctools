@@ -11,4 +11,10 @@ html: manpages copy-images docbook-html
 	cp -fr "$(tools_js_dir)" "$(chunked_html_dir)/js"
 	cp -fr "$(tools_css_dir)/"* "$(chunked_html_dir)/css"
 	cp -fr "$(build_image_dir)/"*.png "$(chunked_html_dir)/images"
+	if [ -d "$(build_source_dir)/css/" ]; then \
+		cp -fr "$(build_source_dir)/css/"* "$(chunked_html_dir)/css";\
+	fi
+	if [ -d "$(build_source_dir)/js/" ]; then \
+		cp -fr "$(build_source_dir)/js/"* "$(chunked_html_dir)/js";\
+	fi
 
