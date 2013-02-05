@@ -16,9 +16,9 @@ initialize:
 		mv "$(original_dir)/test-sources" "$(build_dir)/test-sources";\
 	fi
 	mkdir -p "$(build_config_dir)"
-	rsync -ru "$(tools_config_dir)/"* "$(build_config_dir)"
+	rsync -r "$(tools_config_dir)/"* "$(build_config_dir)"
 	if [ -d "$(config_dir)/" ]; then \
-		rsync -ru "$(config_dir)/"* "$(build_config_dir)";\
+		rsync -r "$(config_dir)/"* "$(build_config_dir)";\
 	fi
 	mkdir -p "$(build_source_dir)/js"
 	mkdir -p "$(build_source_dir)/css"
