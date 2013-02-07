@@ -96,7 +96,7 @@ def table_header(title, headings, info_lines, html_mode):
 data = sys.stdin.readlines()
 data.pop(0)
 line = data.pop(0)
-if line.startswith('| No data returned.'):
+if line.startswith('| No data returned.') or line.startswith('| No data returned, and nothing was changed. |' ):
   first_line = False
   column_count = 1
 else:
