@@ -72,6 +72,8 @@ po_keep                    = 0
 #
 deck_dir                   = $(build_dir)/deck
 deckjs_dir                 = $(extensions_source_dir)/backends/deckjs/deck.js
+#
+manpage_list = "neo4j server" "neo4j-coordinator server" "neo4j-coordinator-shell server" "neo4j-shell shell" "neo4j-backup backup"
 
 
 import_dir_attribute       = --attribute importdir="$(import_dir)"
