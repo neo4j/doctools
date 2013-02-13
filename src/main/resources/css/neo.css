@@ -9,10 +9,7 @@ span.remark {
 td p {
   margin: 0.125em 0;
 }
-#disqus_thread {
-  max-width: 46em;
-  margin-top: 2em;
-}
+
 body #toolbar_item command_help {
   /* display: none !important; */
 }
@@ -569,5 +566,38 @@ iframe.console
 div.openblock + p.cypherconsole + button.cypherconsole
 {
   margin-top: 1em;
+}
+
+#neo-disqus-wrapper {
+  max-width: 46em;
+  margin-top: 2em;
+}
+#neo-disqus-intro {
+  max-width: 100%;
+  width: 100%;
+}
+#neo-disqus-intro h4 {
+  color: #203e51;
+  background: #b9d7eb;
+  width: 100%;
+  padding: 4px;
+  margin-bottom: 0.5em;
+  font-family: Candara, Myriad Pro, Myriad, "Lucida Sans","Trebuchet MS",sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  line-height: 1.7;
+}
+#neo-disqus-intro p, #neo-disqus-intro li {
+  font-family: Candara, Myriad Pro, Myriad, "Lucida Sans","Trebuchet MS",sans-serif;
+  font-size: 0.875em;
+  margin-left: 1.5em;
+}
+#neo-disqus-intro li em {
+  font-style: normal;
+  font-weight: bold;
+}
+#disqus_thread {
+  margin-top: 1em;
+  max-width: 100%;
 }
 

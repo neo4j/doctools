@@ -16,14 +16,14 @@ initialize:
 		mv "$(original_dir)/test-sources" "$(build_dir)/test-sources";\
 	fi
 	mkdir -p "$(build_config_dir)"
-	cp -fr "$(tools_config_dir)/"* "$(build_config_dir)"
+	cp -f "$(tools_config_dir)/"* "$(build_config_dir)"
 	if [ -d "$(config_dir)/" ]; then \
-		cp -fr "$(config_dir)/"* "$(build_config_dir)";\
+		cp -f "$(config_dir)/"* "$(build_config_dir)";\
 	fi
 	mkdir -p "$(build_source_dir)/js"
 	mkdir -p "$(build_source_dir)/css"
-	cp -r "$(tools_js_dir)"/* "$(build_source_dir)/js"
-	cp -r "$(tools_css_dir)"/* "$(build_source_dir)/css"
+	cp -Rn "$(tools_js_dir)" "$(build_source_dir)"
+	cp -Rn "$(tools_css_dir)" "$(build_source_dir)"
 	if [ -d "$(original_dir)/classes/" ]; then \
 		rm -rf "$(original_dir)/$(main_source)";\
 		mv "$(original_dir)/classes" "$(original_dir)/$(main_source)";\
