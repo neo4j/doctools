@@ -20,8 +20,16 @@ initialize:
 	if [ -d "$(config_dir)/" ]; then \
 		cp -f "$(config_dir)/"* "$(build_config_dir)";\
 	fi
-	mkdir -p "$(build_source_dir)/js"
-	mkdir -p "$(build_source_dir)/css"
+	if [ -d "$(source_dir)/js" ]; then \
+		cp -fr "$(source_dir)/js" "$(build_source_dir)/js";\
+	else \
+		mkdir -p "$(build_source_dir)/js";\
+	fi
+	if [ -d "$(source_dir)/css" ]; then \
+		cp -fr "$(source_dir)/css" "$(build_source_dir)/css";\
+	else \
+		mkdir -p "$(build_source_dir)/css";\
+	fi
 	cp -Rn "$(tools_js_dir)" "$(build_source_dir)"
 	cp -Rn "$(tools_css_dir)" "$(build_source_dir)"
 	if [ -d "$(original_dir)/classes/" ]; then \
