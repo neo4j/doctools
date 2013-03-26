@@ -4,12 +4,12 @@
   <parent>
     <groupId>org.neo4j.build</groupId>
     <artifactId>parent-central</artifactId>
-    <version>37</version>
+    <version>39</version>
     <relativePath />
   </parent>
   <groupId>org.neo4j.build.plugins</groupId>
   <artifactId>neo4j-doctools</artifactId>
-  <version>9-SNAPSHOT</version>
+  <version>9</version>
   <name>Neo4j - Documentation Tools</name>
   <description>Neo4j Documentation Tools.</description>
   <url>http://components.neo4j.org/${project.artifactId}/${project.version}</url>
