@@ -21,17 +21,17 @@ initialize:
 		cp -f "$(config_dir)/"* "$(build_config_dir)";\
 	fi
 	if [ -d "$(source_dir)/js" ]; then \
-		cp -Rn "$(source_dir)/js/"* "$(build_source_dir)/js";\
+		cp -Rn "$(source_dir)/js/"* "$(build_source_dir)/js" || true;\
 	else \
 		mkdir -p "$(build_source_dir)/js";\
 	fi
 	if [ -d "$(source_dir)/css" ]; then \
-		cp -Rn "$(source_dir)/css/"* "$(build_source_dir)/css";\
+		cp -Rn "$(source_dir)/css/"* "$(build_source_dir)/css" || true;\
 	else \
 		mkdir -p "$(build_source_dir)/css";\
 	fi
-	cp -Rn "$(tools_js_dir)" "$(build_source_dir)"
-	cp -Rn "$(tools_css_dir)" "$(build_source_dir)"
+	cp -Rn "$(tools_js_dir)" "$(build_source_dir)" || true
+	cp -Rn "$(tools_css_dir)" "$(build_source_dir)" || true
 	if [ -d "$(original_dir)/classes/" ]; then \
 		rm -rf "$(original_dir)/$(main_source)";\
 		mv "$(original_dir)/classes" "$(original_dir)/$(main_source)";\
