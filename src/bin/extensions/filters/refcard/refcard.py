@@ -3,6 +3,21 @@
 
 import sys
 
+def styled(block):
+  result = ""
+  opening = True
+  for w in block:
+    for c in w:
+      if c != u'`':
+        result += c
+      else:
+        if opening:
+          result += "<code>"
+        else:
+          result += "</code>"
+        opening = not opening
+  return result
+
 title = ''
 html_mode = False
 if len(sys.argv) > 1:
@@ -45,7 +60,7 @@ if html_mode:
         body.append('</td></tr>')
     else:
       body.append('<p>')
-      body.extend(block)
+      body.extend(styled(block))
       body.append('</p></td></tr>')      
   body.append('</tbody></table>')
 else:
