@@ -35,4 +35,5 @@ initialize:
 		mv "$(original_dir)/classes" "$(original_dir)/$(main_source)";\
 	fi
 	@echo "Building version: $(version_number)"
+	@echo "Git version: $(git_version_number)"
 

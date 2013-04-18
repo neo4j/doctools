@@ -105,11 +105,7 @@ endif
 ifneq (,$(findstring SNAPSHOT,$(version_number)))
 	git_version_number =master
 else
-	git_version_number =$(VERSION)
-endif
-
-ifndef VERSION
-	git_version_number =master
+	git_version_number =$(version_number)
 endif
 
 version_attribute =  --attribute neo4j-version=$(version_number)
