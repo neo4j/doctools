@@ -116,8 +116,9 @@ body = []
 info_lines = []
 
 body.append('<tbody>')
-if first_line == False or data[0][0] == '+':
-  if data[0][0] == '+':
+data_plus = len(data) > 0 and data[0][0] == '+'
+if first_line == False or data_plus:
+  if data_plus:
     data.pop(0)
 
   if html_mode:
