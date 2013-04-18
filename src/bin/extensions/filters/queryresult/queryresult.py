@@ -75,21 +75,22 @@ def table_header(title, headings, info_lines, html_mode):
     buff.append('<thead>')
     buff.extend(out_entries(headings, 0, html_mode))
     buff.append('</thead>')
-  buff.append('<tfoot>')
-  for line in info_lines:
-    if html_mode:
-      buff.append('<tr><th align="left" valign="top" colspan="')
-      buff.append(str(column_count))
-      buff.append('">')
-      buff.append(line)
-      buff.append('</th></tr>')
-    else:
-      buff.append('<row><entry align="left" valign="top" namest="col1" nameend="col')
-      buff.append(str(column_count))
-      buff.append('">')
-      buff.append(line)
-      buff.append('</entry></row>')
-  buff.append('</tfoot>')
+  if (len(info_lines) > 0):
+    buff.append('<tfoot>')
+    for line in info_lines:
+      if html_mode:
+        buff.append('<tr><th align="left" valign="top" colspan="')
+        buff.append(str(column_count))
+        buff.append('">')
+        buff.append(line)
+        buff.append('</th></tr>')
+      else:
+        buff.append('<row><entry align="left" valign="top" namest="col1" nameend="col')
+        buff.append(str(column_count))
+        buff.append('">')
+        buff.append(line)
+        buff.append('</entry></row>')
+    buff.append('</tfoot>')
   return buff
 
 
