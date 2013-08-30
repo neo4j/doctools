@@ -28,7 +28,7 @@ for line in data:
     else:
       db.append(line)
 if len(db) == 0:
-  sys.exit("A database has to be defined.")
+  db.append("none")
 if len(query) == 0:
   sys.exit("A query has to be defined.")
 body = []

@@ -30,9 +30,14 @@ jQuery( document ).ready(  function()
 function createCypherConsoles( $ )
 {
   var currentButton;
-  var URL_BASE = "http://console.neo4j.org/";
+  var URL_BASE = "http://console-test.neo4j.org/";
   var REQUEST_BASE = URL_BASE + "?";
-  var RESOURCE_FILES = ["javascripts/jquery-1.6.4.min.js", "javascripts/d3.min.js", "javascripts/visualization.js", "javascripts/console.js", "img/twitter.jpg", "img/info.png", "img/Link-icon.png", "img/graph.png"];
+  
+  $('pre.cypher').wrap('<div class="query-outer-wrapper"><div class="query-wrapper" /></div>').each( function()
+  {
+    var pre = $(this);
+    pre.parent().data('query', pre.text());
+  });
 
   $('p.cypherconsole').each( function()
   {
@@ -57,24 +62,36 @@ function createCypherConsoles( $ )
     button.insertAfter( this );
     link.insertAfter( button );
   });
-  
-  $( RESOURCE_FILES ).each( function()
+
+  $('p.cypherdoc-console').first().each( function()
   {
-    var target = URL_BASE + this;
-    // need header on server setup first
-    // $.get( target );
+    $(this).css('display', 'block');
+    CypherConsole( {
+      'consoleClass' : 'cypherdoc-console',
+      'contentMoveSelector' : 'html'
+    });
   });
   
-  function getUrl( database, command )
+  function getUrl( database, command, message )
   {
     var url = REQUEST_BASE;
-    url += "init=" + encodeURIComponent( database );
-    url += "&query=" + encodeURIComponent( command );
+    if ( database !== undefined )
+    {
+      url += "init=" + encodeURIComponent( database );
+    }
+    if ( command !== undefined )
+    {
+      url += "&query=" + encodeURIComponent( command );
+    }
+    if ( message !== undefined )
+    {
+      url += "&message=" + encodeURIComponent( message );
+    }
     if ( window.neo4jVersion != undefined )
     {
       url += "&version=" + encodeURIComponent( neo4jVersion );
     }
-    return url;
+    return url + "&no_root=true";
   }
   
   function handleCypherClick( button, link, url, title )
@@ -95,4 +112,3 @@ function createCypherConsoles( $ )
     currentButton = button;
   } 
 }
-
