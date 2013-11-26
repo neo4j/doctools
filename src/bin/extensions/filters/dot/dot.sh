@@ -37,7 +37,7 @@ graphsettings="graph [size=\"7.0,9.0\" fontpath=\"${fontpath}\"]"
 nodestyle=filled,rounded
 #nodeheight=0.37
 nodesep=0.4
-textnode=shape=plaintext,style=diagonals,height=0.2,margin=0.0,0.0
+textnode=shape=plaintext,style=diagonals,height=0.2,margin=0.0
 
 arrowhead=vee
 arrowsize=0.75
