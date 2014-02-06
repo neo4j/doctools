@@ -11,6 +11,10 @@ if not sys.argv[1].startswith('1'):
     if e.errno != 32:
       raise
 
+if sys.argv[2] == '--empty':
+  sys.stdout.write('')
+  sys.exit()
+
 title = ''
 html_mode = sys.argv[2] == '--html'
 if len(sys.argv) > 2:

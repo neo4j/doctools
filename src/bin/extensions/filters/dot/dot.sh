@@ -68,7 +68,7 @@ prepend="digraph g{ $graphsettings\
   fontname=\"$graphfont\" \
   $graphattrs"
 
-echo "${prepend} ${indata} }" | dot -Tpng -o"$pngfile"
+#echo "${prepend} ${indata} }" | dot -Tpng -o"$pngfile"
 echo "${prepend} ${indata} }" | dot -Tsvg -o"$svgfile"
 #echo "${prepend} ${indata} }" > "${svgfile}.dot"
 

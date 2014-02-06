@@ -60,10 +60,10 @@ def table_header(title, headings, info_lines, html_mode):
       buff.append('<caption>' + title + '</caption>')
   else:
     if title:
-      buff.append('<table tabstyle="queryresult table" role="NotInToc" frame="all" rowsep="1" colsep="1">')
+      buff.append('<table tabstyle="queryresult table" role="NotInToc" frame="none" rowsep="1" colsep="1">')
       buff.append('<title>' + title + '</title>')
     else:
-      buff.append('<informaltable tabstyle="queryresult table" frame="all" rowsep="1" colsep="1">')
+      buff.append('<informaltable tabstyle="queryresult table" frame="none" rowsep="1" colsep="1">')
     buff.append('<tgroup cols="')
     buff.append(str(column_count))
     buff.append('">')
