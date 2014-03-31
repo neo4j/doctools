@@ -3,7 +3,6 @@ docbook-html:
 	#
 	# Building docbook output with short info for html outputs.
 	# Checking for missing include files.
-	# Checking DocBook validity.
 	#
 	#
 	mkdir -p "$(build_dir)"

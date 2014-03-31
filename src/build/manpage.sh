@@ -6,7 +6,7 @@ mandir=$1
 shift
 importdir=$1
 shift
-a2x=$1
+asciidoc=$1
 shift
 scriptdir=$1
 shift
@@ -17,15 +17,10 @@ do
   page=$1
   component=$2
   echo "-----------------------------------------------------------------------------"
-  echo "Creating manpage '$page' from component '$component'."
+  echo "Creating manpage '$page' from component '$component' at $mandir/${page}.1.xml"
 
-  "$a2x" -k $verbose -f manpage -d  manpage -D "$mandir" "$importdir/neo4j-${component}-docs-jar/man/${page}.1.asciidoc"
-  gzip -qf "$mandir/${page}.1"
-  "$a2x" -k $verbose -f text -d  manpage -D "$mandir" "$mandir/${page}.1.xml"
-
-  cp -f "$scriptdir/bom" "$mandir/${page}.txt"
-  cat "$mandir/${page}.1.text" >> "$mandir/${page}.txt"
-  rm "$mandir/${page}.1.text"
+  "$asciidoc" $verbose -b docbook45 -d  manpage -o "$mandir/${page}.1.xml" "$importdir/neo4j-${component}-docs-jar/man/${page}.1.asciidoc"
+  #gzip -qf "$mandir/${page}.1"
 done
 
 echo "-----------------------------------------------------------------------------"
