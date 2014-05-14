@@ -4,6 +4,9 @@ pdf: docbook copy-images
 	# Building PDF.
 	#
 	#
+	sed 's_url="javadocs_url="http://docs.neo4j.org/chunked/$(version_number)/javadocs_g' <"$(docbook_file)" >"$(docbook_file).filtered"
+	rm -f "$(docbook_file)"
+	mv "$(docbook_file).filtered" "$(docbook_file)"
 	mkdir -p "$(fop_dir)"
 	cd "$(fop_dir)"
 	xsltproc --xinclude --output "$(fop_file)" "$(build_config_dir)/fo.xsl" "$(docbook_file)"
