@@ -101,6 +101,7 @@ the relevant Commercial Agreement.
             <exclude>src/bin/po4a/**</exclude>
             <exclude>src/bin/extensions/backends/**</exclude>
             <exclude>src/main/resources/js/**</exclude>
+            <exclude>src/main/resources/common/**</exclude>
           </excludes>
         </configuration>
       </plugin>

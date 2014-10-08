@@ -14,7 +14,6 @@ docbook:
 	#
 	#
 	# Building docbook output with short info.
-	# Checking DocBook validity.
 	#
 	#
 	mkdir -p "$(build_dir)"

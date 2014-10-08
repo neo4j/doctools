@@ -31,4 +31,5 @@ include $(make_dir)/upgrade.make
 include $(make_dir)/html-check.make
 include $(make_dir)/text-check.make
 include $(make_dir)/year-check.make
+include $(make_dir)/lint.make
 

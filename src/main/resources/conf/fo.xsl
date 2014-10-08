@@ -12,24 +12,29 @@
 -->
 <xsl:stylesheet version="1.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:fo="http://www.w3.org/1999/XSL/Format">
-<xsl:import href="http://docbook.sourceforge.net/release/xsl/current/fo/docbook.xsl"/>
+                xmlns:fo="http://www.w3.org/1999/XSL/Format"
+                xmlns:d="http://docbook.org/ns/docbook">
+
+<xsl:import href="urn:docbkx:stylesheet"/>
+
 <xsl:import href="common.xsl"/>
+
 <xsl:param name="qanda.defaultlabel">qanda</xsl:param>
 
 <xsl:param name="fop1.extensions" select="1" />
-<xsl:param name="variablelist.as.blocks" select="1" />
 
 <xsl:param name="paper.type" select="'A4'"/>
-<!--
-<xsl:param name="paper.type" select="'USletter'"/>
--->
+
 <xsl:param name="hyphenate">false</xsl:param>
+
 <!-- justify, left or right -->
 <xsl:param name="alignment">left</xsl:param>
 
-<xsl:param name="body.font.family" select="'FreeSerif'"/> <!-- neo -->
-<xsl:param name="body.font.master">12</xsl:param>
+<xsl:param name="body.font.family" select="'FreeSans'"/>
+<xsl:param name="title.font.family" select="'Ubuntu'"/>
+<xsl:param name="monospace.font.family" select="'Inconsolata'"/>
+
+<xsl:param name="body.font.master">11</xsl:param>
 <xsl:param name="body.font.size">
  <xsl:value-of select="$body.font.master"/><xsl:text>pt</xsl:text>
 </xsl:param>
@@ -37,9 +42,6 @@
 <xsl:param name="body.margin.bottom" select="'0.5in'"/>
 <xsl:param name="body.margin.top" select="'0.5in'"/>
 <xsl:param name="bridgehead.in.toc" select="0"/>
-
-<!-- overide setting in common.xsl -->
-<xsl:param name="table.frame.border.thickness" select="'2px'"/>
 
 <!-- Default fetches image from Internet (long timeouts) -->
 <xsl:param name="draft.watermark.image" select="''"/>
@@ -62,6 +64,10 @@
 </xsl:template>
 
 <!-- Sets title to body text indent -->
+
+<xsl:param name="body.start.indent">0pt</xsl:param>
+<xsl:param name="title.margin.left">0pt</xsl:param>
+<!--
 <xsl:param name="body.start.indent">
   <xsl:choose>
     <xsl:when test="$fop.extensions != 0">0pt</xsl:when>
@@ -76,6 +82,7 @@
     <xsl:otherwise>0pt</xsl:otherwise>
   </xsl:choose>
 </xsl:param>
+ -->
 <xsl:param name="page.margin.bottom" select="'0.25in'"/>
 <xsl:param name="page.margin.inner">
   <xsl:choose>
@@ -108,7 +115,7 @@
 </xsl:attribute-set>
 
 <xsl:attribute-set name="admonition.title.properties">
-  <xsl:attribute name="font-size">14pt</xsl:attribute>
+  <xsl:attribute name="font-size">11pt</xsl:attribute>
   <xsl:attribute name="font-weight">bold</xsl:attribute>
   <xsl:attribute name="hyphenate">false</xsl:attribute>
   <xsl:attribute name="keep-with-next.within-column">always</xsl:attribute>
@@ -116,7 +123,7 @@
 
 <xsl:attribute-set name="sidebar.properties" use-attribute-sets="formal.object.properties">
   <xsl:attribute name="border-style">solid</xsl:attribute>
-  <xsl:attribute name="border-width">1pt</xsl:attribute>
+  <xsl:attribute name="border-width">0.66pt</xsl:attribute>
   <xsl:attribute name="border-color">silver</xsl:attribute>
   <xsl:attribute name="background-color">#ffffee</xsl:attribute>
   <xsl:attribute name="padding-left">12pt</xsl:attribute>
@@ -129,44 +136,151 @@
   <xsl:attribute name="margin-bottom">6pt</xsl:attribute>
 </xsl:attribute-set>
 
-<!-- Only shade programlisting and screen verbatim elements -->
-<xsl:param name="shade.verbatim" select="1"/>
-<xsl:attribute-set name="shade.verbatim.style">
-  <xsl:attribute name="background-color">
-    <xsl:choose>
-      <xsl:when test="self::programlisting|self::screen">#E0E0E0</xsl:when>
-      <xsl:otherwise>inherit</xsl:otherwise>
-    </xsl:choose>
-  </xsl:attribute>
-</xsl:attribute-set>
-
-<!--
-  Force XSL Stylesheets 1.72 default table breaks to be the same as the current
-  version (1.74) default which (for tables) is keep-together="auto".
--->
 <xsl:attribute-set name="table.properties">
   <xsl:attribute name="keep-together.within-column">auto</xsl:attribute>
 </xsl:attribute-set>
 
-<!-- Neo4j customizations -->
+<xsl:param name="table.frame.border.thickness" select="'0px'"/>
+<xsl:param name="table.cell.border.color">#666666</xsl:param>
+<xsl:param name="table.cell.border.thickness">0.66pt</xsl:param>
+
+<xsl:template name="table.cell.properties">
+  <xsl:param name="bgcolor.pi" select="''"/>
+  <xsl:param name="rowsep.inherit" select="1"/>
+  <xsl:param name="colsep.inherit" select="1"/>
+  <xsl:param name="col" select="1"/>
+  <xsl:param name="valign.inherit" select="''"/>
+  <xsl:param name="align.inherit" select="''"/>
+  <xsl:param name="char.inherit" select="''"/>
+
+  <xsl:choose>
+    <xsl:when test="ancestor::d:tfoot">
+      <xsl:attribute name="border-bottom">0 none</xsl:attribute>
+    </xsl:when>
+
+    <xsl:when test="ancestor::d:tgroup">
+      <xsl:if test="$bgcolor.pi != ''">
+        <xsl:attribute name="background-color">
+          <xsl:value-of select="$bgcolor.pi"/>
+        </xsl:attribute>
+      </xsl:if>
+
+      <xsl:if test="$rowsep.inherit &gt; 0">
+        <xsl:call-template name="border">
+          <xsl:with-param name="side" select="'bottom'"/>
+        </xsl:call-template>
+      </xsl:if>
+
+      <xsl:if test="$colsep.inherit &gt; 0 and 
+                      $col &lt; (ancestor::d:tgroup/@cols|ancestor::d:entrytbl/@cols)[last()]">
+        <xsl:call-template name="border">
+          <xsl:with-param name="side" select="'end'"/>
+        </xsl:call-template>
+      </xsl:if>
+
+      <xsl:if test="$valign.inherit != ''">
+        <xsl:attribute name="display-align">
+          <xsl:choose>
+            <xsl:when test="$valign.inherit='top'">before</xsl:when>
+            <xsl:when test="$valign.inherit='middle'">center</xsl:when>
+            <xsl:when test="$valign.inherit='bottom'">after</xsl:when>
+            <xsl:otherwise>
+              <xsl:message>
+                <xsl:text>Unexpected valign value: </xsl:text>
+                <xsl:value-of select="$valign.inherit"/>
+                <xsl:text>, center used.</xsl:text>
+              </xsl:message>
+              <xsl:text>center</xsl:text>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:attribute>
+      </xsl:if>
+
+      <xsl:choose>
+        <xsl:when test="$align.inherit = 'char' and $char.inherit != ''">
+          <xsl:attribute name="text-align">
+            <xsl:value-of select="$char.inherit"/>
+          </xsl:attribute>
+        </xsl:when>
+        <xsl:when test="$align.inherit != ''">
+          <xsl:attribute name="text-align">
+            <xsl:value-of select="$align.inherit"/>
+          </xsl:attribute>
+        </xsl:when>
+      </xsl:choose>
+
+    </xsl:when>
+    <xsl:otherwise>
+      <!-- HTML table -->
+      <xsl:if test="$bgcolor.pi != ''">
+        <xsl:attribute name="background-color">
+          <xsl:value-of select="$bgcolor.pi"/>
+        </xsl:attribute>
+      </xsl:if>
+
+      <xsl:if test="$align.inherit != ''">
+        <xsl:attribute name="text-align">
+          <xsl:value-of select="$align.inherit"/>
+        </xsl:attribute>
+      </xsl:if>
+
+      <xsl:if test="$valign.inherit != ''">
+        <xsl:attribute name="display-align">
+          <xsl:choose>
+            <xsl:when test="$valign.inherit='top'">before</xsl:when>
+            <xsl:when test="$valign.inherit='middle'">center</xsl:when>
+            <xsl:when test="$valign.inherit='bottom'">after</xsl:when>
+            <xsl:otherwise>
+              <xsl:message>
+                <xsl:text>Unexpected valign value: </xsl:text>
+                <xsl:value-of select="$valign.inherit"/>
+                <xsl:text>, center used.</xsl:text>
+              </xsl:message>
+              <xsl:text>center</xsl:text>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:attribute>
+      </xsl:if>
+
+      <xsl:call-template name="html.table.cell.rules"/>
+
+    </xsl:otherwise>
+  </xsl:choose>
+
+</xsl:template>
+
+<xsl:template name="table.cell.block.properties">
+  <xsl:choose>
+    <xsl:when test="ancestor::d:thead">
+      <xsl:attribute name="font-size">10pt</xsl:attribute>
+      <xsl:attribute name="font-weight">bold</xsl:attribute>
+    </xsl:when>
+    <xsl:when test="ancestor::d:tfoot">
+      <xsl:attribute name="font-size">8pt</xsl:attribute>
+      <xsl:attribute name="font-weight">normal</xsl:attribute>
+      <xsl:attribute name="line-height">80%</xsl:attribute>
+      <xsl:attribute name="margin-left">20pt</xsl:attribute>
+    </xsl:when>
+    <!-- Make row headers bold too -->
+    <xsl:when test="ancestor::d:tbody and 
+                    (ancestor::d:table[@rowheader = 'firstcol'] or
+                    ancestor::d:informaltable[@rowheader = 'firstcol']) and
+                    ancestor-or-self::d:entry[1][count(preceding-sibling::d:entry) = 0]">
+      <xsl:attribute name="font-size">12pt</xsl:attribute>
+      <xsl:attribute name="font-weight">bold</xsl:attribute>
+    </xsl:when>
+  </xsl:choose>
+</xsl:template>
 
 <xsl:param name="admon.graphics" select="1"></xsl:param>
 <xsl:param name="admon.textlabel" select="1"></xsl:param>
 <xsl:param name="admon.graphics.extension">.svg</xsl:param>
-<xsl:param name="admon.graphics.path">images/icons/admon/</xsl:param>
-
-<xsl:param name="toc.section.depth" select="1"></xsl:param>
-<xsl:param name="toc.max.depth" select="2"></xsl:param>
+<xsl:param name="admon.graphics.path">target/tools/main/resources/images/icons/admon/</xsl:param>
 
 <xsl:param name="callout.graphics" select="1"></xsl:param>
 <xsl:param name="callout.graphics.extension">.svg</xsl:param>
 
 <xsl:param name="navig.graphics" select="0"></xsl:param>
-
-<xsl:param name="generate.section.toc.level" select="0"></xsl:param>
-
-<xsl:param name="title.font.family" select="'FreeSans'"/>
-<xsl:param name="monospace.font.family" select="'Inconsolata'"/>
 
 <!-- turned off due to https://issues.apache.org/bugzilla/show_bug.cgi?id=37579 -->
 <xsl:param name="ulink.footnotes" select="0"></xsl:param>
@@ -210,19 +324,6 @@
 <xsl:param name="variablelist.as.blocks" select="0"></xsl:param>
 
 <xsl:param name="header.column.widths">1 10 1</xsl:param>
-
-<xsl:attribute-set name="formal.title.properties" use-attribute-sets="normal.para.spacing">
-  <xsl:attribute name="font-size">12pt</xsl:attribute>
-  <xsl:attribute name="font-weight">normal</xsl:attribute>
-  <xsl:attribute name="font-style">italic</xsl:attribute>
-  <xsl:attribute name="hyphenate">false</xsl:attribute>
-  <xsl:attribute name="space-before.minimum">0.8em</xsl:attribute>
-  <xsl:attribute name="space-before.optimum">1.0em</xsl:attribute>
-  <xsl:attribute name="space-before.maximum">1.2em</xsl:attribute>
-  <xsl:attribute name="space-after.minimum">0.10em</xsl:attribute>
-  <xsl:attribute name="space-after.optimum">0.15em</xsl:attribute>
-  <xsl:attribute name="space-after.maximum">0.20em</xsl:attribute>
-</xsl:attribute-set>
 
 <xsl:attribute-set name="formal.object.properties">
   <xsl:attribute name="space-before.minimum">0em</xsl:attribute>
@@ -275,7 +376,7 @@
   <xsl:attribute name="space-after.maximum">1.0em</xsl:attribute>
 </xsl:attribute-set>
 
-<xsl:template match="row/entry/simpara/literal">
+<xsl:template match="d:row/d:entry/d:simpara/d:literal">
   <fo:inline hyphenate="true" xsl:use-attribute-sets="monospace.properties">
     <xsl:call-template name="intersperse-with-zero-spaces">
       <xsl:with-param name="str" select="text()"/>
@@ -283,21 +384,57 @@
   </fo:inline>
 </xsl:template>
 
+<xsl:attribute-set name="formal.title.properties" use-attribute-sets="normal.para.spacing">
+  <xsl:attribute name="font-size">12pt</xsl:attribute>
+  <xsl:attribute name="font-weight">normal</xsl:attribute>
+  <xsl:attribute name="font-style">italic</xsl:attribute>
+  <xsl:attribute name="hyphenate">false</xsl:attribute>
+  <xsl:attribute name="space-before.minimum">0.8em</xsl:attribute>
+  <xsl:attribute name="space-before.optimum">1.0em</xsl:attribute>
+  <xsl:attribute name="space-before.maximum">1.2em</xsl:attribute>
+  <xsl:attribute name="space-after.minimum">0.10em</xsl:attribute>
+  <xsl:attribute name="space-after.optimum">0.15em</xsl:attribute>
+  <xsl:attribute name="space-after.maximum">0.20em</xsl:attribute>
+</xsl:attribute-set>
+
+<xsl:template match="d:formalpara/d:title|d:formalpara/d:info/d:title">
+  <xsl:variable name="titleStr">
+      <xsl:apply-templates/>
+  </xsl:variable>
+  <xsl:variable name="lastChar">
+    <xsl:if test="$titleStr != ''">
+      <xsl:value-of select="substring($titleStr,string-length($titleStr),1)"/>
+    </xsl:if>
+  </xsl:variable>
+
+  <fo:inline font-weight="normal"
+             font-style="italic"
+             keep-with-next.within-line="always"
+             padding-end="1em">
+    <xsl:copy-of select="$titleStr"/>
+    <xsl:if test="$lastChar != ''
+                  and not(contains($runinhead.title.end.punct, $lastChar))">
+      <xsl:value-of select="$runinhead.default.title.end.punct"/>
+    </xsl:if>
+    <xsl:text>&#160;</xsl:text>
+  </fo:inline>
+</xsl:template>
+
 <xsl:attribute-set name="monospace.verbatim.properties" use-attribute-sets="verbatim.properties">
   <xsl:attribute name="font-size">8pt</xsl:attribute>
   <xsl:attribute name="line-height">11pt</xsl:attribute>
   <xsl:attribute name="background-color">#F0F0F0</xsl:attribute>
+  <xsl:attribute name="border">0.66pt solid #777777</xsl:attribute>
+  <xsl:attribute name="padding">2pt</xsl:attribute>
 </xsl:attribute-set>
 
 <!-- color for links -->
 <xsl:attribute-set name="xref.properties">
-  <xsl:attribute name="color">
-    <xsl:choose>
-      <xsl:when test="self::ulink">blue</xsl:when>
-      <xsl:otherwise>inherit</xsl:otherwise>
-    </xsl:choose>
-  </xsl:attribute>
+  <xsl:attribute name="color">blue</xsl:attribute>
 </xsl:attribute-set>
+
+<!-- generate page numbers for xrefs -->
+<xsl:param name="insert.xref.page.number">yes</xsl:param>
 
 <!-- Actual space intercalation: recursive -->
 <xsl:template name="intersperse-with-zero-spaces">
@@ -399,9 +536,6 @@
 <xsl:attribute-set name="figure.properties">
   <xsl:attribute name="text-align">center</xsl:attribute>
 </xsl:attribute-set>
-
-<xsl:template match="formalpara[@role = 'cypherconsole']" />
-<xsl:template match="simpara[@role = 'cypherconsole']" />
 
 </xsl:stylesheet>
 

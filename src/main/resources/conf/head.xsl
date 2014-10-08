@@ -1,86 +1,62 @@
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0" exclude-result-prefixes="d">
 
-  <xsl:import href="breadcrumbs.xsl"/>
-  
-<xsl:template name="user.head.content">
-  <xsl:text disable-output-escaping="yes">
+<xsl:template name="user.webhelp.head.content">
+<xsl:text disable-output-escaping="yes">
 <![CDATA[
 
 <!-- favicon -->
 
-<link rel="shortcut icon" href="http://neo4j.org/favicon.ico" type="image/vnd.microsoft.icon" />
-<link rel="icon" href="http://neo4j.org/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="common/images/favicon.ico" />
 
-<!-- style -->
+<!-- fonts -->
 
-<link href="css/shCore.css" rel="stylesheet" type="text/css" />
-<link href="css/shCoreEclipse.css" rel="stylesheet" type="text/css" />
-<link href="css/shThemeEclipse.css" rel="stylesheet" type="text/css" />
-<link href="css/neo.css" rel="stylesheet" type="text/css" />
+<link href='//fonts.googleapis.com/css?family=Ubuntu+Mono|PT+Sans:400,700,400italic' rel='stylesheet' type='text/css' />
 
 <!-- Syntax Highlighter -->
 
-<script type="text/javascript" src="js/shCore.js"></script>
-<script type="text/javascript" src="js/shBrushJava.js"></script>
-<script type="text/javascript" src="js/shBrushJScript.js"></script>
-<script type="text/javascript" src="js/shBrushBash.js"></script>
-<script type="text/javascript" src="js/shBrushPlain.js"></script>
-<script type="text/javascript" src="js/shBrushXml.js"></script>
-<script type="text/javascript" src="js/shBrushGroovy.js"></script>
-<script type="text/javascript" src="js/shBrushCypher.js"></script>
-<script type="text/javascript" src="js/shBrushScala.js"></script>
-<script type="text/javascript" src="js/shBrushSql.js"></script>
-<script type="text/javascript" src="js/shBrushPython.js"></script>
-<script type="text/javascript" src="js/shBrushProperties.js"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/4.6.0/codemirror.css" />
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/4.6.0/theme/neo.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/4.6.0/codemirror.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/4.6.0/addon/runmode/runmode.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/4.6.0/mode/javascript/javascript.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/4.6.0/mode/shell/shell.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/4.6.0/mode/sql/sql.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/4.6.0/mode/xml/xml.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/4.6.0/mode/clike/clike.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/4.6.0/mode/cypher/cypher.js"></script>
 
-<!-- activate when needed
-<script type="text/javascript" src="js/shBrushRuby.js"></script>
-<script type="text/javascript" src="js/shBrushCSharp.js"></script>
--->
+<script src="js/colorize.js"></script>
  
 <script type="text/javascript">
-  SyntaxHighlighter.defaults['tab-size'] = 4;
-  SyntaxHighlighter.defaults['gutter'] = false;
-  SyntaxHighlighter.defaults['toolbar'] = false;
-  SyntaxHighlighter.all()
+  $(function (){
+    CodeMirror.colorize();
+  });
 </script>
-
-<!-- JQuery -->
-
-<script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
-
-<!-- Replace SVG for browsers that lack support. -->
-<script type="text/javascript" src="js/svgreplacer.js"></script>
-
-<!-- Image Scaler -->
-
-<script type="text/javascript" src="js/imagescaler.js"></script>
-
-<!-- Table Styler -->
-
-<script type="text/javascript" src="js/tablestyler.js"></script>
-
-<!-- Version -->
-
-<script type="text/javascript" src="js/version.js"></script>
-
-<!-- Version Switcher -->
-
-<script type="text/javascript" src="js/versionswitcher.js"></script>
 
 <!-- Cypher Console -->
 
+<script type="text/javascript" src="js/console.js"></script>
 <script type="text/javascript" src="js/cypherconsole.js"></script>
 
-<!-- Online Sidebar -->
+<!-- Version -->
+<script type="text/javascript" src="js/version.js"></script>
+<script type="text/javascript" src="http://docs.neo4j.org/chunked/versions.js"></script>
+<script type="text/javascript" src="js/versionswitcher.js"></script>
 
-<script type="text/javascript" src="../sidebar.js"></script>
+<!-- Discuss -->
+<script type="text/javascript" src="js/mutate.min.js"></script>
+<script type="text/javascript" src="js/disqus.js"></script>
+
+<script type="text/javascript">
+    /*@cc_on @*/
+    /*@
+     $( '#content' ).addClass( 'internet-explorer' );
+     @*/
+</script>
 
 ]]>
-  </xsl:text>
-  
-  <xsl:call-template name="breadcrumbs"/>
-  
+</xsl:text>
+
 </xsl:template>
 
 </xsl:stylesheet>

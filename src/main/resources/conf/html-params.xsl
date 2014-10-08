@@ -3,8 +3,6 @@
 
 <xsl:param name="glossary.sort" select="1"></xsl:param>
 
-<xsl:param name="toc.max.depth" select="2"></xsl:param>
-
 <xsl:param name="generate.section.toc.level" select="1"></xsl:param>
 
 <xsl:param name="admon.graphics" select="1"></xsl:param>
@@ -29,10 +27,17 @@
 <xsl:template name="generate.html.title"/>
 
 <xsl:param name="table.borders.with.css" select="0"></xsl:param>
+<xsl:param name="default.table.frame" select="none"></xsl:param>
 <xsl:param name="html.cellspacing">0</xsl:param>
 <xsl:param name="html.cellpadding">0</xsl:param>
 
-<xsl:param name="html.extra.head.links" select="1"></xsl:param>
+<xsl:param name="html.extra.head.links" select="0"></xsl:param>
+
+<xsl:param name="formal.object.break.after">0</xsl:param>
+
+<xsl:param name="chunker.output.indent">no</xsl:param>
+<xsl:param name="make.clean.html" select="0"></xsl:param>
+
+<xsl:param name="ulink.target">_blank</xsl:param>
 
 </xsl:stylesheet>
-
