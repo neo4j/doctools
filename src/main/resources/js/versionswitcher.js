@@ -18,7 +18,15 @@
  */
 jQuery( window ).load( function()
 {
-  versionSwitcher( jQuery );
+  var location = window.location;
+  var isInDomain = location.hostname === 'neo4j.com' || location.hostname === 'docs.neo4j.org';
+  var isHttp = location.protocol === 'http:';
+  if ( isInDomain && isHttp ) 
+  {
+    jQuery.getScript( 'http://docs.neo4j.org/chunked/versions.js', function() {
+      versionSwitcher( jQuery );    
+    })
+  }
 } );
 
 /**
