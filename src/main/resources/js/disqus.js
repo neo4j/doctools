@@ -114,9 +114,9 @@ function runDisqus( $thread )
 
   window.disqus_url = window.location;
   window.disqus_shortname = "neo4j";
-  if ( window.disqus_url.host.indexOf( 'neo4j.' ) !== -1 && window.disqus_url.pathname.indexOf( '/lab/' ) === -1 )
+  if ( window.disqus_url.host.indexOf( 'neo4j.' ) !== -1 )
   {
-    var docsLocation = "http://docs.neo4j.org/chunked/snapshot/";
+    var docsLocation = "http://neo4j.com/docs/milestone/";
     var path = window.disqus_url.pathname;
     var position = path.lastIndexOf( '/' );
     if ( position === -1 )

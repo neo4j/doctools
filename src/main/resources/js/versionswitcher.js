@@ -19,11 +19,9 @@
 jQuery( window ).load( function()
 {
   var location = window.location;
-  var isInDomain = location.hostname === 'neo4j.com' || location.hostname === 'docs.neo4j.org';
-  var isHttp = location.protocol === 'http:';
-  if ( isInDomain && isHttp ) 
+  if ( location.hostname === 'neo4j.com' ) 
   {
-    jQuery.getScript( 'http://docs.neo4j.org/chunked/versions.js', function() {
+    jQuery.getScript( location.protocol + '//neo4j.com/docs/meta/versions.js', function() {
       versionSwitcher( jQuery );    
     })
   }
@@ -36,12 +34,7 @@ jQuery( window ).load( function()
 function versionSwitcher( $ )
 {
   var MAX_STABLE_COUNT = 2;
-  var DOCS_BASE_URL = 'http://docs.neo4j.org/chunked/';
-
-  if ( window.location.href.indexOf( 'neo4j.com' ) !== -1 )
-  {
-    DOCS_BASE_URL = 'http://neo4j.com/docs/';
-  }
+  var DOCS_BASE_URL = 'http://neo4j.com/docs/';
 
   var currentVersion = window.neo4jVersion;
   var currentPage = window.neo4jPageId + '.html';
