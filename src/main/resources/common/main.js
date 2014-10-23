@@ -42,6 +42,7 @@ $( document ).ready( function()
     } );
   }
   addBootstrapStyling();
+  addSmoothScroll($content);
   
   $( 'h3, h4, h5, h6', $content ).click(function()
   {
@@ -95,6 +96,15 @@ function addBootstrapStyling()
   $admonblocks.filter('.Warning').find('td.content').addClass('alert alert-danger');
   $('div.sidebar', $content).addClass('alert alert-info');
   $('#content div.titlepage div.abstract').addClass('alert alert-info');
+}
+
+function addSmoothScroll($element)
+{
+  $element.kinetic({
+  'slowdown': 0.96,
+  'maxvelocity': 50,
+  'triggerHardware': true
+  });
 }
 
 function addSearchHighlightButton()
