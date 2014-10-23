@@ -393,6 +393,22 @@ div.note *,div.caution *,div.important *,div.tip *,div.warning * {
   }
   
   body #header h1 span {
+    font-size: 16px;
+  }
+  
+  #content h2 {
+    font-size: 24px;
+  }
+
+  #content h3 {
     font-size: 18px;
+  }
+
+  #content h4 {
+    font-size: 16px;
+  }
+
+  body div.table[id^="config_"] tr > td:first-child {
+    width: 5.33em;
   }
 }

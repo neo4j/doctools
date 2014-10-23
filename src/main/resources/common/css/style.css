@@ -393,11 +393,11 @@ div.query-outer-wrapper {
   left: 0;
 }
 
-#content h3,#content h4,#content h5,#content h6 {
+#content h3,#content h4,#content h5,#content h6, #content div.table[id] > p.title {
   cursor: pointer;
 }
 
-#content h3:hover::after,#content h4:hover::after,#content h5:hover::after,#content h6:hover::after
+#content h3:hover::after,#content h4:hover::after,#content h5:hover::after,#content h6:hover::after,#content div.table[id] > p.title:hover:after
   {
   color: #428BCA;
   font-family: FontAwesome;
@@ -420,6 +420,10 @@ a.ulink[href^="http"]:after {
 
 a.ulink[href$=".svg"]:after,a.ulink[href$=".jpg"]:after,a.ulink[href$=".png"]:after {
   content: "" !important;
+}
+
+div.table[id^="config_"] tr > td:first-child {
+  width: 8em;
 }
 
 /* for IE */
