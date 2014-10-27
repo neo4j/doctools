@@ -81,6 +81,7 @@ function CypherConsole(config, ready) {
         $context.empty();
         $context.append($iframe);
         var $contentMoveSelector = $(contentMoveSelector).first();
+        var contentMoveSelectorOriginalTop = $contentMoveSelector.position().top;
         $context.css('background', 'none');
         var latestResizeAmount = 0;
         var $verticalResizeButton = $RESIZE_VERTICAL_BUTTON.clone().appendTo($context).mousedown(function (event) {
@@ -111,7 +112,7 @@ function CypherConsole(config, ready) {
                 expandEventHandlers.beforeUnexpand();
                 $resizeIcon.removeClass(RESIZE_IN_ICON).addClass(RESIZE_OUT_ICON);
                 $context.removeClass('fixed-console');
-                $contentMoveSelector.css('top', 100); // TODO
+                $contentMoveSelector.css('top', contentMoveSelectorOriginalTop);
                 expandEventHandlers.afterUnexpand();
             }
         });

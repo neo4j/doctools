@@ -102,6 +102,7 @@ the relevant Commercial Agreement.
             <exclude>src/bin/extensions/backends/**</exclude>
             <exclude>src/main/resources/js/**</exclude>
             <exclude>src/main/resources/common/**</exclude>
+            <exclude>src/main/resources/docbook-dtd/**</exclude>
           </excludes>
         </configuration>
       </plugin>

@@ -47,9 +47,6 @@
 <script type="text/javascript" src="js/mutate.min.js"></script>
 <script type="text/javascript" src="js/disqus.js"></script>
 
-<!-- Scrolling -->
-<script type="text/javascript" src="common/jquery/jquery.kinetic.min.js"></script>
-
 <script type="text/javascript">
     /*@cc_on @*/
     /*@

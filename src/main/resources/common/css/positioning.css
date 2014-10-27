@@ -34,6 +34,7 @@ body.console-is-expanded #header {
 #logo img {
   width: 130px;
   max-width: 100%;
+  max-height: 100%;
 }
 
 #sidebar-wrapper {
@@ -79,6 +80,8 @@ body.toc-is-hidden #sidebar-wrapper,body.console-is-expanded #sidebar-wrapper {
   border-left: 1px solid #cccccc;
   overflow: scroll;
   overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 body.toc-is-hidden #content,body.console-is-expanded #content {
@@ -390,6 +393,26 @@ div.note *,div.caution *,div.important *,div.tip *,div.warning * {
 @media screen and (max-width: 740px) {
   #additional-versions, body #header h1 #book-title {
     display: none;
+  }
+  
+  body.index-page #header h1 #book-title {
+    display: block;
+  }
+  
+  body #header {
+    height: 49px;
+  }
+  
+  body #content, body #sidebar-wrapper {
+    top: 50px;
+  }
+  
+  body #navheader {
+    top: 25px;
+  }
+  
+  body #logo {
+    height: 48px;
   }
   
   body #header h1 span {
