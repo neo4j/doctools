@@ -46,6 +46,7 @@ function Verifie(searchForm) {
         return;
     }
 
+    document.searchForm.textToSearch.blur();
     searchTextField = trim(document.searchForm.textToSearch.value);
     searchTextField = searchTextField.replace(/['"]/g,'');
   var expressionInput = searchTextField;
@@ -90,7 +91,7 @@ function Verifie(searchForm) {
           expressionInput = expressionInput + " " + noWords[x]; 
         }       
         Effectuer_recherche(expressionInput);
-        document.searchForm.textToSearch.focus();
+        //document.searchForm.textToSearch.focus();
       } else {
           // Effectuer la recherche
              expressionInput = '';
@@ -99,7 +100,7 @@ function Verifie(searchForm) {
              }
           Effectuer_recherche(expressionInput);
           // reactive la fenetre de search (utile car cadres)
-          document.searchForm.textToSearch.focus();        
+          //document.searchForm.textToSearch.focus();        
       }
     }
 }
@@ -293,12 +294,12 @@ function Effectuer_recherche(expressionInput) {
                     linkString += "</li>";
                     
                     // Add rating values for scoring at the list of matches 
-          linkString += "<div id=\"rightDiv\">";
-          linkString += "<div id=\"star\">";
+          linkString += "<div class=\"rightDiv\">";
+          linkString += "<div class=\"star\">";
           //linkString += "<div style=\"color: rgb(136, 136, 136);\" id=\"starUser0\" class=\"user\">" 
           //        + ((ttScore * 100/ hundredProcent)/(ttScore_first/hundredProcent)) * 1 + "</div>";
-                  linkString += "<ul id=\"star0\" class=\"star\">";
-          linkString += "<li id=\"starCur0\" class=\"curr\" style=\"width: " + starWidth + "px;\"></li>";
+                  linkString += "<ul class=\"star\">";
+          linkString += "<li class=\"curr\" style=\"width: " + starWidth + "px;\"></li>";
                   linkString += "</ul>";
                   
                   linkString += "<br style=\"clear: both;\">";
@@ -337,6 +338,7 @@ function Effectuer_recherche(expressionInput) {
     }
     $('a', searchResultsElement).click(function(){
       $.cookie( 'ui-tabs-1', '1' );
+      $.cookie( 'manual_toc_visible', 'no', { expires: 3, path: '/' } );
       return true;
     });
 }

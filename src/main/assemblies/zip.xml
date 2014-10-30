@@ -45,6 +45,10 @@
         <include>**/*.py</include>
       </includes>
     </fileSet>
+    <fileSet>
+      <directory>target/classes/org</directory>
+      <outputDirectory>/org</outputDirectory>
+    </fileSet>
   </fileSets>
 </assembly>
 

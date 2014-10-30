@@ -13,9 +13,12 @@
   <name>Neo4j - Documentation Tools</name>
   <description>Neo4j Documentation Tools.</description>
   <url>http://components.neo4j.org/${project.artifactId}/${project.version}</url>
-  <packaging>pom</packaging>
+  <packaging>jar</packaging>
 
   <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
     <short-name>doctools</short-name>
     <docs.sources>${project.build.directory}/docs</docs.sources>
     <docs.sourcecode>${project.build.directory}/sources</docs.sourcecode>
@@ -50,6 +53,19 @@ the relevant Commercial Agreement.
       </comments>
     </license>
   </licenses>
+
+  <dependencies>
+    <dependency>
+      <groupId>it.unimi.di.law</groupId>
+      <artifactId>jericho-html-dev</artifactId>
+      <version>20131217</version>
+    </dependency>
+    <dependency> 
+      <groupId>org.etourdot</groupId>
+      <artifactId>xinclude</artifactId>
+      <version>1.0.1</version>
+    </dependency>
+  </dependencies>
 
   <build>
     <resources>
@@ -127,12 +143,5 @@ the relevant Commercial Agreement.
       </plugin>
     </plugins>
   </build>
-
-  <distributionManagement>
-    <site>
-      <id>neo4j-site</id>
-      <url>scpexe://static.neo4j.org/var/www/components.neo4j.org/${project.artifactId}/${project.version}</url>
-    </site>
-  </distributionManagement>
 </project>
 

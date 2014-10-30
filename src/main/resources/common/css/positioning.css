@@ -43,7 +43,11 @@ body.console-is-expanded #header {
   left: 0;
   width: 280px;
   bottom: 0;
-  overflow: auto;
+  /*overflow: auto;*/
+  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 body.toc-is-hidden #sidebar-wrapper,body.console-is-expanded #sidebar-wrapper {
@@ -158,6 +162,10 @@ footer img {
   color: #0050A0;
 }
 
+.searchresult div.rightDiv {
+  line-height: 15px;
+}
+
 .shortdesclink {
   color: gray;
   font-size: 9pt;
@@ -166,6 +174,11 @@ footer img {
 .searchText {
   float: left;
   width: 150px;
+}
+
+#searchResults {
+  float: left;
+  clear: both;
 }
 
 .searchButton {
@@ -188,20 +201,20 @@ footer img {
   font-weight: bold;
 }
 
-#star ul.star {
+div.star ul.star {
   list-style: none;
   margin: 0;
   padding: 0;
   width: 85px;
-  height: 20px;
+  height: 16px;
   left: 1px;
-  top: -5px;
+  top: -6px;
   position: relative;
   float: right;
   background: url('../images/starsSmall.png') repeat-x 0 -25px;
 }
 
-#star li {
+ul.star li {
   padding: 0;
   margin: 0;
   float: right;
@@ -215,7 +228,7 @@ footer img {
   padding: 0;
 }
 
-#star li.curr {
+ul.star li.curr {
   background: url('../images/starsSmall.png') left 25px;
   font-size: 1px;
 }
@@ -397,6 +410,7 @@ div.note *,div.caution *,div.important *,div.tip *,div.warning * {
   
   body.index-page #header h1 #book-title {
     display: block;
+    font-size: 14px;
   }
   
   body #header {
@@ -414,9 +428,9 @@ div.note *,div.caution *,div.important *,div.tip *,div.warning * {
   body #logo {
     height: 48px;
   }
-  
+
   body #header h1 span {
-    font-size: 16px;
+    font-size: 14px;
   }
   
   #content h2 {
@@ -435,3 +449,34 @@ div.note *,div.caution *,div.important *,div.tip *,div.warning * {
     width: 5.33em;
   }
 }
+
+@media screen and (max-width: 640px) {
+  body #sidebar-wrapper {
+    width: 100%;
+  }
+  body #navLinks span {
+    padding-right: 2%;
+  }
+  body #textToSearch {
+    font-size: 32px !important;
+  }
+  body .pointLeft, body .pointRight {
+    padding-right: 2%;
+  }
+  body #navLinks a {
+    font-size: 11px;
+  }
+  .searchText {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  body #textToSearch {
+    font-size: 16px !important;
+  }
+  body #navLinks a {
+    font-size: 10px;
+  }
+}
+
