@@ -51,8 +51,9 @@ public class Validate
     public static void main( String[] args ) throws URISyntaxException, SAXException, ParserConfigurationException,
             IOException
     {
-        String schemaLocation = args[0];
-        String inputDocument = args[1];
+        final String schemaLocation = args[0];
+        final String inputDocument = args[1];
+        final StringBuffer out = new StringBuffer( 1024 );
 
         XIncProcEngine.getUnderlyingConfiguration().setConfigurationProperty(
                 XIncProcConfiguration.ALLOW_FIXUP_BASE_URIS, false );
@@ -70,13 +71,20 @@ public class Validate
         factory.setXIncludeAware( false );
         factory.setSchema( schemaFactory.newSchema( schemaSource ) );
         XMLReader reader = factory.newSAXParser().getXMLReader();
-        ParserErrorHandler errorHandler = new ParserErrorHandler();
+        ParserErrorHandler errorHandler = new ParserErrorHandler( out );
         reader.setErrorHandler( errorHandler );
         reader.parse( new InputSource( source ) );
 
         if ( errorHandler.hasFailed() )
         {
-            throw new RuntimeException( "Validation errors were found in " + inputDocument );
+            throw new RuntimeException( "Validation errors were found in " + inputDocument + ".\n"
+                                        + "See below for the validation information.\n" + out.toString() );
+        }
+        else if ( out.length() > 0 )
+        {
+            print( "Successfully validated " + inputDocument + "." );
+            print( "There were however warnings, see below." );
+            print( out.toString() );
         }
         else
         {
@@ -92,21 +100,27 @@ public class Validate
     private static class ParserErrorHandler implements ErrorHandler
     {
         private boolean failFlag = false;
+        private final StringBuffer output;
+
+        public ParserErrorHandler( StringBuffer out )
+        {
+            this.output = out;
+        }
 
         public void warning( SAXParseException e )
         {
-            print( e.getMessage() );
+            output.append( e.getMessage() ).append( '\n' );
         }
 
         public void error( SAXParseException e )
         {
-            print( e.getMessage() );
+            output.append( e.getMessage() ).append( '\n' );
             failFlag = true;
         }
 
         public void fatalError( SAXParseException e )
         {
-            print( e.getMessage() );
+            output.append( e.getMessage() ).append( '\n' );
             failFlag = true;
         }
 
