@@ -205,10 +205,16 @@ pre {
   background: #f9f9f9;
   word-wrap: normal;
   word-break: normal;
-  -webkit-overflow-scrolling: touch;
   overflow: scroll;
-  overflow-x: scroll;
-  overflow-y: scroll;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  z-index: 0;
+}
+
+code {
+  color: inherit;
+  background: #f2f2f2;
 }
 
 .table tfoot>tr>th,.table-condensed tfoot>tr>th {
