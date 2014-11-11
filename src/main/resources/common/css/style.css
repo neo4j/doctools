@@ -203,6 +203,12 @@ pre,code {
 pre {
   white-space: pre-wrap;
   background: #f9f9f9;
+  word-wrap: normal;
+  word-break: normal;
+  -webkit-overflow-scrolling: touch;
+  overflow: scroll;
+  overflow-x: scroll;
+  overflow-y: scroll;
 }
 
 .table tfoot>tr>th,.table-condensed tfoot>tr>th {
