@@ -31,7 +31,7 @@
 <xsl:param name="alignment">left</xsl:param>
 
 <xsl:param name="body.font.family" select="'FreeSans'"/>
-<xsl:param name="title.font.family" select="'Ubuntu'"/>
+<xsl:param name="title.font.family" select="'Roboto'"/>
 <xsl:param name="monospace.font.family" select="'Inconsolata'"/>
 
 <xsl:param name="body.font.master">11</xsl:param>
