@@ -384,10 +384,19 @@
   </fo:inline>
 </xsl:template>
 
+<xsl:attribute-set name="monospace.verbatim.properties" use-attribute-sets="verbatim.properties">
+  <xsl:attribute name="font-size">8pt</xsl:attribute>
+  <xsl:attribute name="line-height">11pt</xsl:attribute>
+  <xsl:attribute name="background-color">#F0F0F0</xsl:attribute>
+  <xsl:attribute name="border">0.66pt solid #777777</xsl:attribute>
+  <xsl:attribute name="padding">2pt</xsl:attribute>
+  <xsl:attribute name="wrap-option">wrap</xsl:attribute>
+</xsl:attribute-set>
+
 <xsl:attribute-set name="formal.title.properties" use-attribute-sets="normal.para.spacing">
-  <xsl:attribute name="font-size">12pt</xsl:attribute>
-  <xsl:attribute name="font-weight">normal</xsl:attribute>
-  <xsl:attribute name="font-style">italic</xsl:attribute>
+  <xsl:attribute name="font-size">10pt</xsl:attribute>
+  <xsl:attribute name="font-weight">bold</xsl:attribute>
+  <xsl:attribute name="font-style">normal</xsl:attribute>
   <xsl:attribute name="hyphenate">false</xsl:attribute>
   <xsl:attribute name="space-before.minimum">0.8em</xsl:attribute>
   <xsl:attribute name="space-before.optimum">1.0em</xsl:attribute>
@@ -407,8 +416,9 @@
     </xsl:if>
   </xsl:variable>
 
-  <fo:inline font-weight="normal"
-             font-style="italic"
+  <fo:inline font-weight="bold"
+             font-style="normal"
+             font-size="10pt"
              keep-with-next.within-line="always"
              padding-end="1em">
     <xsl:copy-of select="$titleStr"/>
@@ -419,14 +429,6 @@
     <xsl:text>&#160;</xsl:text>
   </fo:inline>
 </xsl:template>
-
-<xsl:attribute-set name="monospace.verbatim.properties" use-attribute-sets="verbatim.properties">
-  <xsl:attribute name="font-size">8pt</xsl:attribute>
-  <xsl:attribute name="line-height">11pt</xsl:attribute>
-  <xsl:attribute name="background-color">#F0F0F0</xsl:attribute>
-  <xsl:attribute name="border">0.66pt solid #777777</xsl:attribute>
-  <xsl:attribute name="padding">2pt</xsl:attribute>
-</xsl:attribute-set>
 
 <!-- color for links -->
 <xsl:attribute-set name="xref.properties">
