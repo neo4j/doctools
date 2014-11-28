@@ -409,7 +409,7 @@ div.query-outer-wrapper {
   cursor: pointer;
 }
 
-#content h3:hover::after,#content h4:hover::after,#content h5:hover::after,#content h6:hover::after,#content div.table[id] > p.title:hover:after
+#content h3:hover::after,#content h4:hover::after,#content h5:hover::after,#content h6:hover::after,#content div.table[id] > p.title:hover:after, dt > span.glossterm:hover:before
   {
   color: #428BCA;
   font-family: FontAwesome;

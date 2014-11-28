@@ -67,6 +67,16 @@ $( document ).ready( function()
     headingClickHandler($content, $heading, $section);
   });
 
+  $( 'dt > span', $content ).click(function()
+  {
+    var $heading = $( this );
+    var $section = $heading.children('span').first();
+    if ($section.attr('id'))
+    {
+      headingClickHandler($content, $heading, $section);
+    }
+  });
+
   $( 'div.table[id] > p.title', $content ).click(function()
   {
     var $heading = $( this );
@@ -239,7 +249,7 @@ function addBootstrapStyling()
   var $content = $('#content section');
   $('img', $content).addClass('img-responsive');
   $('div.admonitionblock img', $content).removeClass('img-responsive');
-  $('#deployment-requirements dl, #rest-api-traverse dl').addClass('dl-horizontal');
+  $('#deployment-requirements dl, #rest-api-traverse dl, #terminology dl').addClass('dl-horizontal');
   $('div.table table,div.informaltable table', $content).addClass('table table-condensed table-hover');
   var $admonblocks = $('div.admonitionblock');
   $admonblocks.filter('.Note').find('td.content').addClass('alert alert-info');

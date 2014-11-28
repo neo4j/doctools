@@ -15,6 +15,8 @@
 <xsl:param name="section.autolabel">1</xsl:param>
 <xsl:param name="section.autolabel.max.depth">2</xsl:param>
 
+<xsl:param name="runinhead.default.title.end.punct"/>
+
 <xsl:template match="table[@role = 'NotInToc']|figure[@role = 'NotInToc']" mode="toc" />
 
 <xsl:param name="local.l10n.xml" select="document('')"/>
