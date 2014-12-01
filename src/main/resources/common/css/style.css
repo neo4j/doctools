@@ -405,7 +405,7 @@ div.query-outer-wrapper {
   left: 0;
 }
 
-#content h3,#content h4,#content h5,#content h6, #content div.table[id] > p.title {
+#content h3,#content h4,#content h5,#content h6, #content div.table[id] > p.title, dt > span.glossterm {
   cursor: pointer;
 }
 

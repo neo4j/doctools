@@ -403,6 +403,16 @@ div.note *,div.caution *,div.important *,div.tip *,div.warning * {
   }
 }
 
+@media screen and (min-width: 768px) {
+  #terminology dl.dl-horizontal dt {
+    width: 200px;
+  }
+
+  #terminology dl.dl-horizontal dd {
+    margin-left: 220px;
+  }
+}
+
 @media screen and (max-width: 740px) {
   #additional-versions, body #header h1 #book-title {
     display: none;
