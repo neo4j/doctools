@@ -30,5 +30,26 @@
     </renderer>
   </renderers>
 
+  <fonts>
+    <substitutions>
+      <substitution>
+        <from font-family="Symbol" font-style="normal" font-weight="700"/>
+        <to font-family="Symbol" font-style="normal" font-weight="400"/>
+      </substitution>
+      <substitution>
+        <from font-family="ZapfDingbats" font-style="normal" font-weight="700"/>
+        <to font-family="ZapfDingbats" font-style="normal" font-weight="400"/>
+      </substitution>
+      <substitution>
+        <from font-family="Inconsolata" font-style="normal" font-weight="700"/>
+        <to font-family="Inconsolata" font-style="normal" font-weight="400"/>
+      </substitution>
+      <substitution>
+        <from font-family="Inconsolata" font-style="italic" font-weight="400"/>
+        <to font-family="Inconsolata" font-style="normal" font-weight="400"/>
+      </substitution>
+    </substitutions>
+  </fonts>
+
 </fop>
 

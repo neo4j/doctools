@@ -109,24 +109,31 @@ public class Validate
 
         public void warning( SAXParseException e )
         {
-            output.append( e.getMessage() ).append( '\n' );
+            output.append( verboseErrorMessage( e ) ).append( '\n' );
         }
 
         public void error( SAXParseException e )
         {
-            output.append( e.getMessage() ).append( '\n' );
+            output.append( verboseErrorMessage( e ) ).append( '\n' );
             failFlag = true;
         }
 
         public void fatalError( SAXParseException e )
         {
-            output.append( e.getMessage() ).append( '\n' );
+            output.append( verboseErrorMessage( e ) ).append( '\n' );
             failFlag = true;
         }
 
         boolean hasFailed()
         {
             return failFlag;
+        }
+
+        private String verboseErrorMessage( SAXParseException spexp )
+        {
+            return spexp.getMessage() + "\nLine number: " + spexp.getLineNumber() + "\nColumn number: "
+                    + spexp.getColumnNumber() + "\nNote: the position is from where the last valid parser position was located,\n "
+                    + "which might be very different from where the error is located. This is a known bug in the parser.\n";
         }
     }
 }
