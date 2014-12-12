@@ -26,6 +26,8 @@ CodeMirror.colorize = (function() {
         mode = "text/x-sql";
       } else if (mode  === "properties") {
         mode = "text/x-properties";
+      } else if (mode === "json") {
+        mode = "application/json";
       }
 
       var text = [];
