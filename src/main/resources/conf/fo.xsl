@@ -282,7 +282,7 @@
 
 <xsl:param name="navig.graphics" select="0"></xsl:param>
 
-<!-- turned off due to https://issues.apache.org/bugzilla/show_bug.cgi?id=37579 -->
+<!-- turned off due to https://issues.apache.org/jira/browse/FOP-1099 -->
 <xsl:param name="ulink.footnotes" select="1"></xsl:param>
 
 <xsl:param name="ulink.show" select="1"></xsl:param>
