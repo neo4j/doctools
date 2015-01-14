@@ -275,7 +275,6 @@
 <xsl:param name="admon.graphics" select="1"></xsl:param>
 <xsl:param name="admon.textlabel" select="1"></xsl:param>
 <xsl:param name="admon.graphics.extension">.svg</xsl:param>
-<xsl:param name="admon.graphics.path">target/tools/main/resources/images/icons/admon/</xsl:param>
 
 <xsl:param name="callout.graphics" select="1"></xsl:param>
 <xsl:param name="callout.graphics.extension">.svg</xsl:param>

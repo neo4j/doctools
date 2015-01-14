@@ -1,14 +1,15 @@
 # Names
 main_source                = src
+contents                   = contents
 imported_source            = docs
 original                   = original
 po                         = po
 # Source Directories
 source_dir                 = $(CURDIR)
-build_source_dir           = $(build_dir)/$(main_source)
+build_source_dir           = $(build_dir)/$(contents)/$(main_source)
 build_config_dir           = $(build_dir)/conf
 build_image_dir            = $(build_source_dir)/images
-import_dir                 = $(build_dir)/$(imported_source)
+import_dir                 = $(build_dir)/$(contents)/$(imported_source)
 original_dir               = $(build_dir)/$(original)
 tools_config_dir           = $(tools_dir)/main/resources/conf
 tools_css_dir              = $(tools_dir)/main/resources/css

@@ -8,7 +8,7 @@ tag=self-test
 
 import sys
 
-PATH_PATTERN="target/%(classifier)s/%(component)s-%(classifier)s-jar/%(source)s"
+PATH_PATTERN="target/contents/%(classifier)s/%(component)s-%(classifier)s-jar/%(source)s"
 
 def configuration(indata):
     config = {}
