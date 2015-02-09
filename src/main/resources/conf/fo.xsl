@@ -334,6 +334,19 @@
   <xsl:attribute name="keep-together.within-column">always</xsl:attribute>
 </xsl:attribute-set>
 
+<xsl:attribute-set name="abstract.properties">
+  <xsl:attribute name="font-size">12pt</xsl:attribute>
+  <xsl:attribute name="font-style">normal</xsl:attribute>
+  <xsl:attribute name="background-color">#F0F0F0</xsl:attribute>
+  <xsl:attribute name="padding-top">5pt</xsl:attribute>
+  <xsl:attribute name="padding-right">4pt</xsl:attribute>
+  <xsl:attribute name="padding-bottom">3pt</xsl:attribute>
+  <xsl:attribute name="padding-left">4pt</xsl:attribute>
+  <xsl:attribute name="space-after.optimum">0.5em</xsl:attribute>
+  <xsl:attribute name="space-after.minimum">0.4em</xsl:attribute>
+  <xsl:attribute name="space-after.maximum">0.6em</xsl:attribute>
+</xsl:attribute-set>
+
 <xsl:attribute-set name="section.title.level1.properties">
   <xsl:attribute name="font-size">18pt</xsl:attribute>
   <xsl:attribute name="space-after.optimum">0.15em</xsl:attribute>

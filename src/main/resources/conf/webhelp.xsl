@@ -517,6 +517,14 @@
       </html>
       <xsl:value-of select="$chunk.append"/>
   </xsl:template>
+  
+  <xsl:template match="d:abstract">
+  <div>
+    <xsl:call-template name="common.html.attributes"/>
+    <xsl:call-template name="anchor"/>
+    <xsl:apply-templates/>
+  </div>
+</xsl:template>
 
 </xsl:stylesheet>
 
