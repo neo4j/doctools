@@ -201,6 +201,19 @@ footer img {
   font-weight: bold;
 }
 
+#content div.toc.hidden-section-toc ul.toc {
+  display: none;
+}
+
+#content div.toc.visible-section-toc ul.toc {
+  display: block;
+}
+
+#content div.toc.visible-section-toc ul.toc ul {
+  display: none;
+}
+
+
 div.star ul.star {
   list-style: none;
   margin: 0;

@@ -274,7 +274,7 @@ div.admonitionblock td.content b {
   display: block;
 }
 
-#content div.sidebar,#content div.titlepage div.abstract {
+#content div.sidebar {
   float: right;
   margin: 0 0 16px 16px;
   padding: 4px;
@@ -527,14 +527,21 @@ img {
   display: none;
 }
 
-div.abstract {
-    border: 4px solid rgb(217, 237, 247);
-    border-radius: 4px;
-    padding: 6px 4px 0 4px;
-    margin-bottom: 0.5em;
+div.toc {
+  min-height: 22px;
+  position: relative;
 }
 
-div.abstract p {
-  font-size: 17px;
+div.toc div.btn-group {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
+div.toc p {
+  margin: 4px 0 0 4px;
+}
+
+ul.toc {
+  margin: 22px 10px 16px 10px;
+}
