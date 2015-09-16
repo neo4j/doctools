@@ -30,11 +30,11 @@
 <!-- justify, left or right -->
 <xsl:param name="alignment">left</xsl:param>
 
-<xsl:param name="body.font.family" select="'FreeSans'"/>
-<xsl:param name="title.font.family" select="'Roboto'"/>
+<xsl:param name="body.font.family" select="'Open Sans,FreeSans'"/>
+<xsl:param name="title.font.family" select="'Open Sans,FreeSans'"/>
 <xsl:param name="monospace.font.family" select="'Inconsolata'"/>
 
-<xsl:param name="body.font.master">11</xsl:param>
+<xsl:param name="body.font.master">10.5</xsl:param>
 <xsl:param name="body.font.size">
  <xsl:value-of select="$body.font.master"/><xsl:text>pt</xsl:text>
 </xsl:param>
@@ -115,8 +115,9 @@
 </xsl:attribute-set>
 
 <xsl:attribute-set name="admonition.title.properties">
-  <xsl:attribute name="font-size">11pt</xsl:attribute>
-  <xsl:attribute name="font-weight">bold</xsl:attribute>
+  <xsl:attribute name="font-size">12pt</xsl:attribute>
+  <xsl:attribute name="font-weight">400</xsl:attribute>
+  <xsl:attribute name="color">#58b535</xsl:attribute>
   <xsl:attribute name="hyphenate">false</xsl:attribute>
   <xsl:attribute name="keep-with-next.within-column">always</xsl:attribute>
 </xsl:attribute-set>
@@ -287,7 +288,7 @@
 <xsl:param name="ulink.show" select="1"></xsl:param>
 
 <xsl:attribute-set name="xref.properties">
-  <xsl:attribute name="color">blue</xsl:attribute>
+  <xsl:attribute name="color">#0f5788</xsl:attribute>
 </xsl:attribute-set>
 
 <xsl:attribute-set name="normal.para.spacing">
@@ -348,21 +349,25 @@
 </xsl:attribute-set>
 
 <xsl:attribute-set name="section.title.level1.properties">
-  <xsl:attribute name="font-size">18pt</xsl:attribute>
+  <xsl:attribute name="color">#58b535</xsl:attribute>
+  <xsl:attribute name="font-size">20pt</xsl:attribute>
+  <xsl:attribute name="font-weight">300</xsl:attribute>
   <xsl:attribute name="space-after.optimum">0.15em</xsl:attribute>
   <xsl:attribute name="space-after.minimum">0.10em</xsl:attribute>
   <xsl:attribute name="space-after.maximum">0.20em</xsl:attribute>
 </xsl:attribute-set>
 <xsl:attribute-set name="section.title.level2.properties">
+  <xsl:attribute name="color">#58b535</xsl:attribute>
   <xsl:attribute name="font-size">14pt</xsl:attribute>
+  <xsl:attribute name="font-weight">400</xsl:attribute>
 </xsl:attribute-set>
 <xsl:attribute-set name="section.title.level3.properties">
-  <xsl:attribute name="font-size">
-    <xsl:value-of select="$body.font.master"></xsl:value-of>
-    <xsl:text>pt</xsl:text>
-  </xsl:attribute>
+  <xsl:attribute name="color">#58b535</xsl:attribute>
+  <xsl:attribute name="font-weight">400</xsl:attribute>
+  <xsl:attribute name="font-size">12pt</xsl:attribute>
 </xsl:attribute-set>
 <xsl:attribute-set name="section.title.level4.properties">
+  <xsl:attribute name="color">#58b535</xsl:attribute>
   <xsl:attribute name="font-size">
     <xsl:value-of select="$body.font.master"></xsl:value-of>
     <xsl:text>pt</xsl:text>
@@ -371,9 +376,11 @@
   <xsl:attribute name="font-style">italic</xsl:attribute>
 </xsl:attribute-set>
 <xsl:attribute-set name="section.title.level5.properties">
+  <xsl:attribute name="color">#58b535</xsl:attribute>
   <xsl:attribute name="font-size">10pt</xsl:attribute>
 </xsl:attribute-set>
 <xsl:attribute-set name="section.title.level6.properties">
+  <xsl:attribute name="color">#58b535</xsl:attribute>
   <xsl:attribute name="font-size">10pt</xsl:attribute>
 </xsl:attribute-set>
 
@@ -382,7 +389,9 @@
 </xsl:attribute-set>
 
 <xsl:attribute-set name="component.title.properties">
-  <xsl:attribute name="font-size">18pt</xsl:attribute>
+  <xsl:attribute name="font-size">24pt</xsl:attribute>
+  <xsl:attribute name="font-weight">300</xsl:attribute>
+  <xsl:attribute name="color">#58b535</xsl:attribute>
   <xsl:attribute name="space-after.optimum">1.0em</xsl:attribute>
   <xsl:attribute name="space-after.minimum">1.0em</xsl:attribute>
   <xsl:attribute name="space-after.maximum">1.0em</xsl:attribute>
@@ -407,7 +416,8 @@
 
 <xsl:attribute-set name="formal.title.properties" use-attribute-sets="normal.para.spacing">
   <xsl:attribute name="font-size">10pt</xsl:attribute>
-  <xsl:attribute name="font-weight">bold</xsl:attribute>
+  <xsl:attribute name="font-weight">600</xsl:attribute>
+  <xsl:attribute name="color">#58b535</xsl:attribute>
   <xsl:attribute name="font-style">normal</xsl:attribute>
   <xsl:attribute name="hyphenate">false</xsl:attribute>
   <xsl:attribute name="space-before.minimum">0.8em</xsl:attribute>
@@ -444,7 +454,7 @@
 
 <!-- color for links -->
 <xsl:attribute-set name="xref.properties">
-  <xsl:attribute name="color">blue</xsl:attribute>
+  <xsl:attribute name="color">#0f5788</xsl:attribute>
 </xsl:attribute-set>
 
 <!-- generate page numbers for xrefs -->

@@ -37,7 +37,39 @@
         <to font-family="Symbol" font-style="normal" font-weight="400"/>
       </substitution>
       <substitution>
+        <from font-family="Symbol" font-style="normal" font-weight="600"/>
+        <to font-family="Symbol" font-style="normal" font-weight="700"/>
+      </substitution>
+      <substitution>
+        <from font-family="Symbol" font-style="normal" font-weight="300"/>
+        <to font-family="Symbol" font-style="normal" font-weight="400"/>
+      </substitution>
+      <substitution>
+        <from font-family="FreeSans" font-style="italic" font-weight="700"/>
+        <to font-family="FreeSans" font-style="italic" font-weight="400"/>
+      </substitution>
+      <substitution>
+        <from font-family="FreeSans" font-style="normal" font-weight="600"/>
+        <to font-family="FreeSans" font-style="normal" font-weight="700"/>
+      </substitution>
+      <substitution>
+        <from font-family="FreeSans" font-style="normal" font-weight="300"/>
+        <to font-family="FreeSans" font-style="normal" font-weight="400"/>
+      </substitution>
+      <substitution>
+        <from font-family="Open Sans" font-style="normal" font-weight="300"/>
+        <to font-family="Open Sans" font-style="normal" font-weight="200"/>
+      </substitution>
+      <substitution>
         <from font-family="ZapfDingbats" font-style="normal" font-weight="700"/>
+        <to font-family="ZapfDingbats" font-style="normal" font-weight="400"/>
+      </substitution>
+      <substitution>
+        <from font-family="ZapfDingbats" font-style="normal" font-weight="600"/>
+        <to font-family="ZapfDingbats" font-style="normal" font-weight="700"/>
+      </substitution>
+      <substitution>
+        <from font-family="ZapfDingbats" font-style="normal" font-weight="300"/>
         <to font-family="ZapfDingbats" font-style="normal" font-weight="400"/>
       </substitution>
       <substitution>
