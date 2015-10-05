@@ -52,7 +52,7 @@ indata=${indata//TEXTNODE/$textnode}
 svgfile=$targetimage
 pngfile="${svgfile}.png"
 
-graphfont="FreeSans"
+graphfont="sans-serif"
 nodefont=$graphfont
 edgefont=$graphfont
 

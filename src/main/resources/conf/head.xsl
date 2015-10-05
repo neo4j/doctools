@@ -10,7 +10,7 @@
 
 <!-- fonts -->
 
-<link href='//fonts.googleapis.com/css?family=Ubuntu+Mono|PT+Sans:400,700,400italic' rel='stylesheet' type='text/css' />
+<link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Ubuntu+Mono:400,700' rel='stylesheet' type='text/css' />
 
 <!-- Syntax Highlighter -->
 
