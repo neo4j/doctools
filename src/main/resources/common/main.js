@@ -261,6 +261,7 @@ function addBootstrapStyling()
   $('#content div.titlepage div.abstract').addClass('alert alert-info');
   $('div.toc').addClass('panel panel-default');
   $('div.abstract', $content).addClass('panel panel-primary').children().addClass('panel-body');
+  $('tbody>tr>td>p>code:contains("(empty result)")', $content).parent().parent().addClass('emptyresult');
 }
 
 function addSearchHighlightButton()
